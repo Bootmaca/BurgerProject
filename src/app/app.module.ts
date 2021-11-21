@@ -13,10 +13,9 @@ import {AuthGuardUtilService} from "./services/auth-guard-util.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const appRoutes : Routes = [
-  // {path:'appareils',  canActivate : [AuthGuardService], component : AppareilViewComponent},
   {path:'auth', component : AuthentificationComponent},
-  {path:'admin', component : AdministrateurComponent},
-  {path:'util', component : UtilisateurComponent},
+  {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
+  {path:'util', canActivate : [AuthGuardUtilService], component : UtilisateurComponent},
   {path:'not-found', component : NotFoundComponent},
   {path:'', component : AuthentificationComponent},
   {path:'**', redirectTo : 'not-found'}

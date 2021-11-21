@@ -36,7 +36,8 @@ CREATE TABLE Dessert(
 	idDessert INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
 	prix DECIMAL(20,2),
-	image VARCHAR(500)
+	image VARCHAR(500),
+	isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -56,7 +57,8 @@ CREATE TABLE Frite(
 	idFrite INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
 	prix DECIMAL(20,2),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -76,7 +78,8 @@ CREATE TABLE Boisson(
 	idBoisson INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
 	prix DECIMAL(20,2),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE AjouterBoisson(
@@ -95,7 +98,8 @@ CREATE TABLE Autre(
 	idAutre INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
 	prix DECIMAL(20,2),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE AjouterAutre(
@@ -113,13 +117,15 @@ ALTER TABLE AjouterAutre
 CREATE TABLE Viande(
 	idViande INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Sauce(
 	idSauce INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE Burger(
@@ -130,7 +136,8 @@ CREATE TABLE Burger(
 	prix DECIMAL(20,2),
 	image VARCHAR(500),
 	idViande INTEGER(10),
-	idSauce INTEGER(10)
+	idSauce INTEGER(10),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE Burger
@@ -142,7 +149,8 @@ CREATE TABLE Supplement(
 	idSupplement INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
 	prix INTEGER(10),
-	image VARCHAR(500)
+	image VARCHAR(500),
+  isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE SupplementBurger(
@@ -193,3 +201,7 @@ CREATE TABLE AjouterMenu(
 ALTER TABLE AjouterMenu
 	ADD CONSTRAINT fk_AjouterMenu_Panier FOREIGN KEY (idPanier) REFERENCES Panier(idPanier),
 	ADD CONSTRAINT fk_AjouterMenu_MenuBurger FOREIGN KEY (idMenu) REFERENCES Menu(idMenu);
+
+
+CREATE USER IF NOT EXISTS 'adminBurgerProject'@'localhost' IDENTIFIED BY 'adminBurgerProject';
+GRANT ALL PRIVILEGES ON BurgerProject.* TO 'adminBurgerProject'@'localhost';

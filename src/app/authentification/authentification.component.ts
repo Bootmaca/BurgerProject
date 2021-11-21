@@ -1,4 +1,5 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {AuthServices} from "../services/auth.services";
 
 @Component({
   selector: 'app-authentification',
@@ -13,8 +14,12 @@ export class AuthentificationComponent implements OnInit {
   colorSignup : string = "#000";
   curseurLogin : string = "default";
   curseurSignup : string = "pointer";
+  identificationFalse : boolean;
 
-  constructor( ) { }
+  constructor(private authService: AuthServices ) {
+     this.identificationFalse = this.authService.identificationFalse;
+  }
+
 
 
   ngOnInit(): void {

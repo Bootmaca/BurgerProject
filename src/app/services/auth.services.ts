@@ -1,8 +1,10 @@
 
 
 export class AuthServices{
-  isAuth : boolean = false;
+  isAuth : string = "util";
+  identificationFalse : boolean = false;
 
+  /*
   signIn(){
     return new Promise(
       (resolve, reject) => {
@@ -15,8 +17,9 @@ export class AuthServices{
       }
     )
   }
+  */
 
   signOut(){
-    this.isAuth = false;
+    this.isAuth = "";
   }
 }
