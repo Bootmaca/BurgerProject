@@ -135,9 +135,9 @@ CREATE TABLE Burger(
 	isByCreator TINYINT(1),
 	prix DECIMAL(20,2),
 	image VARCHAR(500),
+  isDisponible TINYINT(1),
 	idViande INTEGER(10),
-	idSauce INTEGER(10),
-  isDisponible TINYINT(1)
+	idSauce INTEGER(10)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE Burger

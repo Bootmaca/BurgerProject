@@ -24,14 +24,14 @@ INSERT INTO Sauce(idSauce, libelle, image, isDisponible)
     (3,"Mayonnaise", "url/image", 1),
     (4,"Biggy", "url/image", 1);
 
-INSERT INTO Burger(idBurger, libelle, isPain, isByCreator, prix, image, idViande, idSauce, isDisponible)
+INSERT INTO Burger(idBurger, libelle, isPain, isByCreator, prix, image, isDisponible, idViande, idSauce )
   VALUES
     (1,"Chicken Burger", 1, 1, 5.00,"url/image", 1, 1, 1),
-    (2,"Beef Burger", 1, 1, 5.00, "url/image", 2, 1, 1),
-    (3,"Cheese Burger", 1, 1, 5.50, "url/image", 2, 2, 1),
-    (4,"Fish Burger", 1, 1, 5.00, "url/image", 3, 1, 1),
-    (5,"Veggie Burger", 1, 1, 5.00, "url/image", 4, 1, 1),
-    (6,"Real Bread Burger", 0, 1, 5.00, "url/image", 2, 1, 1);
+    (2,"Beef Burger", 1, 1, 5.00, "url/image", 1, 2, 1),
+    (3,"Cheese Burger", 1, 1, 5.50, "url/image", 1, 2, 2),
+    (4,"Fish Burger", 1, 1, 5.00, "url/image", 1, 3, 1),
+    (5,"Veggie Burger", 1, 1, 5.00, "url/image", 1, 4, 1),
+    (6,"Real Bread Burger", 0, 1, 5.00, "url/image", 1, 2, 1);
 
 INSERT INTO Supplement(idSupplement, libelle, prix, image, isDisponible)
   VALUES
