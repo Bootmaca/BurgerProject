@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthServices} from "../services/auth.services";
+import { HttpClient } from '@angular/common/http';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-authentification',
@@ -15,14 +17,33 @@ export class AuthentificationComponent implements OnInit {
   curseurLogin : string = "default";
   curseurSignup : string = "pointer";
   identificationFalse : boolean;
+  title : string = "apprenant";
+  urlDeBase : string = "http://localhost/burgerProject/src/app/_classes/"
+  data = [];
 
-  constructor(private authService: AuthServices ) {
+  constructor(private authService: AuthServices, private http: HttpClient) {
+
+
      this.identificationFalse = this.authService.identificationFalse;
+     this.http.get(this.urlDeBase+'test.php').subscribe((laData) => {
+       // @ts-ignore
+       this.data = laData;
+       console.log(this.data);
+       console.log(this.data[0]['prenom']);
+     }, error => {
+       console.log("Utilisateur non trouvé");
+       //console.log(error);
+     });
   }
 
 
 
   ngOnInit(): void {
+  }
+
+  seConnecter(form : NgForm){
+    // let email = form.value['name'];
+    console.log(form.value['testEmail']);
   }
 
 

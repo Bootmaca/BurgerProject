@@ -11,6 +11,8 @@ import {AuthServices} from "./services/auth.services";
 import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
 import {AuthGuardUtilService} from "./services/auth-guard-util.service";
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const appRoutes : Routes = [
   {path:'auth', component : AuthentificationComponent},
@@ -30,6 +32,9 @@ const appRoutes : Routes = [
     NotFoundComponent
   ],
   imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
@@ -37,9 +42,13 @@ const appRoutes : Routes = [
   providers: [
     AuthServices,
     AuthGuardAdminService,
+    //HttpClient,
+    //HttpHeaders,
     AuthGuardUtilService
   ],
   bootstrap: [AppComponent]
 })
 
-export class AppModule { }
+export class AppModule {
+
+}

@@ -25,12 +25,13 @@
       </div>
     </div>
     <div class="form-inner">
-      <form action="#" class="login" [style]="{'margin-left': marginLeft}">
+<!--       <form class="login" [style]="{'margin-left': marginLeft}">-->
+       <form (ngSubmit)="seConnecter(monFormulaireConnexion)" #monFormulaireConnexion="ngForm" class="login" [style]="{'margin-left': marginLeft}">
         <div class="field">
-          <input type="email" placeholder="Adresse mail" required>
+          <input type="email" placeholder="Adresse mail" name="mail" id="emailll" class="testEmail" required>
         </div>
         <div class="field">
-          <input type="password" placeholder="Mot de passe" required>
+          <input type="password" placeholder="Mot de passe" name="password" required>
         </div>
         <div class="mailOrPasswordFalse" *ngIf="identificationFalse">
           <p>Mail ou mot de passe incorrect</p>
