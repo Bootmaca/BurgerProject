@@ -6,10 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
-import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { UtilisateurComponent } from './client/utilisateur.component';
 import {AuthServices} from "./services/auth.services";
 import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
-import {AuthGuardUtilService} from "./services/auth-guard-util.service";
+import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -17,7 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 const appRoutes : Routes = [
   {path:'auth', component : AuthentificationComponent},
   {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
-  {path:'util', canActivate : [AuthGuardUtilService], component : UtilisateurComponent},
+  {path:'client', canActivate : [AuthGuardCustomerService], component : UtilisateurComponent},
   {path:'not-found', component : NotFoundComponent},
   {path:'', component : AuthentificationComponent},
   {path:'**', redirectTo : 'not-found'}
@@ -40,11 +40,11 @@ const appRoutes : Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    AuthServices,
     AuthGuardAdminService,
+    AuthServices,
     //HttpClient,
     //HttpHeaders,
-    AuthGuardUtilService
+    AuthGuardCustomerService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthServices} from "../services/auth.services";
-import { HttpClient } from '@angular/common/http';
 import {NgForm} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-authentification',
@@ -16,25 +16,10 @@ export class AuthentificationComponent implements OnInit {
   colorSignup : string = "#000";
   curseurLogin : string = "default";
   curseurSignup : string = "pointer";
-  identificationFalse : boolean;
-  title : string = "apprenant";
-  urlDeBase : string = "http://localhost/burgerProject/src/app/_classes/"
+  identificationFalse : boolean = false;
   data = [];
 
-  constructor(private authService: AuthServices, private http: HttpClient) {
-
-
-     this.identificationFalse = this.authService.identificationFalse;
-     this.http.get(this.urlDeBase+'test.php').subscribe((laData) => {
-       // @ts-ignore
-       this.data = laData;
-       console.log(this.data);
-       console.log(this.data[0]['prenom']);
-     }, error => {
-       console.log("Utilisateur non trouvé");
-       //console.log(error);
-     });
-  }
+  constructor(private authService: AuthServices, private router: Router) {  }
 
 
 
@@ -42,8 +27,29 @@ export class AuthentificationComponent implements OnInit {
   }
 
   seConnecter(form : NgForm){
-    // let email = form.value['name'];
-    console.log(form.value['testEmail']);
+    let mail = form.value['mail'];
+    let password = form.value['password'];
+    form.reset();
+    this.authService.signIn(mail, password);
+    new Promise(
+      () => {
+        setTimeout(
+          ()=>{
+            if(this.authService.isAuth){
+              if(this.authService.user[0]['typeUtil'] == 1){
+                this.router.navigate(['/admin']);
+              }else{
+                this.router.navigate(['/client']);
+              }
+            }else{
+              this.identificationFalse = true;
+            }
+          },200
+        )
+      }
+    );
+
+    //this.authService
   }
 
 

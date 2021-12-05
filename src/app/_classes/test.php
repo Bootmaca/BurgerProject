@@ -4,21 +4,20 @@ header('Access-Control-Allow-Origin: http://localhost:4200');
 header("Content-Type: application/json; charset=UTF-8");
 
 
-/*$pseudo = $_REQUEST['pseudoUtil'];
-$motDePasse = $_REQUEST['passwordUtil'];*/
-
 include_once("UtilisateurMySQL.php");
 include_once("Connexion.php");
 
 //Création de la connexion avec la base de donnée en créant l'objet
 $utilisateurMySQL = new UtilisateurMySQL();
 
-
 session_start();
 session_unset();
 
-$mail = "clement.hadj@outlook.fr";
-$motDePasse = "clementH";
+// $mail = "clement.hadj@outlook.fr";
+// $motDePasse = "clementH";
+
+$mail = $_REQUEST['email'];
+$motDePasse = $_REQUEST['password'];
 
 // Recherche de l'utilisateur concerné à partir du mot de passe et du pseudo saisis
 $result = $utilisateurMySQL->verifierUtilisateur($mail, $motDePasse);
@@ -38,5 +37,6 @@ if ($nbUser < 1) {
     }
     print json_encode($data); //Affichage du tableau au format json pour qu'il soit récupéré en typescript
 }
+
 
 ?>
