@@ -9,6 +9,7 @@ export class AuthServices{
   urlDeBase : string = "http://localhost/burgerProject/src/app/_classes/"
   user:any =[];
   unUtilisateur: Utilisateur = new Utilisateur("prenom", "prenom", "mail", "autre");
+  unUtilisateur2: Utilisateur = new Utilisateur("","", "", "");
 
   constructor(private http: HttpClient) {
     console.log(this.unUtilisateur.getNom());
