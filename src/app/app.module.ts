@@ -13,6 +13,7 @@ import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {Utilisateur} from 'src/app/_models/Utilisateur';
 
 const appRoutes : Routes = [
   {path:'auth', component : AuthentificationComponent},

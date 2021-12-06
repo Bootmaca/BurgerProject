@@ -1,14 +1,18 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
+import {Utilisateur} from "src/app/_models/Utilisateur";
 
 @Injectable()
 export class AuthServices{
   isAuth : string = "";
   identificationFalse : boolean = false;
   urlDeBase : string = "http://localhost/burgerProject/src/app/_classes/"
-  user =[];
+  user:any =[];
+  unUtilisateur: Utilisateur = new Utilisateur("prenom", "prenom", "mail", "autre");
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(this.unUtilisateur.getNom());
+  }
 
 
   signIn(mail: String, password: String){
@@ -16,9 +20,8 @@ export class AuthServices{
     console.log(password);
 
     this.http
-      .get(this.urlDeBase+'test.php?email='+mail+'&password='+password)
+      .get<any[]>(this.urlDeBase+'test.php?email='+mail+'&password='+password)
       .subscribe((laData) => {
-        // @ts-ignore
         this.user = laData;
         if(this.user[0]['typeUtil'] == 1){
           this.isAuth = "admin";
@@ -27,7 +30,7 @@ export class AuthServices{
         }
         this.identificationFalse = false;
       }, (error) => {
-        console.log("Utilisateur non trouvé");
+        console.log("Utilisateur non trouvé. Erreur : " + error);
         this.identificationFalse = true;
         this.isAuth = "";
       });
