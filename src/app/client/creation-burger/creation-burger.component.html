@@ -1,143 +1,143 @@
-
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-    
-    
-    *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    }
-    
-  </style>  
-
-<h1 class="text-center">Personnalisation de burger</h1>
+<div style="height:100vh; background-image: linear-gradient( 135deg, #08DFF9 10%, #4809D1 100%); padding-top: 100px;">
+  <app-entete-client></app-entete-client>
+  <div class="container" style="background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%); padding-top: 2%; padding-bottom: 2%; border-radius: 10px;width:60%; max-height: 720px; ">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
 
-<div class="row mx-auto " style="margin-top: 4%;" *ngIf="vuePain">
-  <div class="d-flex justify-content-around ">
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/baguette.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Pain Baguette</h5>
-        <button type="button" class="btn btn-primary" (click)="choixPainBaguette()">Commander</button>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+      }
+
+    </style>
+
+    <h1 class="text-center">Personnalisation de burger</h1>
+
+
+    <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vuePain">
+      <div class="d-flex justify-content-around ">
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/baguette.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Pain Baguette</h5>
+            <button type="button" class="btn btn-primary" (click)="choixPainBaguette()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem;">
+          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Pain Burger</h5>
+            <button type="button" class="btn btn-primary" (click)="choixPainBurger()" >Commander</button>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center" style="margin-top:10%;" >
+        <div class="row justify-content-around">
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button" >Annuler</a>
+          </div>
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button">Suivant</a>
+          </div>
+        </div>
+        <p></p>
       </div>
     </div>
-    <div class="card" style="width: 10rem;">
-      <img src="../assets/images/burger1.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Pain Burger</h5>
-        <button type="button" class="btn btn-primary" (click)="choixPainBurger()" >Commander</button>
+
+    <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueViande">
+      <div class="d-flex justify-content-around ">
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/steack.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Poulet</h5>
+            <button type="button" class="btn btn-primary" (click)="choixViandePoulet()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Steack</h5>
+            <button type="button" class="btn btn-primary" (click)="choixViandeSteack()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Poisson</h5>
+            <button type="button" class="btn btn-primary" (click)="choixViandePoisson()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem;">
+          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Veggie</h5>
+            <button type="button" class="btn btn-primary" (click)="choixViandeVeggie()">Commander</button>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center" style="margin-top:10%;" >
+        <div class="row justify-content-around">
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button" >Annuler</a>
+          </div>
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button">Suivant</a>
+          </div>
+        </div>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueSauce">
+      <div class="d-flex justify-content-around ">
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/ketchup.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Ketchup</h5>
+            <button type="button" class="btn btn-primary" (click)="choixSauceKetchup()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/sauce_burger.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Burger</h5>
+            <button type="button" class="btn btn-primary" (click)="choixSauceBurger()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem; ">
+          <img src="../../../assets/images/mayo.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Mayonnaise</h5>
+            <button type="button" class="btn btn-primary" (click)="choixSauceMayo()">Commander</button>
+          </div>
+        </div>
+        <div class="card" style="width: 10rem;">
+          <img src="../../../assets/images/biggie.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-center">Biggie</h5>
+            <button type="button" class="btn btn-primary" (click)="choixSauceBiggie()">Commander</button>
+          </div>
+        </div>
+      </div>
+      <div class="container text-center" style="margin-top:10%;" >
+        <div class="row justify-content-around">
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button" >Annuler</a>
+          </div>
+          <div class="col">
+            <a class="btn btn-primary" href="#" role="button">Suivant</a>
+          </div>
+        </div>
+        <br>
       </div>
     </div>
   </div>
-  <div class="container text-center" style="margin-top:10%;" >
-    <div class="row justify-content-around">
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button" >Annuler</a>
-      </div>
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button">Suivant</a>
-      </div>
-    </div>
-    <p></p>
-  </div>
+  <app-pied-page-client></app-pied-page-client>
 </div>
 
-<div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueViande">
-  <div class="d-flex justify-content-around ">
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/steack.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Poulet</h5>
-        <button type="button" class="btn btn-primary" (click)="choixViandePoulet()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/burger1.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Steack</h5>
-        <button type="button" class="btn btn-primary" (click)="choixViandeSteack()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/burger1.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Poisson</h5>
-        <button type="button" class="btn btn-primary" (click)="choixViandePoisson()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem;">
-      <img src="../assets/images/burger1.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Veggie</h5>
-        <button type="button" class="btn btn-primary" (click)="choixViandeVeggie()">Commander</button>
-      </div>
-    </div>
-  </div>
-  <div class="container text-center" style="margin-top:10%;" >
-    <div class="row justify-content-around">
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button" >Annuler</a>
-      </div>
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button">Suivant</a>
-      </div>
-    </div>
-    <p></p>
-  </div>
-</div>
-
-<div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueSauce">
-  <div class="d-flex justify-content-around ">
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/ketchup.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Ketchup</h5>
-        <button type="button" class="btn btn-primary" (click)="choixSauceKetchup()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/sauce_burger.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Burger</h5>
-        <button type="button" class="btn btn-primary" (click)="choixSauceBurger()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem; ">
-      <img src="../assets/images/mayo.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Mayonnaise</h5>
-        <button type="button" class="btn btn-primary" (click)="choixSauceMayo()">Commander</button>
-      </div>
-    </div>
-    <div class="card" style="width: 10rem;">
-      <img src="../assets/images/biggie.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title text-center">Biggie</h5>
-        <button type="button" class="btn btn-primary" (click)="choixSauceBiggie()">Commander</button>
-      </div>
-    </div>
-  </div>
-  <div class="container text-center" style="margin-top:10%;" >
-    <div class="row justify-content-around">
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button" >Annuler</a>
-      </div>
-      <div class="col">
-        <a class="btn btn-primary" href="#" role="button">Suivant</a>
-      </div>
-    </div>
-    <p></p>
-  </div>
-</div>
 
 
 
-    
-
-
-
-
-        
