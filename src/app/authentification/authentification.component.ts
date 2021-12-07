@@ -39,7 +39,7 @@ export class AuthentificationComponent implements OnInit {
               if(this.authService.user[0]['typeUtil'] == 1){
                 this.router.navigate(['/admin']);
               }else{
-                this.router.navigate(['/client']);
+                this.router.navigate(['/client/menu']);
               }
             }else{
               this.identificationFalse = true;

@@ -7,6 +7,14 @@ import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
 import { UtilisateurComponent } from './client/utilisateur.component';
+import { FritesComponent } from './client/frites/frites.component';
+import { BurgersComponent } from './client/burgers/burgers.component';
+import { BoissonsComponent } from './client/boissons/boissons.component';
+import { CreationBurgerComponent} from './client/creation-burger/creation-burger.component';
+import { DessertsComponent } from './client/desserts/desserts.component';
+import { MenuComponent } from './client/menu/menu.component';
+import { PanierComponent } from './client/panier/panier.component';
+import { SupplementsComponent } from './client/supplements/supplements.component';
 import {AuthServices} from "./services/auth.services";
 import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
 import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
@@ -14,15 +22,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {Utilisateur} from 'src/app/_models/Utilisateur';
-
-const appRoutes : Routes = [
-  {path:'auth', component : AuthentificationComponent},
-  {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
-  {path:'client', canActivate : [AuthGuardCustomerService], component : UtilisateurComponent},
-  {path:'not-found', component : NotFoundComponent},
-  {path:'', component : AuthentificationComponent},
-  {path:'**', redirectTo : 'not-found'}
-];
+import { EnteteClientComponent } from './client/entete-client/entete-client.component';
+import { PiedPageClientComponent } from './client/pied-page-client/pied-page-client.component';
 
 @NgModule({
   declarations: [
@@ -30,15 +31,24 @@ const appRoutes : Routes = [
     AuthentificationComponent,
     AdministrateurComponent,
     UtilisateurComponent,
-    NotFoundComponent
+    BoissonsComponent,
+    BurgersComponent,
+    CreationBurgerComponent,
+    DessertsComponent,
+    FritesComponent,
+    MenuComponent,
+    PanierComponent,
+    SupplementsComponent,
+    NotFoundComponent,
+    EnteteClientComponent,
+    PiedPageClientComponent
   ],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [
     AuthGuardAdminService,
