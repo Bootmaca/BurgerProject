@@ -4,49 +4,42 @@ import {Utilisateur} from "src/app/_models/Utilisateur";
 
 @Injectable()
 export class AuthServices{
-  // localStorage.setItem("token", token);
-  // localStorage.getItem("token"); //returns "xxx"
-  isAuth : string = "";
   identificationFalse : boolean = false;
   urlDeBase : string = "http://localhost/burgerProject/src/app/_php/"
   user:any =[];
-  unUtilisateur: Utilisateur = new Utilisateur("nom", "prenom", "mail", "autre");
-  unUtilisateur2: Utilisateur = new Utilisateur("","", "", "");
+  utilisateur: Utilisateur = new Utilisateur("","", "", "");
 
   constructor(private http: HttpClient) {
-    if(!localStorage.getItem("utilisateur")){
-      //localStorage.setItem("token2", Utilisateur);
-      console.log(localStorage.getItem("token2"));
-    }else{
-      //console.log(localStorage.getItem("token"));
+    if(!sessionStorage.getItem("utilisateur")){
+      sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
     }
-    console.log(this.unUtilisateur.getNom());
   }
 
 
-  signIn(mail: String, password: String){
-    console.log(mail);
-    console.log(password);
+  signIn(mail: string, password: string){
 
     this.http
       .get<any[]>(this.urlDeBase+'getUnUtilisateur.php?email='+mail+'&password='+password)
       .subscribe((laData) => {
         this.user = laData;
+        let typeUtil : string = "client";
         if(this.user[0]['typeUtil'] == 1){
-          this.isAuth = "admin";
-        }else{
-          this.isAuth = "client";
+          typeUtil = "admin";
         }
+        this.utilisateur = new Utilisateur(this.user[0]['nom'], this.user[0]['prenom'], mail, typeUtil);
+        sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur)); //Garde en session l'utilisateur
         this.identificationFalse = false;
       }, (error) => {
         console.log("Utilisateur non trouvé. Erreur : " + error);
         this.identificationFalse = true;
-        this.isAuth = "";
+        this.utilisateur = new Utilisateur(this.user[0]['nom'], this.user[0]['prenom'], mail, "");
+        sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
       });
   }
 
 
   signOut(){
-    this.isAuth = "";
+    this.utilisateur = new Utilisateur("","", "", "");
+    sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
   }
 }
