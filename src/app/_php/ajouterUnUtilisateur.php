@@ -3,26 +3,20 @@
 header('Access-Control-Allow-Origin: http://localhost:4200');
 header("Content-Type: application/json; charset=UTF-8");
 
-
-include_once("UtilisateurMySQL.php");
-include_once("Connexion.php");
+//Inclus toutes les classe dans _classes pour pouvoir les utiliser dans ce fichier
+include_once("chargementClasses.php");
 
 //Création de la connexion avec la base de donnée en créant l'objet
 $utilisateurMySQL = new UtilisateurMySQL();
 
-session_start();
-session_unset();
-
-// $mail = "clement.hadj@outlook.fr";
-// $motDePasse = "clementH";
-
-$mail = $_REQUEST['email'];
-$motDePasse = $_REQUEST['password'];
+$mail = $_REQUEST['email']; // $mail = "clement.hadj@outlook.fr";
+$motDePasse = $_REQUEST['password']; // $motDePasse = "clementH";
 
 // Recherche de l'utilisateur concerné à partir du mot de passe et du pseudo saisis
 $result = $utilisateurMySQL->verifierUtilisateur($mail, $motDePasse);
 
-$nbUser = $result->rowCount(); //Nb lignes
+//Nb lignes
+$nbUser = $result->rowCount();
 
 //Si il n'y a pas de lignes
 if ($nbUser < 1) {
@@ -33,10 +27,9 @@ if ($nbUser < 1) {
        $ligne = array('prenom' => $row['prenom'],
                       'nom' => $row['nom'],
                       'typeUtil' => $row['typeUtil']);
-       array_push($data, $ligne);
+       array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
     }
     print json_encode($data); //Affichage du tableau au format json pour qu'il soit récupéré en typescript
 }
-
 
 ?>
