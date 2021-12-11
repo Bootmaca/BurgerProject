@@ -32,7 +32,7 @@ export class AuthServices{
       }, (error) => {
         console.log("Utilisateur non trouvé. Erreur : " + error);
         this.identificationFalse = true;
-        this.utilisateur = new Utilisateur(this.user[0]['nom'], this.user[0]['prenom'], mail, "");
+        this.utilisateur = new Utilisateur("","", "", "");
         sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
       });
   }

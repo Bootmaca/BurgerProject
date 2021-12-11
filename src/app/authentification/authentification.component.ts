@@ -31,12 +31,14 @@ export class AuthentificationComponent implements OnInit {
     let password = form.value['password'];
     form.reset();
     this.authService.signIn(mail, password);
+    //On crée une promise pour le temps de récupération de données
     new Promise(
       () => {
         setTimeout(
           ()=>{
             let user:any = sessionStorage.getItem("utilisateur");
             user = JSON.parse(user);
+            //Récupération du type utilisateur récupéré
             if(user['typeUtil'] != "") {
               if(this.authService.user[0]['typeUtil'] == 1){
                 this.router.navigate(['/admin']);
