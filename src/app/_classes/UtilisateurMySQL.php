@@ -39,10 +39,10 @@ class UtilisateurMySQL
     function ajouterUnUtilisateur($nom ,$premon ,$mail, $password)
     {
         $isInserted = "false";
-        $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `Utilisateur` (`nom`, `prenom` ,`mail`,`password`, `typeUtil`)
-                                                            VALUES (:nom ,:prenom ,:mail ,:password ,0 )");
+        $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `Utilisateur` (`nom`,`prenom`,`mail`,`password`,`typeUtil`)
+                                                            VALUES (:nom,:prenom,:mail,:password,0);");
         $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':prenom', $premon);
         $stmt ->bindParam(':mail', $mail);
         $stmt ->bindParam(':password', $password);
         if ($stmt ->execute() == 1) {
