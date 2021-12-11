@@ -8,22 +8,18 @@ export class AuthServices{
   // localStorage.getItem("token"); //returns "xxx"
   isAuth : string = "";
   identificationFalse : boolean = false;
-  urlDeBase : string = "http://localhost/burgerProject/src/app/_classes/"
+  urlDeBase : string = "http://localhost/burgerProject/src/app/_php/"
   user:any =[];
   unUtilisateur: Utilisateur = new Utilisateur("nom", "prenom", "mail", "autre");
   unUtilisateur2: Utilisateur = new Utilisateur("","", "", "");
 
   constructor(private http: HttpClient) {
-    if(!localStorage.getItem("token2")){
-      let token2 = "xxx";
-      localStorage.setItem("token2", token2);
+    if(!localStorage.getItem("utilisateur")){
+      //localStorage.setItem("token2", Utilisateur);
       console.log(localStorage.getItem("token2"));
     }else{
       //console.log(localStorage.getItem("token"));
     }
-
-
-
     console.log(this.unUtilisateur.getNom());
   }
 
@@ -33,7 +29,7 @@ export class AuthServices{
     console.log(password);
 
     this.http
-      .get<any[]>(this.urlDeBase+'test.php?email='+mail+'&password='+password)
+      .get<any[]>(this.urlDeBase+'getUnUtilisateur.php?email='+mail+'&password='+password)
       .subscribe((laData) => {
         this.user = laData;
         if(this.user[0]['typeUtil'] == 1){
