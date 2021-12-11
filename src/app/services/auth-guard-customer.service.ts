@@ -11,7 +11,9 @@ export class AuthGuardCustomerService implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.authService.isAuth == "client") {
+    let utilisateur:any = sessionStorage.getItem("utilisateur");
+    utilisateur = JSON.parse(utilisateur);
+    if(utilisateur['typeUtil'] == "client") {
       return true;
     } else {
       this.router.navigate(['/auth']);

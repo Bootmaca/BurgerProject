@@ -35,7 +35,9 @@ export class AuthentificationComponent implements OnInit {
       () => {
         setTimeout(
           ()=>{
-            if(this.authService.isAuth){
+            let user:any = sessionStorage.getItem("utilisateur");
+            user = JSON.parse(user);
+            if(user['typeUtil'] != "") {
               if(this.authService.user[0]['typeUtil'] == 1){
                 this.router.navigate(['/admin']);
               }else{
