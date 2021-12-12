@@ -9,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class CreationBurgerComponent implements OnInit {
 
   vuePain : boolean = true;
+  painBurgerSelected : boolean = false;
+  painBaguetteSelected : boolean = false;
+  
+
   vueViande : boolean = false;
   vueSauce : boolean = false;
   vueSupplements : boolean = false;
+  
+
+  countPain : number = 0;
+  
   
   burger: any | undefined;
 
@@ -27,21 +35,50 @@ export class CreationBurgerComponent implements OnInit {
     
   }
 
+
+
+
   choixPainBaguette() :void{
     
-    this.vuePain = false;
-    this.vueViande = true;
+    this.painBurgerSelected = false;
+    var bouton = document.getElementById("painBaguette");
+    this.painBaguetteSelected=true;
+
+    if(bouton && this.painBaguetteSelected == true){
+      bouton.style.borderStyle="solid";
+      bouton.style.borderColor="blue";
+      bouton.style.borderWidth="3px";
+    }
+      
+    
+    this.countPain = 1;
     this.burger['pain'] = "Baguette";
     console.log(this.burger);
   }
 
   choixPainBurger() : void{
 
-    this.vuePain = false;
-    this.vueViande = true;
+    this.painBaguetteSelected=false;
+    var bouton = document.getElementById("painBurger");
+    this.painBurgerSelected=true;
+
+    if(bouton && this.painBurgerSelected == true){
+      bouton.style.borderStyle="solid";
+      bouton.style.borderColor="blue";
+      bouton.style.borderWidth="3px";
+    }
+
+    this.countPain = 1;
     this.burger["pain"] = "Burger";
     console.log(this.burger);
     
+  }
+
+  selectPain() :void{
+
+    this.vuePain = false;
+    this.vueViande = true;
+
   }
 
   choixViandePoulet() :void{
@@ -108,6 +145,29 @@ export class CreationBurgerComponent implements OnInit {
     this.vueSauce = false;
     this.vueSupplements = true;
     console.log(this.burger);
+  }
+
+  choixSuppBaccon() :void{
+
+    this.burger["supplément"]="Baccon";
+    
+    console.log(this.burger);
+
+  }
+
+  choixSuppCheddar() :void{
+
+
+  }
+
+  choixSuppEmmental() :void{
+
+
+  }
+
+  choixSuppChevre() :void{
+
+
   }
 
 
