@@ -34,13 +34,16 @@ export class CreationBurgerComponent implements OnInit {
     this.burger = {};
     
   }
-
-
-
-
+ 
   choixPainBaguette() :void{
     
     this.painBurgerSelected = false;
+
+    var otherBouton = document.getElementById("painBurger");
+    if(otherBouton){
+      otherBouton.style.borderStyle="none";
+    }
+      
     var bouton = document.getElementById("painBaguette");
     this.painBaguetteSelected=true;
 
@@ -59,6 +62,13 @@ export class CreationBurgerComponent implements OnInit {
   choixPainBurger() : void{
 
     this.painBaguetteSelected=false;
+
+
+    var otherBouton = document.getElementById("painBaguette");
+    if(otherBouton){
+      otherBouton.style.borderStyle="none";
+    }
+
     var bouton = document.getElementById("painBurger");
     this.painBurgerSelected=true;
 
@@ -78,6 +88,13 @@ export class CreationBurgerComponent implements OnInit {
 
     this.vuePain = false;
     this.vueViande = true;
+
+  }
+
+  annulerViande() :void{
+
+    this.vueViande = false;
+    this.vuePain = true;
 
   }
 
@@ -114,6 +131,18 @@ export class CreationBurgerComponent implements OnInit {
     console.log(this.burger);
     
   }
+
+
+  selectViande():void{
+
+    this.vueViande=false;
+    this.vueSauce=true;
+
+  }
+
+
+
+
 
   choixSauceKetchup() :void{
 

@@ -20,8 +20,6 @@
     <div>
 
     
-
-
     <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vuePain">
       <p style="margin-left: 10%;font-weight: bold;">Pain({{countPain}}/1)</p>
       <div class="d-flex justify-content-around" >
@@ -35,17 +33,17 @@
         <div class="card" id="painBurger" style="width: 10rem;" (click)="choixPainBurger()">
           <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title text-center">Pain Burger</h5>
+            <h5 class="card-title text-center"><br>Pain Burger</h5>
           </div>
         </div>
       </div>
       <div class="container text-center" style="margin-top:10%;">
         <div class="row justify-content-around">
           <div class="col">
-            <a class="btn btn-primary" href="#" role="button" >Annuler</a>
+            <a class="btn btn-primary" href="#" role="button" routerLink="/client/burgers" routerLinkActive="active">Annuler</a>
           </div>
-          <div class="col">
-            <a class="btn btn-primary" href="#" role="button" (click)="selectPain()">Suivant</a>
+          <div class="col" *ngIf="painBurgerSelected || painBaguetteSelected">
+            <a class="btn btn-primary" role="button" (click)="selectPain()" >Suivant</a>
           </div>
         </div>
         <p></p>
@@ -54,29 +52,29 @@
 
     <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueViande">
       <div class="d-flex justify-content-around ">
-        <div class="card" style="width: 10rem; ">
-          <img src="../../../assets/images/steack.png" class="card-img-top" alt="...">
+        <div class="card" style="width: 10rem;">
+          <img src="../../../assets/images/steack_poulet.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-center">Poulet</h5>
             <button type="button" class="btn btn-primary" (click)="choixViandePoulet()">Commander</button>
           </div>
         </div>
         <div class="card" style="width: 10rem; ">
-          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <img src="../../../assets/images/steack.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-center">Steack</h5>
             <button type="button" class="btn btn-primary" (click)="choixViandeSteack()">Commander</button>
           </div>
         </div>
         <div class="card" style="width: 10rem; ">
-          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <img src="../../../assets/images/steack_poisson.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-center">Poisson</h5>
             <button type="button" class="btn btn-primary" (click)="choixViandePoisson()">Commander</button>
           </div>
         </div>
         <div class="card" style="width: 10rem;">
-          <img src="../../../assets/images/burger1.png" class="card-img-top" alt="...">
+          <img src="../../../assets/images/steack_vege.png" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title text-center">Veggie</h5>
             <button type="button" class="btn btn-primary" (click)="choixViandeVeggie()">Commander</button>
@@ -86,7 +84,7 @@
       <div class="container text-center" style="margin-top:10%;" >
         <div class="row justify-content-around">
           <div class="col">
-            <a class="btn btn-primary" href="#" role="button" >Annuler</a>
+            <a class="btn btn-primary" role="button" (click)="annulerViande()">Annuler</a>
           </div>
           <div class="col">
             <a class="btn btn-primary" href="#" role="button">Suivant</a>
