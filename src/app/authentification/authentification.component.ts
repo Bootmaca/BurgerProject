@@ -16,7 +16,10 @@ export class AuthentificationComponent implements OnInit {
   colorSignup : string = "#000";
   curseurLogin : string = "default";
   curseurSignup : string = "pointer";
+  reponseInscription :string = "";
   identificationFalse : boolean = false;
+  inscriptionFalse : boolean = false;
+  affichSucceedInscription : boolean = false;
   data = [];
 
   constructor(private authService: AuthServices, private router: Router) {  }
@@ -29,7 +32,6 @@ export class AuthentificationComponent implements OnInit {
   seConnecter(form : NgForm){
     let mail = form.value['mail'];
     let password = form.value['password'];
-    form.reset();
     this.authService.signIn(mail, password);
     //On crée une promise pour le temps de récupération de données
     new Promise(
@@ -38,12 +40,14 @@ export class AuthentificationComponent implements OnInit {
           ()=>{
             let user:any = sessionStorage.getItem("utilisateur");
             user = JSON.parse(user);
-            //Récupération du type utilisateur récupéré
+            // Récupération du type de l'utilisateur récupéré
             if(user['typeUtil'] != "") {
+              this.identificationFalse = true;
+              form.reset(); // Reset le formulaire
               if(this.authService.user[0]['typeUtil'] == 1){
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/admin']); // Navigation vers la page admin
               }else{
-                this.router.navigate(['/client/menu']);
+                this.router.navigate(['/client/menu']); // Navigation vers la page client
               }
             }else{
               this.identificationFalse = true;
@@ -56,9 +60,48 @@ export class AuthentificationComponent implements OnInit {
     //this.authService
   }
 
+  Inscription(form : NgForm){
+    let prenom = form.value['prenom']; //Récupération du prenom dans le formulaire
+    let nom = form.value['nom']; //Récupération du nom dans le formulaire
+    let mail = form.value['mail']; //Récupération du mail dans le formulaire
+    let password = form.value['password']; //Récupération du mot de passe dans le formulaire
+    this.authService.registration(prenom, nom, mail, password); //Appel de la fonction registration du service auth
+    // //On crée une promise pour le temps de récupération de données
+    new Promise(
+      () => {
+        setTimeout(
+          ()=>{
+            //récupération de la variable reponseInscription dans le service auth
+            this.reponseInscription = this.authService.reponseInscription
+            if(this.reponseInscription == "Inséré") { //Si la ligne à été inséré
+                this.inscriptionFalse = false;
+                form.reset(); //reset le formulaire
+                this.onSignIn();
+                this.affichSucceedInscription=true;
+                new Promise(
+                  () => {
+                    setTimeout(
+                      ()=>{
+                        this.affichSucceedInscription=false;
+                      },3000
+                    )
+                  }
+                );
+                //this.router.navigate(['/auth']);
+
+            }else{
+              this.inscriptionFalse = true;
+            }
+          },200
+        )
+      }
+    );
+
+    //this.authService
+  }
+
 
   onSignup(){
-
     this.marginLeft = "-50%";
     this.marginLeftTitre = "-100%";
     this.sliderBar = "50%";
@@ -76,5 +119,9 @@ export class AuthentificationComponent implements OnInit {
     this.colorSignup = "#000";
     this.curseurLogin = "default";
     this.curseurSignup = "pointer";
+  }
+
+  stopAffichSucceedInscription(){
+    this.affichSucceedInscription = false;
   }
 }

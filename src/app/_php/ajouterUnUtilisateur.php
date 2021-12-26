@@ -9,27 +9,26 @@ include_once("chargementClasses.php");
 //Création de la connexion avec la base de donnée en créant l'objet
 $utilisateurMySQL = new UtilisateurMySQL();
 
+// $prenom = "Clément";
+// $nom = "HADJ";
+// $mail = "clementtd.hadj@outlook.fr";
+// $password = "monMDP";
+$prenom = $_REQUEST['prenom']; // $prenom = "Clément";
+$nom = $_REQUEST['nom']; // $nom = "HADJ";
 $mail = $_REQUEST['email']; // $mail = "clement.hadj@outlook.fr";
-$motDePasse = $_REQUEST['password']; // $motDePasse = "clementH";
+$password = $_REQUEST['password']; // $motDePasse = "monMDP";
 
 // Recherche de l'utilisateur concerné à partir du mot de passe et du pseudo saisis
-$result = $utilisateurMySQL->verifierUtilisateur($mail, $motDePasse);
+$resultIsExist = $utilisateurMySQL->afficherUnUtilisateur($mail);
 
-//Nb lignes
-$nbUser = $result->rowCount();
-
-//Si il n'y a pas de lignes
-if ($nbUser < 1) {
-    echo "Aucune donnée";
-} else {//Si il y a des lignes
-    $data = [];
-    while($row = $result->fetch()){ //Pour chaque ligne récupéré de la requête
-       $ligne = array('prenom' => $row['prenom'],
-                      'nom' => $row['nom'],
-                      'typeUtil' => $row['typeUtil']);
-       array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
-    }
-    print json_encode($data); //Affichage du tableau au format json pour qu'il soit récupéré en typescript
+//Si aucun utilisateur existe avec cette adresse mail
+if($resultIsExist->rowCount() < 1){
+  $isInserted = $utilisateurMySQL->ajouterUnUtilisateur($nom ,$prenom ,$mail, $password);
+  if($isInserted){
+    print json_encode($isInserted);
+  }
+}else{ //Utilisateur qui existe déjà
+  print json_encode("false");
+  //Adrese mail déjà utilisé
 }
-
 ?>
