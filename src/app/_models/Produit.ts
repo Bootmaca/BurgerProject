@@ -1,13 +1,15 @@
 export class Produit{
   private _idProduit: number;
+  private _libelle: string;
   private _prix: number;
   private _images: string;
   private _isDisponible: boolean;
   private _typeProduit: string;
 
 
-  public constructor(idProduit: number, prix: number, images: string, isDisponible: boolean, typeProduit: string ) {
+  public constructor(idProduit: number, libelle: string, prix: number, images: string, isDisponible: boolean, typeProduit: string ) {
     this._idProduit = idProduit;
+    this._libelle = libelle;
     this._prix = prix;
     this._images = images;
     this._isDisponible = isDisponible;
@@ -18,6 +20,10 @@ export class Produit{
   /***** Getter *****/
   get idProduit(): number {
     return this._idProduit;
+  }
+
+  get libelle(): string{
+    return this._libelle;
   }
 
   get prix(): number {
@@ -44,6 +50,10 @@ export class Produit{
 
   set prix(prix: number) {
     this._prix = prix;
+  }
+
+  set libelle(libelle: string){
+    this._libelle = libelle;
   }
 
   set images(images: string) {

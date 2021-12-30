@@ -1,0 +1,90 @@
+  <app-entete-client></app-entete-client>
+  <div class="container carte" style="background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%); padding-top: 2%; padding-bottom: 2%; border-radius: 10px;width:60%; height: 70vh; ">
+
+
+    <h1 class="text-center">{{typeProduit}}</h1>
+
+    <div style="overflow: auto; height: 90%">
+
+
+
+      <div class="row mx-auto " style="margin-top: 4%;">
+        <div class="d-flex justify-content-around ">
+<!--          <app-produit-->
+<!--            *ngFor="let produit of produitAffiche"-->
+<!--            [id]="produit.idProduit"-->
+<!--            [nom]="produit.appa"-->
+<!--            [prix]="produit.appareilStatus"-->
+<!--            [urlImage]="produit.id">-->
+<!--          </app-produit>-->
+          <app-produit
+            [id]="1"
+            [nom]="'Frite 1'"
+            [prix]="1"
+            [urlImage]="'../../../assets/images/petite_frite.png'">
+          </app-produit>
+          <app-produit
+            [id]="1"
+            [nom]="'Frite 2'"
+            [prix]="2"
+            [urlImage]="'../../../assets/images/moyenne_frite.png'">
+          </app-produit>
+          <app-produit
+            [id]="1"
+            [nom]="'Frite'"
+            [prix]="3"
+            [urlImage]="'../../../assets/images/grande_frite.png'">
+          </app-produit>
+          <app-produit
+            [id]="1"
+            [nom]="'Frite'"
+            [prix]="3.50"
+            [urlImage]="'../../../assets/images/frite_bacon.png'">
+          </app-produit>
+        </div>
+      </div>
+
+      <div class="row mx-auto">
+        <div class="d-flex justify-content-around" style="margin-top: 4%;">
+          <div class="card" style="width: 10rem; ">
+            <img src="../../../assets/images/wings.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Menu n°1</h5>
+              <a href="#" class="btn btn-primary" style="margin:auto">Commander</a>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem; ">
+            <img src="../../../assets/images/nuggets.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Menu n°1</h5>
+              <a href="#" class="btn btn-primary" style="margin:auto">Commander</a>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+            <img src="../../../assets/images/onion_rings.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Menu n°1</h5>
+              <a href="#" class="btn btn-primary" style="margin:auto">Commander</a>
+            </div>
+          </div>
+          <div class="card" style="width: 10rem;">
+            <img src="../../../assets/images/crousty.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center">Menu n°1</h5>
+              <a href="#" class="btn btn-primary" style="margin:auto">Commander</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    (eventEmitterChangerProduit) correspond à la variable EventEmitter dans le composant fils
+    changerTypeProduit() correspond à la fonction de ce component
+    $event correspond à la valeur donné par le composant fils (emit.(laValeurDonné))
+      il peut il y avoir qu'une seule donnée en paramètre si on veut plusieurs données il faut émettre un tableau (.emit(monTab))
+  -->
+  <app-nav-bar-produit (eventEmitterChangerProduit)="changerTypeProduit($event)"></app-nav-bar-produit>
+
+

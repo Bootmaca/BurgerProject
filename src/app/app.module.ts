@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {RouterModule, Routes} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
@@ -21,9 +20,11 @@ import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {Utilisateur} from 'src/app/_models/Utilisateur';
 import { EnteteClientComponent } from './client/entete-client/entete-client.component';
 import { PiedPageClientComponent } from './client/pied-page-client/pied-page-client.component';
+import { CarteComponent } from './client/carte/carte.component';
+import { ProduitComponent } from './client/carte/produit/produit.component';
+import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-produit.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,10 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
     SupplementsComponent,
     NotFoundComponent,
     EnteteClientComponent,
-    PiedPageClientComponent
+    PiedPageClientComponent,
+    CarteComponent,
+    ProduitComponent,
+    NavBarProduitComponent
   ],
   imports: [
     HttpClientModule,
