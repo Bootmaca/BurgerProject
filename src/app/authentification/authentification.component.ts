@@ -74,19 +74,19 @@ export class AuthentificationComponent implements OnInit {
             //récupération de la variable reponseInscription dans le service auth
             this.reponseInscription = this.authService.reponseInscription
             if(this.reponseInscription == "Inséré") { //Si la ligne à été inséré
-                this.inscriptionFalse = false;
-                form.reset(); //reset le formulaire
-                this.onSignIn();
-                this.affichSucceedInscription=true;
-                new Promise(
-                  () => {
-                    setTimeout(
-                      ()=>{
-                        this.affichSucceedInscription=false;
-                      },3000
-                    )
-                  }
-                );
+              this.inscriptionFalse = false;
+              form.reset(); //reset le formulaire
+              this.onSignIn();
+              this.affichSucceedInscription=true;
+              new Promise(
+                () => {
+                  setTimeout(
+                    ()=>{
+                      this.affichSucceedInscription=false;
+                    },3000
+                  )
+                }
+              );
             }else{
               this.inscriptionFalse = true;
             }

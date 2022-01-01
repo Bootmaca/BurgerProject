@@ -36,7 +36,7 @@ export class CarteService{
         let typeProduit;
 
         //Parcours de tous les produits
-          //Pour chaque produit création d'un objet de type Produit et insertion dans le tableau touslesProduits
+        //Pour chaque produit création d'un objet de type Produit et insertion dans le tableau touslesProduits
         for(let i=0; i<nombreDeProduit; i++){
           idProduit = this.lesProduits[i]["id"];
           libelle = this.lesProduits[i]["libelle"];
