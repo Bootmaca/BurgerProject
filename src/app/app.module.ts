@@ -25,6 +25,7 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
 import { CarteComponent } from './client/carte/carte.component';
 import { ProduitComponent } from './client/carte/produit/produit.component';
 import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-produit.component';
+import {CarteService} from "./services/carte.services";
 
 @NgModule({
   declarations: [
@@ -57,8 +58,7 @@ import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-p
   providers: [
     AuthGuardAdminService,
     AuthServices,
-    //HttpClient,
-    //HttpHeaders,
+    CarteService,
     AuthGuardCustomerService
   ],
   bootstrap: [AppComponent]

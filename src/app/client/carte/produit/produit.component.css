@@ -1,0 +1,20 @@
+.cardStyle{
+  width: 12rem;
+  height: 22rem;
+  transform: scale(0.8);
+}
+
+.cardStyle:hover{
+  transform: scale(0.9);
+  cursor: pointer;
+}
+
+.contenneurBouton{
+  position: absolute;
+  bottom:   0;
+  padding-bottom: 20px;
+  padding-left: 15px;
+}
+
+.btnCarte{
+}

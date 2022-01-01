@@ -87,8 +87,6 @@ export class AuthentificationComponent implements OnInit {
                     )
                   }
                 );
-                //this.router.navigate(['/auth']);
-
             }else{
               this.inscriptionFalse = true;
             }

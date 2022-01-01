@@ -2,16 +2,16 @@ export class Produit{
   private _idProduit: number;
   private _libelle: string;
   private _prix: number;
-  private _images: string;
+  private _image: string;
   private _isDisponible: boolean;
   private _typeProduit: string;
 
 
-  public constructor(idProduit: number, libelle: string, prix: number, images: string, isDisponible: boolean, typeProduit: string ) {
+  public constructor(idProduit: number, libelle: string, prix: number, image: string, isDisponible: boolean, typeProduit: string ) {
     this._idProduit = idProduit;
     this._libelle = libelle;
     this._prix = prix;
-    this._images = images;
+    this._image = image;
     this._isDisponible = isDisponible;
     this._typeProduit = typeProduit;
   }
@@ -30,8 +30,8 @@ export class Produit{
     return this._prix;
   }
 
-  get images(): string {
-    return this._images;
+  get image(): string {
+    return this._image;
   }
 
   get isDisponible(): boolean {
@@ -56,8 +56,8 @@ export class Produit{
     this._libelle = libelle;
   }
 
-  set images(images: string) {
-    this._images = images;
+  set image(image: string) {
+    this._image = image;
   }
 
   set isDisponible(isDisponible: boolean) {
