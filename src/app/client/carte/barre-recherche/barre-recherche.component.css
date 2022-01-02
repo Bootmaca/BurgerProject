@@ -1,0 +1,23 @@
+.contenneurBarreRecherche{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rechercher{
+  padding: 5px 25px 5px 0;
+}
+
+.barreDeRecherche{
+  border-radius: 30px;
+  border: 2px solid black;
+  background: url("../../../../assets/images/loupe.png") no-repeat 10px #fff;
+  background-position-y: 10px;
+  width: 320px;
+  padding: 8px 4px 8px 30px;
+  font-size: 18px;
+}
+
+.barreDeRecherche:focus{
+  outline: none;
+  border: 3px solid black;
+}

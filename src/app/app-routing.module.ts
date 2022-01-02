@@ -4,7 +4,7 @@ import {AuthentificationComponent} from "./authentification/authentification.com
 import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
 import {AdministrateurComponent} from "./administrateur/administrateur.component";
 import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
-import {UtilisateurComponent} from "./client/utilisateur.component";
+import {ClientComponent} from "./client/client.component";
 import {NotFoundComponent} from "./not-found/not-found.component";
 import {FritesComponent} from "./client/frites/frites.component";
 import {BurgersComponent} from "./client/burgers/burgers.component";
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
   {path:'client',
     canActivate : [AuthGuardCustomerService],
-    component : UtilisateurComponent,
+    component : ClientComponent,
     children:[
       {path: 'carte', canActivate : [AuthGuardCustomerService], component: CarteComponent}
     ]},
@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'client/creation-burger', canActivate : [AuthGuardCustomerService], component : CreationBurgerComponent},
   {path:'not-found', component : NotFoundComponent},
   {path:'', component : AuthentificationComponent},
-  //{path:'**', redirectTo : 'not-found'}
+  {path:'**', redirectTo : 'not-found'}
 ];
 
 @NgModule({

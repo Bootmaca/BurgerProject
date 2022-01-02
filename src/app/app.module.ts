@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
-import { UtilisateurComponent } from './client/utilisateur.component';
+import { ClientComponent } from './client/client.component';
 import { FritesComponent } from './client/frites/frites.component';
 import { BurgersComponent } from './client/burgers/burgers.component';
 import { BoissonsComponent } from './client/boissons/boissons.component';
@@ -26,13 +26,14 @@ import { CarteComponent } from './client/carte/carte.component';
 import { ProduitComponent } from './client/carte/produit/produit.component';
 import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-produit.component';
 import {CarteService} from "./services/carte.services";
+import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-recherche.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
     AdministrateurComponent,
-    UtilisateurComponent,
+    ClientComponent,
     BoissonsComponent,
     BurgersComponent,
     CreationBurgerComponent,
@@ -46,7 +47,8 @@ import {CarteService} from "./services/carte.services";
     PiedPageClientComponent,
     CarteComponent,
     ProduitComponent,
-    NavBarProduitComponent
+    NavBarProduitComponent,
+    BarreRechercheComponent
   ],
   imports: [
     HttpClientModule,

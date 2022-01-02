@@ -47,6 +47,10 @@ export class AuthentificationComponent implements OnInit {
               if(this.authService.user[0]['typeUtil'] == 1){
                 this.router.navigate(['/admin']); // Navigation vers la page admin
               }else{
+                //Type de produit affiché en premier
+                let typeProduit = "Frite";
+
+                sessionStorage.setItem("typeProduit",typeProduit);
                 this.router.navigate(['/client/carte']); // Navigation vers la page client
               }
             }else{

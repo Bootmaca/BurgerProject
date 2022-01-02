@@ -19,13 +19,15 @@ export class CarteComponent implements OnInit {
         setTimeout(
           ()=>{
             this.tousLesProduits = this.carteService.tousLesProduits;
-            this.changerTypeProduit("Frite");
+
+            //On récupère le type de produit à afficher en premier et si il est égale à null on lui donne burger
+            this.typeProduit = sessionStorage.getItem("typeProduit") || "Burger";
+
+            this.changerTypeProduit(this.typeProduit);
           },1000
         )
       }
     );
-
-
   }
 
   ngOnInit(): void {

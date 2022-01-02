@@ -1,11 +1,15 @@
-<div class="card cardStyle">
-  <img src="{{urlImage}}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title text-center">{{nom}}</h5>
-    <!--    <p class="card-title text-center"><strong>{{prix}}€</strong></p>-->
-    <p class="card-title text-center">{{prix}}€</p>
-    <div class="contenneurBouton">
-      <a href="#" class="btn btn-primary btnCarte">Commander</a>
+<!--Nouvelle ligne-->
+<!--<section *ngIf="numero == 0">-->
+<!--<div  *ngIf="numero == 0" class="row mx-auto " style="margin-top: 4%;">-->
+    <div class="card cardStyle">
+      <img src="{{urlImage}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">{{nom}}</h5>
+        <!--    <p class="card-title text-center"><strong>{{prix}}€</strong></p>-->
+        <p class="card-title text-center">{{prix}}€</p>
+        <div class="contenneurBouton">
+          <a href="#" class="btn btn-primary btnCarte">{{nameBtn}}</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+

@@ -1,7 +1,9 @@
 .cardStyle{
+  padding: 10px;
   width: 12rem;
   height: 22rem;
   transform: scale(0.8);
+  /*border-radius: 20px;*/
 }
 
 .cardStyle:hover{
