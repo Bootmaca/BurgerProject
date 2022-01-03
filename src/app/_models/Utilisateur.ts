@@ -26,10 +26,6 @@ export class Utilisateur{
     this.typeUtil = typeUtil;
   }
 
-  public constructeurSansParam():Utilisateur{
-    return new Utilisateur("","","","");
-  }
-
   getNom(){
     return this.nom;
   }

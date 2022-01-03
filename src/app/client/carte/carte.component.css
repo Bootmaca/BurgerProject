@@ -1,0 +1,13 @@
+
+.contenneurTousLesProduits{
+  overflow: auto;
+  height: 90%;
+}
+
+
+.contenneurToutesLesCartes{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+

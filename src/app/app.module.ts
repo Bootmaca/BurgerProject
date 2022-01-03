@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import {RouterModule, Routes} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { AdministrateurComponent } from './administrateur/administrateur.component';
-import { UtilisateurComponent } from './client/utilisateur.component';
+import { ClientComponent } from './client/client.component';
 import { FritesComponent } from './client/frites/frites.component';
 import { BurgersComponent } from './client/burgers/burgers.component';
 import { BoissonsComponent } from './client/boissons/boissons.component';
@@ -15,22 +14,27 @@ import { DessertsComponent } from './client/desserts/desserts.component';
 import { MenuComponent } from './client/menu/menu.component';
 import { PanierComponent } from './client/panier/panier.component';
 import { SupplementsComponent } from './client/supplements/supplements.component';
-import {AuthServices} from "./services/auth.services";
-import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
-import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
+import { AuthServices } from "./services/auth.services";
+import { AuthGuardAdminService } from "./services/auth-guard-admin.service";
+import { AuthGuardCustomerService } from "./services/auth-guard-customer.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {Utilisateur} from 'src/app/_models/Utilisateur';
 import { EnteteClientComponent } from './client/entete-client/entete-client.component';
 import { PiedPageClientComponent } from './client/pied-page-client/pied-page-client.component';
+import { CarteComponent } from './client/carte/carte.component';
+import { ProduitComponent } from './client/carte/produit/produit.component';
+import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-produit.component';
+import { CarteService } from "./services/carte.services";
+import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-recherche.component';
+import { PaiementComponent } from './client/paiement/paiement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
     AdministrateurComponent,
-    UtilisateurComponent,
+    ClientComponent,
     BoissonsComponent,
     BurgersComponent,
     CreationBurgerComponent,
@@ -41,7 +45,12 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
     SupplementsComponent,
     NotFoundComponent,
     EnteteClientComponent,
-    PiedPageClientComponent
+    PiedPageClientComponent,
+    CarteComponent,
+    ProduitComponent,
+    NavBarProduitComponent,
+    BarreRechercheComponent,
+    PaiementComponent
   ],
   imports: [
     HttpClientModule,
@@ -53,8 +62,7 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
   providers: [
     AuthGuardAdminService,
     AuthServices,
-    //HttpClient,
-    //HttpHeaders,
+    CarteService,
     AuthGuardCustomerService
   ],
   bootstrap: [AppComponent]
