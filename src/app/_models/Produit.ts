@@ -5,15 +5,17 @@ export class Produit{
   private _image: string;
   private _isDisponible: boolean;
   private _typeProduit: string;
+  private _isByCreator: boolean;
 
 
-  public constructor(idProduit: number, libelle: string, prix: number, image: string, isDisponible: boolean, typeProduit: string ) {
+  public constructor(idProduit: number, libelle: string, prix: number, image: string, isDisponible: boolean, typeProduit: string, isByCreator:boolean) {
     this._idProduit = idProduit;
     this._libelle = libelle;
     this._prix = prix;
     this._image = image;
     this._isDisponible = isDisponible;
     this._typeProduit = typeProduit;
+    this._isByCreator = isByCreator;
   }
 
 
@@ -42,6 +44,10 @@ export class Produit{
     return this._typeProduit;
   }
 
+  get isByCreator(): boolean{
+    return this._isByCreator;
+  }
+
 
   /***** Setter *****/
   set idProduit(idProduit: number) {
@@ -66,5 +72,9 @@ export class Produit{
 
   set typeProduit(typeProduit: string) {
     this._typeProduit = typeProduit;
+  }
+
+  set isByCreator(isByCreator : boolean){
+    this._isByCreator = isByCreator;
   }
 }

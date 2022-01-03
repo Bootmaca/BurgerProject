@@ -38,29 +38,13 @@ class ProduitMySQL
         return $stmt;
     }
 
-    function ajouterUnUtilisateur($nom ,$premon ,$mail, $password)
-    {
-        $isInserted = "false";
-        $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `Utilisateur` (`nom`,`prenom`,`mail`,`password`,`typeUtil`)
-                                                            VALUES (:nom,:prenom,:mail,:password,0);");
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':prenom', $premon);
-        $stmt ->bindParam(':mail', $mail);
-        $stmt ->bindParam(':password', $password);
-        if ($stmt ->execute() == 1) {
-            $isInserted = "true";
-        }
-        return $isInserted;
-    }
-
-    function supprimerUnUtilisateur($mail)
-    {
-        $stmt = $this->laConnexion->getDbh()->prepare("DELETE FROM Utilisateur WHERE mail = :mail");
-
-        $stmt->bindParam(':mail', $mail);
-
-        $stmt->execute();
-
+    function afficherLesBurgers(){
+      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idBurger, libelle, prix, image, isDisponible, isByCreator FROM Burger;");
+      $stmt->execute();
+      if ($stmt === false) {
+          $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
+      }
+      return $stmt;
     }
 
 };

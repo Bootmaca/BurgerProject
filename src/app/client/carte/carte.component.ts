@@ -11,7 +11,6 @@ export class CarteComponent implements OnInit {
   typeProduit: string = "Burger";
   tousLesProduits :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
-  varJustifyContent : string = "start";
 
   constructor(private carteService : CarteService) {
     this.carteService.rechercherTousLesProduits();
@@ -35,18 +34,22 @@ export class CarteComponent implements OnInit {
   }
 
   changerTypeProduit(typeOfProductChoose: string){
-    this.typeProduit = typeOfProductChoose;
+    if(typeOfProductChoose == "Panier"){
+      console.log("Panier");
+    }else{
+      this.typeProduit = typeOfProductChoose;
 
-    this.tousLesProduitsChoisis = [];
+      this.tousLesProduitsChoisis = [];
 
-    //Parcours de tous les produits
-    this.tousLesProduits.forEach(
-      produit => {
-        if(produit.typeProduit == typeOfProductChoose){ // Si le type du produit est égale au type de produit choisis
-          this.tousLesProduitsChoisis.push(produit);
+      //Parcours de tous les produits
+      this.tousLesProduits.forEach(
+        produit => {
+          if(produit.typeProduit == typeOfProductChoose && produit.isByCreator){ // Si le type du produit est égale au type de produit choisis
+            this.tousLesProduitsChoisis.push(produit);
+          }
         }
-      }
-    );
+      );
+    }
 
   }
 

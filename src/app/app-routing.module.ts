@@ -15,6 +15,7 @@ import {SupplementsComponent} from "./client/supplements/supplements.component";
 import {PanierComponent} from "./client/panier/panier.component";
 import {CreationBurgerComponent} from "./client/creation-burger/creation-burger.component";
 import {CarteComponent} from "./client/carte/carte.component";
+import {PaiementComponent} from "./client/paiement/paiement.component";
 
 const routes: Routes = [
   {path:'auth', component : AuthentificationComponent},
@@ -23,7 +24,9 @@ const routes: Routes = [
     canActivate : [AuthGuardCustomerService],
     component : ClientComponent,
     children:[
-      {path: 'carte', canActivate : [AuthGuardCustomerService], component: CarteComponent}
+      {path: 'carte', canActivate : [AuthGuardCustomerService], component: CarteComponent},
+      {path: 'panier', canActivate : [AuthGuardCustomerService], component: PanierComponent},
+      {path: 'paiement', canActivate : [AuthGuardCustomerService], component: PaiementComponent}
     ]},
   {path: 'client/burgers', canActivate : [AuthGuardCustomerService], component: BurgersComponent},
   {path: 'client/frites', canActivate : [AuthGuardCustomerService], component: FritesComponent},
@@ -31,7 +34,6 @@ const routes: Routes = [
   {path: 'client/menu', canActivate : [AuthGuardCustomerService], component: MenuComponent},
   {path: 'client/boissons', canActivate : [AuthGuardCustomerService], component: BoissonsComponent},
   {path: 'client/supplements', canActivate : [AuthGuardCustomerService], component: SupplementsComponent},
-  {path: 'client/panier', canActivate : [AuthGuardCustomerService], component: PanierComponent},
   {path: 'client/creation-burger', canActivate : [AuthGuardCustomerService], component : CreationBurgerComponent},
   {path:'not-found', component : NotFoundComponent},
   {path:'', component : AuthentificationComponent},

@@ -34,6 +34,7 @@ export class CarteService{
         let image;
         let isDispo;
         let typeProduit;
+        let isByCreator; //Il peut être à 0 uniquement pour burger
 
         //Parcours de tous les produits
         //Pour chaque produit création d'un objet de type Produit et insertion dans le tableau touslesProduits
@@ -44,7 +45,11 @@ export class CarteService{
           image = this.lesProduits[i]["image"];
           isDispo = this.lesProduits[i]["isDispo"] == 1; //True si isDispo égale à 1 false sinon
           typeProduit = this.lesProduits[i]["typeProduit"];
-          unProduit = new Produit(idProduit, libelle, prix, image, isDispo, typeProduit); // Création de l'objet de type Produit
+          isByCreator = true;
+          if(this.lesProduits[i]["isByCreator"] == 0){
+            isByCreator = false;
+          }
+          unProduit = new Produit(idProduit, libelle, prix, image, isDispo, typeProduit, isByCreator); // Création de l'objet de type Produit
           this.tousLesProduits.push(unProduit); // Insertion du produit dans le tableau
         }
 

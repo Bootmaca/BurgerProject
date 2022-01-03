@@ -14,9 +14,9 @@ import { DessertsComponent } from './client/desserts/desserts.component';
 import { MenuComponent } from './client/menu/menu.component';
 import { PanierComponent } from './client/panier/panier.component';
 import { SupplementsComponent } from './client/supplements/supplements.component';
-import {AuthServices} from "./services/auth.services";
-import {AuthGuardAdminService} from "./services/auth-guard-admin.service";
-import {AuthGuardCustomerService} from "./services/auth-guard-customer.service";
+import { AuthServices } from "./services/auth.services";
+import { AuthGuardAdminService } from "./services/auth-guard-admin.service";
+import { AuthGuardCustomerService } from "./services/auth-guard-customer.service";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -25,8 +25,9 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
 import { CarteComponent } from './client/carte/carte.component';
 import { ProduitComponent } from './client/carte/produit/produit.component';
 import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-produit.component';
-import {CarteService} from "./services/carte.services";
+import { CarteService } from "./services/carte.services";
 import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-recherche.component';
+import { PaiementComponent } from './client/paiement/paiement.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-re
     CarteComponent,
     ProduitComponent,
     NavBarProduitComponent,
-    BarreRechercheComponent
+    BarreRechercheComponent,
+    PaiementComponent
   ],
   imports: [
     HttpClientModule,

@@ -12,11 +12,14 @@ $produitMySQL = new ProduitMySQL();
 // Recherche de toutes les frites
 $resultFrite = $produitMySQL->afficherlesFrites();
 
-// Recherche de toutes les boissons
+// Recherche de toutes les desserts
 $resultDessert = $produitMySQL->afficherLesDesserts();
 
-// Recherche de tous les desserts
+// Recherche de tous les boissons
 $resultBoisson = $produitMySQL->afficherLesBoissons();
+
+// Recherche de tous les burgers
+$resultBurger = $produitMySQL->afficherLesBurgers();
 
 $data = [];
 
@@ -27,7 +30,8 @@ while($row = $resultFrite->fetch()){
                   'prix' => $row['prix'],
                   'image' => $row['image'],
                   'isDisponible' => $row['isDisponible'],
-                  'typeProduit' => 'Frite');
+                  'typeProduit' => 'Frite',
+                  'isByCreator' => 1);
    array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
@@ -38,7 +42,8 @@ while($row = $resultDessert->fetch()){
                   'prix' => $row['prix'],
                   'image' => $row['image'],
                   'isDisponible' => $row['isDisponible'],
-                  'typeProduit' => 'Dessert');
+                  'typeProduit' => 'Dessert',
+                  'isByCreator' => 1);
    array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
@@ -49,7 +54,20 @@ while($row = $resultBoisson->fetch()){
                   'prix' => $row['prix'],
                   'image' => $row['image'],
                   'isDisponible' => $row['isDisponible'],
-                  'typeProduit' => 'Boisson');
+                  'typeProduit' => 'Boisson',
+                  'isByCreator' => 1);
+   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
+}
+
+//Pour chaque ligne récupéré de la requête dessert
+while($row = $resultBurger->fetch()){
+   $ligne = array('id' => $row['idBurger'],
+                  'libelle' => $row['libelle'],
+                  'prix' => $row['prix'],
+                  'image' => $row['image'],
+                  'isDisponible' => $row['isDisponible'],
+                  'typeProduit' => 'Burger',
+                  'isByCreator' => $row['isByCreator']);
    array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
