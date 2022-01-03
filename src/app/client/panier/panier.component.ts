@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-panier',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PanierComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  redirigerVersProduit(typeOfProductChoose: string){
+    sessionStorage.setItem("typeProduit",typeOfProductChoose);
+    this.router.navigate(['/client/carte']); // Navigation vers la page client
   }
 
 }

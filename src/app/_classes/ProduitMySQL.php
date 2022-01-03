@@ -47,4 +47,13 @@ class ProduitMySQL
       return $stmt;
     }
 
+    function afficherLesSupplements(){
+      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idSupplement, libelle, prix, image, isDisponible FROM Supplement;");
+      $stmt->execute();
+      if ($stmt === false) {
+          $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
+      }
+      return $stmt;
+    }
+
 };

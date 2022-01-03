@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CarteService} from "../../services/carte.services";
 import {Produit} from "../../_models/Produit";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-carte',
@@ -12,7 +13,8 @@ export class CarteComponent implements OnInit {
   tousLesProduits :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
 
-  constructor(private carteService : CarteService) {
+  constructor(private carteService : CarteService, private router: Router) {
+
     this.carteService.rechercherTousLesProduits();
     new Promise(
       () => {
@@ -28,6 +30,7 @@ export class CarteComponent implements OnInit {
         )
       }
     );
+
   }
 
   ngOnInit(): void {
@@ -35,7 +38,7 @@ export class CarteComponent implements OnInit {
 
   changerTypeProduit(typeOfProductChoose: string){
     if(typeOfProductChoose == "Panier"){
-      console.log("Panier");
+      this.router.navigate(['client/panier']); // Navigation vers la page panier
     }else{
       this.typeProduit = typeOfProductChoose;
 

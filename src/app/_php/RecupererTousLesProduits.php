@@ -21,6 +21,9 @@ $resultBoisson = $produitMySQL->afficherLesBoissons();
 // Recherche de tous les burgers
 $resultBurger = $produitMySQL->afficherLesBurgers();
 
+// Recherche de tous les supplements
+$resultBurger = $produitMySQL->afficherLesBurgers();
+
 $data = [];
 
 //Pour chaque ligne récupéré de la requête frite
@@ -56,6 +59,18 @@ while($row = $resultBoisson->fetch()){
                   'isDisponible' => $row['isDisponible'],
                   'typeProduit' => 'Boisson',
                   'isByCreator' => 1);
+   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
+}
+
+//Pour chaque ligne récupéré de la requête dessert
+while($row = $resultBurger->fetch()){
+   $ligne = array('id' => $row['idBurger'],
+                  'libelle' => $row['libelle'],
+                  'prix' => $row['prix'],
+                  'image' => $row['image'],
+                  'isDisponible' => $row['isDisponible'],
+                  'typeProduit' => 'Burger',
+                  'isByCreator' => $row['isByCreator']);
    array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 

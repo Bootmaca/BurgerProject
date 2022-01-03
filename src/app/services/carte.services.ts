@@ -16,7 +16,7 @@ export class CarteService{
 
   //Connexion
   rechercherTousLesProduits(){
-
+    this.tousLesProduits = [];
     this.http
       //Liens vers le script php permettant la selection des produits
       .get<any[]>(this.urlDeBase+'recupererTousLesProduits.php')
@@ -45,10 +45,7 @@ export class CarteService{
           image = this.lesProduits[i]["image"];
           isDispo = this.lesProduits[i]["isDispo"] == 1; //True si isDispo égale à 1 false sinon
           typeProduit = this.lesProduits[i]["typeProduit"];
-          isByCreator = true;
-          if(this.lesProduits[i]["isByCreator"] == 0){
-            isByCreator = false;
-          }
+          isByCreator = this.lesProduits[i]["isByCreator"] == 1; //True si isByCreator est égale à 1
           unProduit = new Produit(idProduit, libelle, prix, image, isDispo, typeProduit, isByCreator); // Création de l'objet de type Produit
           this.tousLesProduits.push(unProduit); // Insertion du produit dans le tableau
         }
