@@ -24,6 +24,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {Utilisateur} from 'src/app/_models/Utilisateur';
 import { EnteteClientComponent } from './client/entete-client/entete-client.component';
 import { PiedPageClientComponent } from './client/pied-page-client/pied-page-client.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { HeaderAdminComponent } from './header-admin/header-admin.component';
+import { SearchfiltrePipe } from './searchfiltre.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { PiedPageClientComponent } from './client/pied-page-client/pied-page-cli
     SupplementsComponent,
     NotFoundComponent,
     EnteteClientComponent,
-    PiedPageClientComponent
+    PiedPageClientComponent,
+    HistoriqueComponent,
+    HeaderAdminComponent,
+    SearchfiltrePipe
   ],
   imports: [
     HttpClientModule,

@@ -1,0 +1,38 @@
+<app-header-admin>
+
+</app-header-admin>
+
+<br><br>
+
+
+<div>
+  <input type="text" id="myInput"  placeholder="Search for names.." [(ngModel)]="recherche">
+</div>
+
+<h1>{{recherche}}</h1>
+<div >
+
+  <table >
+    <thead>
+    <tr>
+      <th>Nom prenom</th>
+      <th>Prix</th>
+      <th>Date</th>
+      <th>Voir la commande</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let commande of DonneeBase | searchfiltre : recherche" >
+
+      <td >{{ commande.nom }}</td>
+      <td >{{ commande.prix | currency : '€' }}</td>
+      <td >{{ commande.date |  date: 'd/M/y' }}</td>
+      <td ><input type="button" width="100%" value=" Visualiser " style="background: yellow" (click)="onSelect(commande.date,commande.nom)"></td>
+
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>
+

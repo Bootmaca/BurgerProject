@@ -14,10 +14,12 @@ import {BoissonsComponent} from "./client/boissons/boissons.component";
 import {SupplementsComponent} from "./client/supplements/supplements.component";
 import {PanierComponent} from "./client/panier/panier.component";
 import {CreationBurgerComponent} from "./client/creation-burger/creation-burger.component";
+import {HistoriqueComponent} from "./historique/historique.component";
 
 const routes: Routes = [
   {path:'auth', component : AuthentificationComponent},
   {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
+  {path:'historique', canActivate : [AuthGuardAdminService], component : HistoriqueComponent},
   {path:'client', canActivate : [AuthGuardCustomerService], component : UtilisateurComponent},
   {path: 'client/burgers', canActivate : [AuthGuardCustomerService], component: BurgersComponent},
   {path: 'client/frites', canActivate : [AuthGuardCustomerService], component: FritesComponent},

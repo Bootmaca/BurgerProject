@@ -1,0 +1,12 @@
+.titre{
+  text-align: center;
+  font-weight: bold;
+  font-size: 4em;
+
+}
+.right{
+  position: absolute;
+  right: 0px;
+  width: 300px;
+
+}
