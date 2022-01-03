@@ -10,11 +10,12 @@
 .barreDeRecherche{
   border-radius: 30px;
   border: 2px solid black;
-  background: url("../../../../assets/images/loupe.png") no-repeat 10px #fff;
   background-position-y: 10px;
-  width: 320px;
+  width: 250px;
   padding: 8px 4px 8px 30px;
   font-size: 18px;
+  /*background: transparent url("../../../../assets/images/loupe.png") no-repeat 10px 10px;*/
+  background: white url("../../../../assets/images/loupe.png") no-repeat 10px 10px;
 }
 
 .barreDeRecherche:focus{

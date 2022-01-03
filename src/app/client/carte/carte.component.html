@@ -1,7 +1,8 @@
 <h1 class="text-center">{{typeProduit}}</h1>
 
 <div class="contenneurTousLesProduits">
-  <app-barre-recherche></app-barre-recherche>
+  <app-barre-recherche (eventEmitterFiltreNom)="filtrerNom($event)"></app-barre-recherche>
+
 
   <div class="contenneurToutesLesCartes">
     <app-produit

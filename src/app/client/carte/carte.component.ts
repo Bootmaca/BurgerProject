@@ -9,8 +9,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./carte.component.css']
 })
 export class CarteComponent implements OnInit {
-  typeProduit: string = "Burger";
+  typeProduit: string = "";
   tousLesProduits :Produit[] = [];
+  tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
 
   constructor(private carteService : CarteService, private router: Router) {
@@ -36,24 +37,38 @@ export class CarteComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Fonction qui permet de changer le type du produit
   changerTypeProduit(typeOfProductChoose: string){
     if(typeOfProductChoose == "Panier"){
       this.router.navigate(['client/panier']); // Navigation vers la page panier
     }else{
       this.typeProduit = typeOfProductChoose;
 
-      this.tousLesProduitsChoisis = [];
+      this.tousLesProduitsAfterType = [];
 
       //Parcours de tous les produits
       this.tousLesProduits.forEach(
         produit => {
           if(produit.typeProduit == typeOfProductChoose && produit.isByCreator){ // Si le type du produit est égale au type de produit choisis
-            this.tousLesProduitsChoisis.push(produit);
+            this.tousLesProduitsAfterType.push(produit);
           }
         }
       );
+      this.tousLesProduitsChoisis = this.tousLesProduitsAfterType;
     }
+  }
 
+  //Fonction qui permet de filtrer le nom du produit
+  filtrerNom(nomChoisis: string){
+    this.tousLesProduitsChoisis = [];
+    //Parcours de tous les produits
+    this.tousLesProduitsAfterType.forEach(
+      produit => {
+        if(produit.libelle.toLowerCase().includes(nomChoisis.toLowerCase())){ // Si le type du produit est égale au type de produit choisis
+          this.tousLesProduitsChoisis.push(produit);
+        }
+      }
+    );
   }
 
 

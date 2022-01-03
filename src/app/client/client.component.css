@@ -20,5 +20,7 @@
   border-radius: 10px;
   width:60%;
   height: 70vh;
+  min-width: 500px;
 }
+
 

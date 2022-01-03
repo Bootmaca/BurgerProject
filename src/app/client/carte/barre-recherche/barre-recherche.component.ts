@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-barre-recherche',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./barre-recherche.component.css']
 })
 export class BarreRechercheComponent implements OnInit {
+  @Output() eventEmitterFiltreNom = new EventEmitter<string>();
+
+  barreDeRecherche !: HTMLInputElement;
 
   constructor() { }
 
@@ -13,7 +16,20 @@ export class BarreRechercheComponent implements OnInit {
   }
 
   filtreNomProduit(nomProduit :any){
-    console.log((nomProduit.target as HTMLInputElement).value)
+    if(this.barreDeRecherche == undefined){
+      this.barreDeRecherche = nomProduit.target;
+    }
+    this.eventEmitterFiltreNom.emit((nomProduit.target as HTMLInputElement).value);
+  }
+
+  viderBarre(){
+    this.barreDeRecherche.value = "";
+    this.eventEmitterFiltreNom.emit("");
+  }
+
+  viderLaBarreDeRecherche(barre: any){
+    (barre.target as HTMLInputElement).value = "";
+    this.eventEmitterFiltreNom.emit("");
   }
 
 }
