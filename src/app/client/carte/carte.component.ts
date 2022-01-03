@@ -11,6 +11,7 @@ export class CarteComponent implements OnInit {
   typeProduit: string = "Burger";
   tousLesProduits :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
+  varJustifyContent : string = "start";
 
   constructor(private carteService : CarteService) {
     this.carteService.rechercherTousLesProduits();
@@ -46,6 +47,7 @@ export class CarteComponent implements OnInit {
         }
       }
     );
+
   }
 
 
