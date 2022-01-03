@@ -48,7 +48,7 @@ class ProduitMySQL
     }
 
     function afficherLesSupplements(){
-      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idSupplement, libelle, prix, image, isDisponible FROM Supplement;");
+      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idAutre, libelle, prix, image, isDisponible FROM Autre;");
       $stmt->execute();
       if ($stmt === false) {
           $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
@@ -56,4 +56,4 @@ class ProduitMySQL
       return $stmt;
     }
 
-};
+}
