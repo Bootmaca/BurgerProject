@@ -72,6 +72,10 @@ export class CarteComponent implements OnInit {
     );
   }
 
+  commanderOuPersonnaliser(idProduit: number){
+    console.log(idProduit);
+  }
+
 
 
 }

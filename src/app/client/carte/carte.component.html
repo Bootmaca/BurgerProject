@@ -11,7 +11,8 @@
       [nom]="'Créer mon burger'"
       [prix]="7"
       [nameBtn]="'Personaliser'"
-      [urlImage]="'burger_a_creer.png'">
+      [urlImage]="'burger_a_creer.png'"
+      (eventEmitterClickSurCarte)="commanderOuPersonnaliser(0)">
     </app-produit>
     <app-produit
       *ngFor="let produit of tousLesProduitsChoisis"
@@ -19,7 +20,8 @@
       [nom]="produit.libelle"
       [prix]="produit.prix"
       [nameBtn]="'Commander'"
-      [urlImage]="produit.image">
+      [urlImage]="produit.image"
+      (eventEmitterClickSurCarte)="commanderOuPersonnaliser(produit.idProduit)">
     </app-produit>
     <div *ngIf="tousLesProduitsChoisis.length == 0 && typeProduit != ''" class="noProduct">
       <p>Aucun produit de ce nom</p>

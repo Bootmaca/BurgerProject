@@ -2,7 +2,7 @@
 <!--<section *ngIf="numero == 0">-->
 <!--<div  *ngIf="numero == 0" class="row mx-auto " style="margin-top: 4%;">-->
 <div class="contenneurCarte">
-    <div class="card cardStyle">
+    <div class="card cardStyle" (click)="Clique()">
       <img src="{{urlImage}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title text-center nomProduit">{{nom}}</h5>
