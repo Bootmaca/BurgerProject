@@ -39,10 +39,10 @@ export class CarteComponent implements OnInit {
 
   //Fonction qui permet de changer le type du produit
   changerTypeProduit(typeOfProductChoose: string){
-    sessionStorage.setItem("typeProduit", typeOfProductChoose) //Mise en session du produit choisis
     if(typeOfProductChoose == "Panier"){
       this.router.navigate(['client/panier']); // Navigation vers la page panier
     }else{
+      sessionStorage.setItem("typeProduit", typeOfProductChoose) //Mise en session du produit choisis
       this.typeProduit = typeOfProductChoose;
 
       this.tousLesProduitsAfterType = [];

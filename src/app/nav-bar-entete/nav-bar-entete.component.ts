@@ -28,4 +28,10 @@ export class NavBarEnteteComponent implements OnInit {
     this.router.navigate(['/auth']);
   }
 
+  Accueil(){
+    if (this.router.url.startsWith("/client")) {
+      this.router.navigate(['/client/carte']);
+    }
+  }
+
 }
