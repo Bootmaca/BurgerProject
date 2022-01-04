@@ -28,6 +28,8 @@ import { NavBarProduitComponent } from './client/carte/nav-bar-produit/nav-bar-p
 import { CarteService } from "./services/carte.services";
 import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-recherche.component';
 import { PaiementComponent } from './client/paiement/paiement.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NavBarEnteteComponent } from './nav-bar-entete/nav-bar-entete.component';
 
 @NgModule({
   declarations: [
@@ -50,12 +52,14 @@ import { PaiementComponent } from './client/paiement/paiement.component';
     ProduitComponent,
     NavBarProduitComponent,
     BarreRechercheComponent,
-    PaiementComponent
+    PaiementComponent,
+    NavBarEnteteComponent
   ],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    FontAwesomeModule,
     BrowserModule,
     AppRoutingModule
   ],

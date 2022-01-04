@@ -36,7 +36,7 @@ class UtilisateurMySQL
         return $stmt;
     }
 
-    function ajouterUnUtilisateur($nom ,$premon ,$mail, $password)
+    function ajouterUnUtilisateur($nom ,$premon ,$mail, $password): string
     {
         $isInserted = "false";
         $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `Utilisateur` (`nom`,`prenom`,`mail`,`password`,`typeUtil`)
@@ -85,6 +85,10 @@ class UtilisateurMySQL
       $isInserted = "true";
     }
     return $isInserted;
+  }
+
+  function rechercherUnPanier(){
+
   }
 
     /*
