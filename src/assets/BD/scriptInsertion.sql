@@ -86,3 +86,23 @@ INSERT INTO Autre(idAutre, libelle, prix, image, isDisponible)
     (4,"Salade césar", 6.00, "salade_cesar.png", 1),
     (5,"Salade chèvre", 6.00, "salade_chevre.png", 1),
     (6,"Carotte", 1.50, "carotte.png", 1);
+
+INSERT INTO Panier(idPanier, isSurPlace, prix, etat, date)
+  VALUES
+    (1, 1, 0, NULL, NULL),
+    (2, 1, 0, NULL, NULL),
+    (3, 1, 0, NULL, NULL),
+    (4, 1, 0, NULL, NULL),
+    (5, 1, 0, NULL, NULL),
+    (6, 1, 0, NULL, NULL),
+    (7, 1, 0, NULL, NULL);
+
+INSERT INTO Commande(idUtil, idPanier)
+  VALUES
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (5,5),
+    (6,6),
+    (7,7);
