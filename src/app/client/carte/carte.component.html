@@ -6,6 +6,14 @@
 
   <div class="contenneurToutesLesCartes">
     <app-produit
+      *ngIf="typeProduit == 'Burger'"
+      [id]="0"
+      [nom]="'Créer mon burger'"
+      [prix]="7"
+      [nameBtn]="'Personaliser'"
+      [urlImage]="'burger1.png'">
+    </app-produit>
+    <app-produit
       *ngFor="let produit of tousLesProduitsChoisis"
       [id]="produit.idProduit"
       [nom]="produit.libelle"
