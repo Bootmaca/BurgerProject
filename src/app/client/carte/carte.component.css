@@ -11,3 +11,12 @@
   justify-content: space-around
 }
 
+.noProduct{
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin-top: 150px;
+}
+
+

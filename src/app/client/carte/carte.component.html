@@ -21,6 +21,9 @@
       [nameBtn]="'Commander'"
       [urlImage]="produit.image">
     </app-produit>
+    <div *ngIf="tousLesProduitsChoisis.length == 0 && typeProduit != ''" class="noProduct">
+      <p>Aucun produit de ce nom</p>
+    </div>
   </div>
 
 </div>
