@@ -10,8 +10,8 @@ include_once("chargementClasses.php");
 $panierMySQL = new PanierMySQL();
 
 //Données de test
-$idProduit = 1;
 $idUtil = 2;
+$idProduit = 1;
 $typeProduit = "Burger";
 
 //Récupération des données depuis l'url

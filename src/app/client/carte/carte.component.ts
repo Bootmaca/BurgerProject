@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarteService} from "../../services/carte.services";
+import {PanierService} from "../../services/panier.services";
 import {Produit} from "../../_models/Produit";
 import {Router} from "@angular/router";
 
@@ -16,7 +17,7 @@ export class CarteComponent implements OnInit {
   idClient : number = 0;
 
 
-  constructor(private carteService : CarteService, private router: Router) {
+  constructor(private carteService : CarteService, private router: Router, private panierService: PanierService) {
     let user:any = sessionStorage.getItem("utilisateur");
     user = JSON.parse(user);
     this.idClient = user['idUtil'];
@@ -81,9 +82,17 @@ export class CarteComponent implements OnInit {
     if(idProduit == 0){
       this.router.navigate(['partieDeGuigui']);
     }else{
-
+      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+      new Promise(
+        () => {
+          setTimeout(
+            ()=>{
+              console.log(this.panierService.isAjoute);
+            },100
+          )
+        }
+      );
     }
-    console.log(idProduit);
   }
 
 

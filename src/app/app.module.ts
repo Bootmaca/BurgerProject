@@ -30,6 +30,7 @@ import { BarreRechercheComponent } from './client/carte/barre-recherche/barre-re
 import { PaiementComponent } from './client/paiement/paiement.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarEnteteComponent } from './nav-bar-entete/nav-bar-entete.component';
+import {PanierService} from "./services/panier.services";
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { NavBarEnteteComponent } from './nav-bar-entete/nav-bar-entete.component
     AuthGuardAdminService,
     AuthServices,
     CarteService,
+    PanierService,
     AuthGuardCustomerService
   ],
   bootstrap: [AppComponent]
