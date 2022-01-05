@@ -9,7 +9,7 @@ include_once("chargementClasses.php");
 //Création de la connexion avec la base de donnée en créant l'objet
 $panierMySQL = new PanierMySQL();
 
-
+//Données de test
 $idProduit = 1;
 $idUtil = 2;
 $typeProduit = "Burger";
@@ -19,40 +19,43 @@ $typeProduit = "Burger";
 //$idUtil = $_REQUEST['idUtil']; // $idUtil = 2;
 //$typeProduit = $_REQUEST['typeProduit']; // $typeProduit = "Burger";
 
+//Récupération du panier en cours de l'utilisateur
 $idPanier = $panierMySQL->recupererLePanierCourant($idUtil);
 
-echo($idPanier);
+//Initialisation des variables
+$isInserted = "false";
+$isInserted2 = "false";
 
-//
-//switch ($i) {
-//  case 0:
-//    echo "i égal 0";
-//    break;
-//  case 1:
-//    echo "i égal 1";
-//    break;
-//  case 2:
-//    echo "i égal 2";
-//    break;
-//}
+// Selon le type du burger
+switch ($typeProduit) {
+  case "Menu":
+    echo "Menu";
+    break;
+  case "Burger":
+    if($panierMySQL->isDejaAjouteBurger($idPanier, $idProduit) == "true"){ //Si il est déjà ajouté on augmente la quantité
+      $isInserted = $panierMySQL->augmenterQuantiteBurger($idPanier, $idProduit);
+    }else{ //Sinon on l'insère
+      $isInserted = $panierMySQL->ajouterBurger($idPanier, $idProduit);
+    }
+    if($isInserted == true){//Si l'insertion ou la modification à fonctionné on met à jour le prix
+      $isInserted2 = $panierMySQL->majPrixDuPanierApresAjoutBurger($idPanier, $idProduit);
+    }
+    break;
+  case "Frite":
+    echo "Frite";
+    break;
+  case "Boisson":
+    echo "Boisson";
+    break;
+  case "Supplement":
+    echo "Supplement";
+    break;
+  case "Dessert":
+    echo "Dessert";
+    break;
+}
 
-
-
-//
-//if(isset($prenom)){
-//  // Recherche de l'utilisateur concerné à partir du mot de passe et du pseudo saisis
-//  $resultIsExist = $utilisateurMySQL->afficherUnUtilisateur($mail);
-//
-//  //Si aucun utilisateur existe avec cette adresse mail
-//  if($resultIsExist->rowCount() < 1){
-//    $isInserted = $utilisateurMySQL->ajouterUnUtilisateur($nom ,$prenom ,$mail, $password);
-//    if($isInserted){
-//      print json_encode($isInserted);
-//    }
-//  }else{ //Utilisateur qui existe déjà
-//    print json_encode("false");
-//    //Adrese mail déjà utilisé
-//  }
-//}
+//Affichage du résultat de l'ajout du produit dans le panier
+print json_encode($isInserted2);
 
 ?>
