@@ -37,7 +37,8 @@ class PanierMySQL
 
   function recupererLePanierCourant($idUtilisateur)
   {
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT P.idPanier
+    $idPanier = 0;
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT P.idPanier as idPanier
       FROM Panier P INNER JOIN Commande C
       ON P.idPanier = C.idPanier
       WHERE C.idUtil = :idUtilisateur
@@ -47,7 +48,11 @@ class PanierMySQL
     if ($stmt === false) {
       $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
     }
-    return $stmt;
+    if($stmt->rowCount() > 0){
+      $row = $stmt->fetch();
+      $idPanier = $row['idPanier'];
+    }
+    return $idPanier;
   }
 
   function ajouterBurger($idBurger, $idPanier): string

@@ -13,8 +13,13 @@ export class CarteComponent implements OnInit {
   tousLesProduits :Produit[] = [];
   tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
+  idClient : number = 0;
+
 
   constructor(private carteService : CarteService, private router: Router) {
+    let user:any = sessionStorage.getItem("utilisateur");
+    user = JSON.parse(user);
+    this.idClient = user['idUtil'];
 
     this.carteService.rechercherTousLesProduits();
     new Promise(
@@ -73,6 +78,11 @@ export class CarteComponent implements OnInit {
   }
 
   commanderOuPersonnaliser(idProduit: number){
+    if(idProduit == 0){
+      this.router.navigate(['partieDeGuigui']);
+    }else{
+
+    }
     console.log(idProduit);
   }
 
