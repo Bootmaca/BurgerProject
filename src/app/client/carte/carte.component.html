@@ -23,7 +23,7 @@
       [urlImage]="produit.image"
       (eventEmitterClickSurCarte)="commanderOuPersonnaliser(produit.idProduit)">
     </app-produit>
-    <div *ngIf="tousLesProduitsChoisis.length == 0 && typeProduit != ''" class="noProduct">
+    <div *ngIf="tousLesProduitsChoisis.length == 0 && typeProduit != '' && typeProduit != 'Burger'" class="noProduct">
       <p>Aucun produit de ce nom</p>
     </div>
   </div>

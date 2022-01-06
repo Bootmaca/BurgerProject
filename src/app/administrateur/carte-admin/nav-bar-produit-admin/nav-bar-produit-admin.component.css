@@ -1,0 +1,7 @@
+.navBarProduit:hover{
+  cursor: pointer;
+}
+
+.navbarBottom{
+  background-image: linear-gradient( 135deg, #F55555  10%, #FCCF31 100%);
+}

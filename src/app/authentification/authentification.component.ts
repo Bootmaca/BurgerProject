@@ -45,7 +45,11 @@ export class AuthentificationComponent implements OnInit {
               this.identificationFalse = true;
               form.reset(); // Reset le formulaire
               if(this.authService.user[0]['typeUtil'] == 1){
-                this.router.navigate(['/admin']); // Navigation vers la page admin
+                //Type de produit affiché en premier
+                let typeProduit = "Burger";
+
+                sessionStorage.setItem("typeProduit",typeProduit);
+                this.router.navigate(['/admin/carte']); // Navigation vers la page admin
               }else{
                 //Type de produit affiché en premier
                 let typeProduit = "Burger";
