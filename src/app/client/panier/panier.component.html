@@ -1,55 +1,57 @@
 <h1 class="text-center">Ma commande</h1>
 
-<ol class="list-group border-0" style="">
-  <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold"><img src="../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 1</li>
-        <li>Item 1</li>
-      </ul>
-    </div>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-    <div class="ms-2 me-auto" >
-      <div class="fw-bold"><img src="../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 1</li>
-        <li>Item 1</li>
-      </ul>
-    </div>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-    <div class="ms-2 me-auto" >
-      <div class="fw-bold"><img src="../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 1</li>
-        <li>Item 1</li>
-      </ul>
-    </div>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold"><img src="../../../assets/images/legume.svg" alt="" width="20" height="20"> Suppléments</div>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 1</li>
-        <li>Item 1</li>
-      </ul>
-    </div>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold"><img src="../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
-      <ul>
-        <li>Item 1</li>
-        <li>Item 1</li>
-        <li>Item 1</li>
-      </ul>
-    </div>
-  </li>
-</ol>
+<div class="contenneurPanier">
+  <ol class="list-group border-0" style="">
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold"><img src="../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 1</li>
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
+      <div class="ms-2 me-auto" >
+        <div class="fw-bold"><img src="../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 1</li>
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
+      <div class="ms-2 me-auto" >
+        <div class="fw-bold"><img src="../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 1</li>
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold"><img src="../../../assets/images/legume.svg" alt="" width="20" height="20"> Suppléments</div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 1</li>
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold"><img src="../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
+        <ul>
+          <li>Item 1</li>
+          <li>Item 1</li>
+          <li>Item 1</li>
+        </ul>
+      </div>
+    </li>
+  </ol>
+</div>
 <app-nav-bar-produit (eventEmitterChangerProduit)="redirigerVersProduit($event)"></app-nav-bar-produit>

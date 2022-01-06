@@ -1,0 +1,124 @@
+<?php
+
+class PanierMySQL
+{
+  private $laConnexion;
+
+  function __construct()
+  {
+    $this->laConnexion = new Connexion();
+  }
+
+  function creerUnPanier($idUtil): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO Panier(isSurPlace, prix, etat, date)
+                                                            VALUES (1, 0, 0, NULL);");
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    $idPanier = $this->laConnexion->getDbh()->lastInsertId();
+    $this->attribuerPanier($idUtil, $idPanier);
+    return $isInserted;
+  }
+
+  function attribuerPanier($idUtil, $idPanier): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO Commande(idUtil, idPanier)
+                                                            VALUES (:idUtil, :idPanier);");
+    $stmt->bindParam(':idUtil', $idUtil);
+    $stmt->bindParam(':idPanier', $idPanier);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    return $isInserted;
+  }
+
+  function recupererLePanierCourant($idUtilisateur)
+  {
+    $idPanier = 0;
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT P.idPanier as idPanier
+      FROM Panier P INNER JOIN Commande C
+      ON P.idPanier = C.idPanier
+      WHERE C.idUtil = :idUtilisateur
+      AND P.etat = 0;");
+    $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $row = $stmt->fetch();
+      $idPanier = $row['idPanier'];
+    }
+    return $idPanier;
+  }
+
+  function isDejaAjouteBurger($idPanier, $idBurger): string
+  {
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT idPanier
+      FROM AjouterBurger P
+      WHERE idPanier = :idPanier
+      AND idBurger = :idBurger;");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->bindParam(':idBurger', $idBurger);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
+  //Créer un trigger pour cette fonction
+  function augmenterQuantiteBurger($idPanier, $idBurger): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("UPDATE AjouterBurger
+                                                            SET quantite = quantite + 1
+                                                            WHERE idPanier = :idPanier
+                                                            AND idBurger = :idBurger;");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->bindParam(':idBurger', $idBurger);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    return $isInserted;
+  }
+
+  function ajouterBurger($idPanier, $idBurger): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `AjouterBurger` (idPanier,idBurger,quantite)
+                                                            VALUES (:idPanier,:idBurger, 1);");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->bindParam(':idBurger', $idBurger);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    return $isInserted;
+  }
+
+  //Créer un trigger pour cette fonction
+  function majPrixDuPanierApresAjoutBurger($idPanier, $idBurger): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("UPDATE Panier
+                                                            SET prix = prix + (SELECT prix FROM Burger WHERE idBurger = :idBurger)
+                                                            WHERE idPanier = :idPanier;");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->bindParam(':idBurger', $idBurger);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    return $isInserted;
+  }
+
+}
+
+?>
+

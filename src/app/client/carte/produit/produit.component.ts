@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-produit',
@@ -9,6 +9,7 @@ export class ProduitComponent implements OnInit {
   baseUrlImage : string = "../../../assets/images/";
 
 
+  @Output() eventEmitterClickSurCarte = new EventEmitter<string>();
   @Input() numero : number = 1;
   @Input() id : number = 1;
   @Input() nom: string = "Menu n°1";
@@ -21,6 +22,10 @@ export class ProduitComponent implements OnInit {
 
   ngOnInit(): void {
     this.urlImage = this.baseUrlImage + this.urlImage;
+  }
+
+  Clique(){
+    this.eventEmitterClickSurCarte.emit();
   }
 
 }

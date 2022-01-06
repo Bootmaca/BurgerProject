@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CarteService} from "../../services/carte.services";
+import {PanierService} from "../../services/panier.services";
 import {Produit} from "../../_models/Produit";
 import {Router} from "@angular/router";
 
@@ -13,8 +14,13 @@ export class CarteComponent implements OnInit {
   tousLesProduits :Produit[] = [];
   tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
+  idClient : number = 0;
 
-  constructor(private carteService : CarteService, private router: Router) {
+
+  constructor(private carteService : CarteService, private router: Router, private panierService: PanierService) {
+    let user:any = sessionStorage.getItem("utilisateur");
+    user = JSON.parse(user);
+    this.idClient = user['idUtil'];
 
     this.carteService.rechercherTousLesProduits();
     new Promise(
@@ -42,6 +48,7 @@ export class CarteComponent implements OnInit {
     if(typeOfProductChoose == "Panier"){
       this.router.navigate(['client/panier']); // Navigation vers la page panier
     }else{
+      sessionStorage.setItem("typeProduit", typeOfProductChoose) //Mise en session du produit choisis
       this.typeProduit = typeOfProductChoose;
 
       this.tousLesProduitsAfterType = [];
@@ -69,6 +76,23 @@ export class CarteComponent implements OnInit {
         }
       }
     );
+  }
+
+  commanderOuPersonnaliser(idProduit: number){
+    if(idProduit == 0){
+      this.router.navigate(['partieDeGuigui']);
+    }else{
+      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+      new Promise(
+        () => {
+          setTimeout(
+            ()=>{
+              console.log(this.panierService.isAjoute);
+            },100
+          )
+        }
+      );
+    }
   }
 
 

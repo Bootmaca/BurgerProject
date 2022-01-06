@@ -26,12 +26,13 @@ INSERT INTO Sauce(idSauce, libelle, image, isDisponible)
 
 INSERT INTO Burger(idBurger, libelle, isPain, isByCreator, prix, image, isDisponible, idViande, idSauce )
   VALUES
-    (1,"Burger au poulet", 1, 1, 5.00,"url/image", 1, 1, 1),
-    (2,"Burger au boeuf", 1, 1, 5.00, "url/image", 1, 2, 1),
-    (3,"Cheese Burger", 1, 1, 5.50, "url/image", 1, 2, 2),
-    (4,"Burger au poisson", 1, 1, 5.00, "url/image", 1, 3, 1),
-    (5,"Burger végétarien", 1, 1, 5.00, "url/image", 1, 4, 1),
-    (6,"Baguette Burger", 0, 1, 5.00, "url/image", 1, 2, 1);
+    (1,"Burger au poulet", 1, 1, 5.00,"burger_poulet.png", 1, 1, 1),
+    (2,"Burger au boeuf", 1, 1, 5.00, "burger_boeuf.png", 1, 2, 1),
+    (3,"Cheese Burger", 1, 1, 5.50, "cheese_burger.png", 1, 2, 2),
+    (4,"Burger au poisson", 1, 1, 5.00, "burger_poisson.png", 1, 3, 1),
+    (5,"Burger végétarien", 1, 1, 5.00, "burger_veggie.png", 1, 4, 1),
+    (6,"Baguette Burger", 0, 1, 5.00, "burger_baguette.png", 1, 2, 1),
+    (7,"Burger boeuf & bacon", 0, 1, 6.00, "burger_boeuf_et_bacon.png", 1, 2, 1);
 
 INSERT INTO Supplement(idSupplement, libelle, prix, image, isDisponible)
   VALUES
@@ -79,7 +80,29 @@ INSERT INTO Boisson(idBoisson, libelle, prix, image, isDisponible)
 
 INSERT INTO Autre(idAutre, libelle, prix, image, isDisponible)
   VALUES
-    (1,"Boite de 6 tenders", 5.00, "url/image", 1),
-    (2,"Boite de 6 nuggets", 3.50, "url/image", 1),
-    (3,"Salade césar", 6.00, "url/image", 1),
-    (4,"Salade chèvre", 6.00, "url/image", 1);
+    (1,"6 onion rings", 3.50, "onion_rings.png", 1),
+    (2,"6 nuggets", 3.50, "nuggets.png", 1),
+    (3,"6 crousty chèvre", 3.50, "crousty.png", 1),
+    (4,"Salade césar", 6.00, "salade_cesar.png", 1),
+    (5,"Salade chèvre", 6.00, "salade_chevre.png", 1),
+    (6,"Carotte", 1.50, "carotte.png", 1);
+
+INSERT INTO Panier(idPanier, isSurPlace, prix, etat, date)
+  VALUES
+    (1, 1, 0, 0, NULL),
+    (2, 1, 0, 0, NULL),
+    (3, 1, 0, 0, NULL),
+    (4, 1, 0, 0, NULL),
+    (5, 1, 0, 0, NULL),
+    (6, 1, 0, 0, NULL),
+    (7, 1, 0, 0, NULL);
+
+INSERT INTO Commande(idUtil, idPanier)
+  VALUES
+    (1,1),
+    (2,2),
+    (3,3),
+    (4,4),
+    (5,5),
+    (6,6),
+    (7,7);

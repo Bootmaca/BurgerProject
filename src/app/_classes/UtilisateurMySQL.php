@@ -11,7 +11,7 @@ class UtilisateurMySQL
     }
 
     function verifierUtilisateur($mail, $password){
-      $stmt = $this->laConnexion->getDbh()->prepare("SELECT typeUtil, nom, prenom" .
+      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idUtil, typeUtil, nom, prenom" .
           " FROM Utilisateur".
           " WHERE mail = :mail".
           " AND password = :password");
@@ -36,18 +36,20 @@ class UtilisateurMySQL
         return $stmt;
     }
 
-    function ajouterUnUtilisateur($nom ,$premon ,$mail, $password)
+    function ajouterUnUtilisateur($nom ,$premon ,$mail, $password): string
     {
         $isInserted = "false";
         $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO `Utilisateur` (`nom`,`prenom`,`mail`,`password`,`typeUtil`)
                                                             VALUES (:nom,:prenom,:mail,:password,0);");
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $premon);
-        $stmt ->bindParam(':mail', $mail);
-        $stmt ->bindParam(':password', $password);
+        $stmt->bindParam(':mail', $mail);
+        $stmt->bindParam(':password', $password);
         if ($stmt ->execute() == 1) {
             $isInserted = "true";
         }
+        $idUtil = $this->laConnexion->getDbh()->lastInsertId();
+        $this->creerUnPanier($idUtil);
         return $isInserted;
     }
 
@@ -60,6 +62,34 @@ class UtilisateurMySQL
         $stmt->execute();
 
     }
+
+  function creerUnPanier($idUtil){
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO Panier(isSurPlace, prix, etat, date)
+                                                            VALUES (1, 0, 0, NULL);");
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    $idPanier = $this->laConnexion->getDbh()->lastInsertId();
+    $this->attribuerPanier($idUtil, $idPanier);
+    return $isInserted;
+  }
+
+  function attribuerPanier($idUtil, $idPanier){
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("INSERT INTO Commande(idUtil, idPanier)
+                                                            VALUES (:idUtil, :idPanier);");
+    $stmt->bindParam(':idUtil', $idUtil);
+    $stmt->bindParam(':idPanier', $idPanier);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    return $isInserted;
+  }
+
+  function rechercherUnPanier(){
+
+  }
 
     /*
     function ModifierUtilisateur($nom, $prenom, $mail)

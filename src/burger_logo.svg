@@ -1,0 +1,151 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg.dtd">
+<svg width="36cm" height="17.3cm" viewBox="0 0 360 173" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+   <!-- Couleur de fond du document SVG -->
+   
+   <style type="text/css">
+      svg
+      {
+         background-color: #222222;
+         /* OU mettre la couleur de fond de l'application web */
+         /* Pour la transparence, ajouter le canal alpha dans le code hexadécimal et le fixer à nul (ex: #22222200) */
+      }
+   </style>
+   
+   <!-- Description du contenu du document SVG -->
+   <desc>
+      Logo animé du burger
+   </desc>
+
+   <!-- Cadrillage uniforme en arrière plan faisant office de guide pour positionner les différents éléments -->
+   <!--
+   <image xlink:href="grille.svg" x="0" y="0" height="173" width="360" />
+   -->
+
+   <!-- Définition des éléments -->
+   <defs>
+      <!-- Filtre évolué aspect 3D -->
+      <filter id="filtre1" filterUnits="userSpaceOnUse" x="0" y="0" height="173" width="360">
+         <!-- Application des différents effets de lumière et de décalage -->
+         <feGaussianBlur in="SourceGraphic" stdDeviation="1" />
+         <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="flou" />
+         <feOffset in="flou" dx="5" dy="5" result="flouDecalage" />
+         <feSpecularLighting in="flou" surfaceScale="5" specularConstant="0.75" specularExponent="20" lighting-color="#BBBBBB" result="speculaireSortie">
+            <fePointLight x="-5000" y="-10000" z="20000"/>
+         </feSpecularLighting>
+         <feComposite in="speculaireSortie" in2="SourceAlpha" operator="in" result="speculaireSortie2" />
+         <feComposite in="SourceGraphic" in2="speculaireSortie2" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="peintureEclairee" />
+         <feMerge>
+            <feMergeNode in="flouDecalage" />
+            <feMergeNode in="peintureEclairee" />
+         </feMerge>
+      </filter>
+
+      <!-- Forme de petit cercle (point) pour représenter une graine de sésame classique -->
+      <circle id="graine" r="1" fill="orange" />
+   </defs>
+
+   <!-- Regroupement des tous les morceaux de textes -->
+   <!--
+   <g font-family="Brush Script MT" fill="blue" stroke="white" stroke-width="1" filter="drop-shadow(0px 0px 3px red)">
+      <text x="0" y="60" font-size="40" transform="translate(-18, 18) rotate(-30)">
+         French
+         <tspan x="0" y="90">
+            Burger
+         </tspan>
+      </text>
+      <text x="0" y="60" font-size="25" filter="invert(100%) hue-rotate(180deg) contrast(200%)" transform="translate(270, 18)">
+         Design By
+         <tspan x="0" y="90">
+            Emilien
+         </tspan>
+         <tspan x="0" y="120">
+            Prattico
+         </tspan>
+      </text>
+   </g>
+   -->
+
+   <!-- Regroupement des multiples animations du burger -->
+   <g id="burger">
+      <!--
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0,180,90" to="350,180,90" begin="0s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="350,180,90" to="370,180,90" begin="2s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="10,180,90" to="350,180,90" begin="4s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="350,180,90" to="370,180,90" begin="6s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="10,180,90" to="350,180,90" begin="8s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="350,180,90" to="360,180,90" begin="10s" dur="1s" additive="sum" fill="remove" />
+      -->
+      <!--
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0,180,90" to="360,180,90" begin="0s" dur="1s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="rotate" from="360,180,90" to="-360,180,90" begin="1s" dur="1s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0,0" to="40,0" begin ="8s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="40,0" to="-40,0" begin ="10s" dur="2s" additive="sum" fill="remove" />
+      <animateTransform attributeName="transform" attributeType="XML" type="translate" from="-40,0" to="0,0" begin ="12s" dur="2s" additive="sum" fill="remove" />
+      <animateMotion begin="14s" dur="4s" repeatCount="indefinite" path="M 0 0 Q 10 30, 20 0 T 40 0 Q 50 30, 60 0 T 80 0 Q 90 30, 90 0 T 70 0 Q 60 30, 50 0 T 30 0 Q 20 30, 10 0 T -10 0 Q -20 30, -30 0 T -50 0 Q -60 30, -70 0 T -90 0 Q -80 30, -70 0 T -50 0 Q -40 30, -30 0 T -10 0 Q 0 30" />
+      -->
+
+   <!-- Regroupement des deux chemins traçant le pain burger -->
+   <g id="pain" fill="lightyellow" stroke="orange" stroke-width="1" filter="drop-shadow(0px 0px 3px yellow) saturate(200%)">
+      <!-- antiquewhite, linen, oldlace, seashell, beige : couleurs alternatives pour le remplissage -->
+      <!-- Tracé de la partie supérieure du pain burger -->
+      <path d="M 100, 90 260, 90 a 5, 15 0 0, 0 0, 0 a 80 80 0 0, 0 -160, 0, z" />
+
+      <!-- Tracé de la partie inférieure du pain burger -->
+      <path d="M 260, 140 100, 140 a 5, 15 0 0, 0 0, 0 a 25 25 0 0, 0 20, 30, L 120 170 L 240 170, L 240, 170 240, 170 a 5, 15 0 0, 0 0, 0 a 25 25 0 0, 0 20, -30, z" />
+   </g>
+
+   <!-- Première ligne de graines de sésame -->
+   <use x="160" y="20" xlink:href="#graine" />
+   <use x="200" y="20" xlink:href="#graine" />
+
+   <!-- Seconde ligne de graines de sésame -->
+   <use x="140" y="40" xlink:href="#graine" />
+   <use x="180" y="40" xlink:href="#graine" />
+   <use x="220" y="40" xlink:href="#graine" />
+
+   <!-- Troisième ligne de graines de sésame -->
+   <use x="120" y="60" xlink:href="#graine" />
+   <use x="160" y="60" xlink:href="#graine" />
+   <use x="200" y="60" xlink:href="#graine" />
+   <use x="240" y="60" xlink:href="#graine" />
+
+   <!-- Quatrième ligne de graines de sésame -->
+   <use x="140" y="80" xlink:href="#graine" />
+   <use x="180" y="80" xlink:href="#graine" />
+   <use x="220" y="80" xlink:href="#graine" />
+
+   <!-- Regroupement des différentes parties composant le drapeau français -->
+   <g id="drapeau" stroke-width="1">
+      <!-- La hampe (le mât) et le pommeau -->
+      <g filter="drop-shadow(0px 0px 1px white)">
+         <circle cx="229.5" cy="7" r="1.5" fill="black" />
+         <line x1="229.5" y1="8.5" x2="229.5" y2="50" stroke="black" />
+      </g>
+      <!-- Le fanion tricolore -->
+      <g filter="url(#filtre1)">
+         <path d="M 230 30 L 230 10 Q 235 7, 240 10 L 240 30 Q 235 27, 230 30 z" fill="blue" stroke="blue" />
+         <path d="M 240 30 L 240 10 Q 245 13, 250 10 L 250 30 Q 245 33, 240 30 z" fill="white" stroke="white" />
+         <path d="M 250 30 L 250 10 Q 255 7, 260 10 L 260 30 Q 255 27, 250 30 z" fill="red" stroke="red" />
+      </g>
+   </g>
+
+   <!-- Tracé de la salade verte -->
+   <path id="salade" d="M 100 102 Q 110 85, 120 102 T 140 102 Q 150 85, 160 102 T 180 102 Q 190 85, 200 102 T 220 102 Q 230 85, 240 102 T 260 102" fill="none" stroke="green" stroke-width="1" filter="drop-shadow(0px 0px 2px lightgreen) brightness(200%) saturate(200%)" />
+   <!-- lightgreen, darkgreen : couleurs alternatives pour la ligne + possibilité de doubler l'épaisseur de la ligne -->
+
+   <!-- Tracé de la viande de type steak haché -->
+   <path id="viande" d="M 100 114 Q 90 125 100 136 L 260 136 Q 270 125 260 114 z" fill="maroon" stroke="maroon" stroke-width="1" filter="drop-shadow(0px 0px 3px red)" />
+   <!-- #800000 : couleur alternative pour le remplissage -->
+
+   <!-- Tracé de la tomate rouge -->
+   <path id="tomate" d="M 120, 114 a 5, 15 0 0, 0 0, 0 a 28 28 0 0, 0 50, 0, z" fill="red" stroke="red" stroke-width="1" filter="drop-shadow(0px 0px 2px orange) brightness(200%) saturate(200%)" />
+   <!-- #FF8800 : couleur alternative pour le remplissage -->
+
+   <!-- Tracé du fromage de type cheddar -->
+   <path id="fromage" d="M 190 114 L 240 114 L 230 130 z" fill="yellow" stroke="yellow" stroke-width="1" filter="drop-shadow(0px 0px 2px lightyellow) brightness(200%) saturate(200%)" />
+
+   </g>
+
+</svg>

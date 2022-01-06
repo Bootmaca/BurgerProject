@@ -8,6 +8,7 @@
   padding-top: 5px;
   width: 12rem;
   height: 22rem;
+  /*transform;*/
 }
 
 .cardStyle:hover{
@@ -22,5 +23,6 @@
   padding-left: 15px;
 }
 
-.btnCarte{
+.nomProduit{
+  height: 45px;
 }
