@@ -31,6 +31,7 @@ import { PaiementComponent } from './client/paiement/paiement.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarEnteteComponent } from './nav-bar-entete/nav-bar-entete.component';
 import {PanierService} from "./services/panier.services";
+import { CarteAdminComponent } from './administrateur/carte-admin/carte-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {PanierService} from "./services/panier.services";
     NavBarProduitComponent,
     BarreRechercheComponent,
     PaiementComponent,
-    NavBarEnteteComponent
+    NavBarEnteteComponent,
+    CarteAdminComponent
   ],
   imports: [
     HttpClientModule,

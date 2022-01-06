@@ -2,7 +2,7 @@
   <div (click)="Accueil()" class="logo">
     <img src="../../assets/images/burger_logo.svg" alt="" width="100" height="100">
   </div>
-  <p (click)="Accueil()" class="nomDuSite"><strong>FRENCH BURGER</strong></p>
+  <p (click)="Accueil()" class="nomDuSite"><strong>{{titreHautDePage}}</strong></p>
   <div class="nomEtBtDeco">
     <p class="nomAdmin">{{nom + " " + prenom}}</p>
     <fa-icon class="btDeconnexion" [icon]="faPowerOff" (click)="seDeconnecter()"></fa-icon>
