@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { faEdit, faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-produit-admin',
@@ -7,16 +8,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProduitAdminComponent implements OnInit {
   baseUrlImage : string = "../../../assets/images/";
+  faEdit = faEdit;
+  faTrashAlt = faTrashAlt;
 
 
-  @Output() eventEmitterClickSurCarte = new EventEmitter<string>();
-  @Input() numero : number = 1;
-  @Input() id : number = 1;
+  @Output() eventEmitterModifierProduit = new EventEmitter<string>();
+  @Output() eventEmitterSupprimerProduit = new EventEmitter<string>();
   @Input() nom: string = "Menu n°1";
   @Input() prix: number = 10;
   @Input() urlImage: string = "../../../assets/images/petite_frite.png" ;
-  @Input() nameBtn: string = "Commander" ;
-  @Input() url: string = "1" ;
 
   constructor() { }
 
@@ -24,8 +24,12 @@ export class ProduitAdminComponent implements OnInit {
     this.urlImage = this.baseUrlImage + this.urlImage;
   }
 
-  Clique(){
-    this.eventEmitterClickSurCarte.emit();
+  modifier(){
+    this.eventEmitterModifierProduit.emit();
+  }
+
+  supprimer(){
+    this.eventEmitterSupprimerProduit.emit();
   }
 
 }

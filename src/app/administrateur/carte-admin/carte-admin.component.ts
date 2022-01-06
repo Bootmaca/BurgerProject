@@ -3,6 +3,7 @@ import {CarteService} from "../../services/carte.services";
 import {PanierService} from "../../services/panier.services";
 import {Produit} from "../../_models/Produit";
 import {Router} from "@angular/router";
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-carte-admin',
@@ -15,6 +16,8 @@ export class CarteAdminComponent implements OnInit {
   tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
   idClient : number = 0;
+  nomBoutonAjout :string = "";
+  faPlusCircle = faPlusCircle;
 
 
   constructor(private carteService : CarteService, private router: Router, private panierService: PanierService) {
@@ -78,21 +81,15 @@ export class CarteAdminComponent implements OnInit {
     );
   }
 
-  commanderOuPersonnaliser(idProduit: number){
-    if(idProduit == 0){
-      this.router.navigate(['partieDeGuigui']);
-    }else{
-      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
-      new Promise(
-        () => {
-          setTimeout(
-            ()=>{
-              console.log(this.panierService.isAjoute);
-            },100
-          )
-        }
-      );
-    }
+  modifierProduit(idProduit: number){
+    // this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+    console.log("Modification du produit numero : " + idProduit)
+  }
+
+
+  supprimerProduit(idProduit: number){
+    // this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+    console.log("Suppresion du produit numero : " + idProduit)
   }
 
 

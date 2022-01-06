@@ -19,4 +19,17 @@
   margin-top: 150px;
 }
 
+.contenneurBtEtRecherche{
+  display: flex;
+  justify-content: space-between;
+}
+
+.contennerurBtAjouter{
+  padding-left: 20px;
+}
+
+.btAjouter{
+  padding: 5px;
+  font-size: 20px;
+}
 

@@ -1,15 +1,12 @@
-<!--Nouvelle ligne-->
-<!--<section *ngIf="numero == 0">-->
-<!--<div  *ngIf="numero == 0" class="row mx-auto " style="margin-top: 4%;">-->
 <div class="contenneurCarte">
-  <div class="card cardStyle" (click)="Clique()">
+  <div class="card cardStyle">
     <img src="{{urlImage}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title text-center nomProduit">{{nom}}</h5>
-      <!--    <p class="card-title text-center"><strong>{{prix}}€</strong></p>-->
-      <p class="text-center prixProduit">{{prix}}€</p>
-      <div class="contenneurBouton">
-        <a href="#" class="btn btn-primary btnCarte">{{nameBtn}}</a>
+      <p class="text-center prixProduit" style="padding: 0;">{{prix}}€</p>
+      <div class="contenneurBoutons">
+        <a class="btn btn-primary btnCarte" (click)="modifier()" ><fa-icon class="btDeconnexion" [icon]="faEdit"></fa-icon></a>
+          <a class="btn btn-primary btnCarte" (click)="supprimer()"><fa-icon class="btDeconnexion" [icon]="faTrashAlt"></fa-icon></a>
       </div>
     </div>
   </div>
