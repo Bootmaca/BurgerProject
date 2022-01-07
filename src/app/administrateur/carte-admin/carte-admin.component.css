@@ -1,0 +1,35 @@
+
+.contenneurTousLesProduits{
+  overflow: auto;
+  height: 90%;
+}
+
+
+.contenneurToutesLesCartes{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.noProduct{
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  margin-top: 150px;
+}
+
+.contenneurBtEtRecherche{
+  display: flex;
+  justify-content: space-between;
+}
+
+.contennerurBtAjouter{
+  padding-left: 20px;
+}
+
+.btAjouter{
+  padding: 5px;
+  font-size: 20px;
+}
+

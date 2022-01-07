@@ -11,6 +11,7 @@ import {Router} from "@angular/router";
 export class NavBarEnteteComponent implements OnInit {
   nom : string = "";
   prenom : string = "";
+  titreHautDePage : string = "FRENCH BURGER";
   faPowerOff = faPowerOff;
 
   constructor(private authService : AuthServices, private router: Router) {
@@ -18,6 +19,9 @@ export class NavBarEnteteComponent implements OnInit {
     user = JSON.parse(user);
     this.nom = user['nom'];
     this.prenom = user['prenom'];
+    if(user['typeUtil'] == "admin"){
+      this.titreHautDePage += " (ADMIN)"
+    }
   }
 
   ngOnInit(): void {

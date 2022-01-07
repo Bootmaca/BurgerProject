@@ -1,23 +1,23 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CarteService} from "../../services/carte.services";
 import {PanierService} from "../../services/panier.services";
 import {Produit} from "../../_models/Produit";
 import {Router} from "@angular/router";
+import { faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-carte',
-  templateUrl: './carte.component.html',
-  styleUrls: ['./carte.component.css']
+  selector: 'app-carte-admin',
+  templateUrl: './carte-admin.component.html',
+  styleUrls: ['./carte-admin.component.css']
 })
-export class CarteComponent implements OnInit {
+export class CarteAdminComponent implements OnInit {
   typeProduit: string = "";
   tousLesProduits :Produit[] = [];
   tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
-  idClient: number = 0;
-  afficherModal: boolean = false;
-  urlImageProduitPourModal: string = "";
-  nomProduitPourModal: string = "";
+  idClient : number = 0;
+  nomBoutonAjout :string = "";
+  faPlusCircle = faPlusCircle;
 
 
   constructor(private carteService : CarteService, private router: Router, private panierService: PanierService) {
@@ -81,31 +81,16 @@ export class CarteComponent implements OnInit {
     );
   }
 
-  commanderOuPersonnaliser(idProduit: number, nomProduit: string = "", urlImage: string = ""){
-    console.log("test");
-    this.urlImageProduitPourModal = urlImage;
-    this.afficherModal= true;
-    this.nomProduitPourModal = nomProduit;
-
-    // if(idProduit == 0){
-    //   this.router.navigate(['partieDeGuigui']);
-    // }else{
-    //   this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
-    //   new Promise(
-    //     () => {
-    //       setTimeout(
-    //         ()=>{
-    //           console.log(this.panierService.isAjoute);
-    //         },100
-    //       )
-    //     }
-    //   );
-    // }
-
-
+  modifierProduit(idProduit: number){
+    // this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+    console.log("Modification du produit numero : " + idProduit)
   }
 
 
+  supprimerProduit(idProduit: number){
+    // this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+    console.log("Suppresion du produit numero : " + idProduit)
+  }
 
 
 

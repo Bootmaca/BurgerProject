@@ -15,11 +15,16 @@ import {SupplementsComponent} from "./client/supplements/supplements.component";
 import {PanierComponent} from "./client/panier/panier.component";
 import {CreationBurgerComponent} from "./client/creation-burger/creation-burger.component";
 import {CarteComponent} from "./client/carte/carte.component";
+import {CarteAdminComponent} from "./administrateur/carte-admin/carte-admin.component";
 import {PaiementComponent} from "./client/paiement/paiement.component";
 
 const routes: Routes = [
   {path:'auth', component : AuthentificationComponent},
-  {path:'admin', canActivate : [AuthGuardAdminService], component : AdministrateurComponent},
+  {path:'admin', canActivate : [AuthGuardAdminService], component: AdministrateurComponent,
+    children:[
+      {path: 'carte', canActivate : [AuthGuardAdminService], component: CarteAdminComponent}
+    ]
+  },
   {path:'client',
     canActivate : [AuthGuardCustomerService],
     component : ClientComponent,

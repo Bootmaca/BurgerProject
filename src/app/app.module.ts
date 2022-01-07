@@ -31,6 +31,10 @@ import { PaiementComponent } from './client/paiement/paiement.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NavBarEnteteComponent } from './nav-bar-entete/nav-bar-entete.component';
 import {PanierService} from "./services/panier.services";
+import { CarteAdminComponent } from './administrateur/carte-admin/carte-admin.component';
+import { BarreRechercheAdminComponent } from './administrateur/carte-admin/barre-recherche-admin/barre-recherche-admin.component';
+import { NavBarProduitAdminComponent } from './administrateur/carte-admin/nav-bar-produit-admin/nav-bar-produit-admin.component';
+import { ProduitAdminComponent } from './administrateur/carte-admin/produit-admin/produit-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +58,11 @@ import {PanierService} from "./services/panier.services";
     NavBarProduitComponent,
     BarreRechercheComponent,
     PaiementComponent,
-    NavBarEnteteComponent
+    NavBarEnteteComponent,
+    CarteAdminComponent,
+    BarreRechercheAdminComponent,
+    NavBarProduitAdminComponent,
+    ProduitAdminComponent
   ],
   imports: [
     HttpClientModule,

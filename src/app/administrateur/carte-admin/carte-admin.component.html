@@ -1,0 +1,33 @@
+<h1 class="text-center">{{typeProduit}}</h1>
+
+<div class="contenneurTousLesProduits">
+  <div class="contenneurBtEtRecherche">
+    <div class="contennerurBtAjouter"><a class="btn btn-primary"><div class="btAjouter"><fa-icon class="btDeconnexion" [icon]="faPlusCircle"></fa-icon> Ajouter {{typeProduit}}</div></a></div>
+    <app-barre-recherche-admin (eventEmitterFiltreNom)="filtrerNom($event)"></app-barre-recherche-admin>
+  </div>
+
+  <div class="contenneurToutesLesCartes">
+    <app-produit-admin
+      *ngFor="let produit of tousLesProduitsChoisis"
+      [nom]="produit.libelle"
+      [prix]="produit.prix"
+      [urlImage]="produit.image"
+      (eventEmitterModifierProduit)="modifierProduit(produit.idProduit)"
+      (eventEmitterSupprimerProduit)="supprimerProduit(produit.idProduit)">
+    </app-produit-admin>
+    <div *ngIf="tousLesProduitsChoisis.length == 0 && typeProduit != ''" class="noProduct">
+      <p>Aucun produit de ce nom</p>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  (eventEmitterChangerProduit) correspond à la variable EventEmitter dans le composant fils
+  changerTypeProduit() correspond à la fonction de ce component
+  $event correspond à la valeur donné par le composant fils (emit.(laValeurDonné))
+    il peut il y avoir qu'une seule donnée en paramètre si on veut plusieurs données il faut émettre un tableau (.emit(monTab))
+-->
+<app-nav-bar-produit-admin (eventEmitterChangerProduit)="changerTypeProduit($event)"></app-nav-bar-produit-admin>
+
+
