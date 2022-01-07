@@ -24,6 +24,9 @@ $resultBurger = $produitMySQL->afficherLesBurgers();
 // Recherche de tous les supplements
 $resultSupplement = $produitMySQL->afficherLesSupplements();
 
+// Recherche de tous les menus
+$resultMenu = $produitMySQL->afficherLesMenus();
+
 $data = [];
 
 //Pour chaque ligne récupéré de la requête frite
@@ -84,6 +87,18 @@ while($row = $resultSupplement->fetch()){
                   'typeProduit' => 'Supplement',
                   'isByCreator' => 1);
    array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
+}
+
+//Pour chaque ligne récupéré de la requête dessert
+while($row = $resultMenu->fetch()){
+  $ligne = array('id' => $row['idMenu'],
+                  'libelle' => $row['libelle'],
+                  'prix' => $row['prix'],
+                  'image' => $row['image'],
+                  'isDisponible' => $row['isDisponible'],
+                  'typeProduit' => 'Menu',
+                  'isByCreator' => 1);
+  array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
 print json_encode($data); //Affichage du tableau au format json pour qu'il soit récupéré en typescript

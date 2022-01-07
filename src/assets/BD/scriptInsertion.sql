@@ -70,12 +70,20 @@ INSERT INTO Frite(idFrite, libelle, prix, image, isDisponible)
 
 INSERT INTO Boisson(idBoisson, libelle, prix, image, isDisponible)
   VALUES
-    (1,"Vittel 50cl", 1.00, "eau.png", 1),
+    (1,"Eau vittel 50cl", 1.00, "eau.png", 1),
     (2,"San pellegrino 50cl", 1.50, "sanpe.png", 1),
-    (3,"Coca Cola 50cl", 2.50, "grand_coca.png", 1),
-    (4,"Ice Tea 50cl", 2.50, "grand_icetea.png", 1),
-    (5,"Fanta 50cl", 2.50, "fanta.png", 1),
-    (6,"Sprite 50cl", 2.50, "sprite.png", 1);
+    (3,"Coca Cola 33cl", 1.50, "petit_coca.png", 1),
+    (4,"Coca Cola Cherry 33cl", 1.50, "petit_coca_cherry.png", 1),
+    (6,"Fanta 33cl", 1.50, "petit_fanta.png", 1),
+    (7,"Ice Tea Pêche 33cl", 1.50, "petit_ice_tea.png", 1),
+    (8,"Ice Tea Agrumes 33cl", 1.50, "petit_ice_tea_agrumes.png", 1),
+    (9,"Sprite 33cl", 1.50, "petit_sprite.png", 1),
+    (10,"Coca Cola 50cl", 2.50, "grand_coca.png", 1),
+    (11,"Coca Cola Cherry 50cl", 2.50, "grand_coca_cherry.png", 1),
+    (12,"Fanta 50cl", 2.50, "grand_fanta.png", 1),
+    (13,"Ice Tea Pêche 50cl", 2.50, "grand_ice_tea.png", 1),
+    (14,"Ice Tea Agrumes 50cl", 2.50, "grand_ice_tea_agrumes.png", 1),
+    (15,"Sprite Cola 50cl", 2.50, "grand_sprite.png", 1);
 
 
 INSERT INTO Autre(idAutre, libelle, prix, image, isDisponible)
@@ -86,6 +94,15 @@ INSERT INTO Autre(idAutre, libelle, prix, image, isDisponible)
     (4,"Salade césar", 6.00, "salade_cesar.png", 1),
     (5,"Salade chèvre", 6.00, "salade_chevre.png", 1),
     (6,"Carotte", 1.50, "carotte.png", 1);
+
+INSERT INTO Menu(idMenu, libelle, prix, image, isDisponible, idBurger, idBoisson, idFrite)
+VALUES
+  (1,"Menu burger poulet", 7.00, "menu_burger_poulet.png", 1, 1, 10, 2),
+  (2,"Menu burger boeuf", 7.00, "menu_burger_boeuf.png", 1, 2, 10, 2),
+  (3,"Menu cheese burger", 7.50, "menu_cheese_burger.png", 1, 3, 10, 2),
+  (4,"Menu burger poisson", 7.00, "menu_burger_poisson.png", 1, 4, 10, 2),
+  (5,"Menu burger vegetarien", 7.00, "menu_burger_vegetarien.png", 1, 5, 10, 2),
+  (6,"Menu burger boeuf et bacon", 8.00, "menu_burger_boeuf_et_bacon.png", 1, 7, 10, 2);
 
 INSERT INTO Panier(idPanier, isSurPlace, prix, etat, date)
   VALUES
