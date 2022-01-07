@@ -22,12 +22,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let commande of DonneeBase | searchfiltre : recherche" >
+    <tr *ngFor="let commande of DonneeBase$ | searchfiltre : recherche" >
 
       <td >{{ commande.nom }}</td>
       <td >{{ commande.prix | currency : '€' }}</td>
       <td >{{ commande.date |  date: 'd/M/y' }}</td>
-      <td ><input type="button" width="100%" value=" Visualiser " style="background: yellow" (click)="onSelect(commande.date,commande.nom)"></td>
+      <td >
+        <button type="button" mat-flat-button  style="background: yellow" color="black" (click)="onSelect(commande.idPanier)">Visualiser </button>
+      </td>
 
     </tr>
     </tbody>

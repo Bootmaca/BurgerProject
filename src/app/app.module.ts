@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import {RouterModule, Routes} from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +25,11 @@ import { EnteteClientComponent } from './client/entete-client/entete-client.comp
 import { PiedPageClientComponent } from './client/pied-page-client/pied-page-client.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { HeaderAdminComponent } from './header-admin/header-admin.component';
-import { SearchfiltrePipe } from './searchfiltre.pipe';
+import { SearchfiltrePipe } from './pipe/searchfiltre.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import { DialogPanierComponent } from './dialog-panier/dialog-panier.component';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -47,14 +50,19 @@ import { SearchfiltrePipe } from './searchfiltre.pipe';
     PiedPageClientComponent,
     HistoriqueComponent,
     HeaderAdminComponent,
-    SearchfiltrePipe
+    SearchfiltrePipe,
+    DialogPanierComponent
   ],
+  entryComponents: [DialogPanierComponent],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     AuthGuardAdminService,

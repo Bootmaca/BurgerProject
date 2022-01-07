@@ -37,7 +37,7 @@
                 $stmt->bindParam(':id', $row['idPanier']);
                 $stmt->execute();
                 $panier=$stmt->fetch();
-              $ligne = array('numCommande' => $row['idUtil'],
+              $ligne = array('idPanier' => $row['idPanier'],
                       'nom' => $nompre,
                       'prix' => $panier[0],
                       'date' => $panier[1]);

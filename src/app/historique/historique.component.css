@@ -32,10 +32,11 @@ table{
 td,thead,tbody{
   text-align: center;
 }
-
+button{
+  color: black;
+}
 table, th , td  {
   border: 1px solid black;
-
   border-collapse: collapse;
   padding: 5px;
 }
@@ -45,3 +46,4 @@ table tr:nth-child(odd) {
 table tr:nth-child(even) {
   background-color: yellow;
 }
+
