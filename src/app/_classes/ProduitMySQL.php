@@ -12,8 +12,7 @@ class ProduitMySQL
 
     function afficherLesFrites(){
         $stmt = $this->laConnexion->getDbh()->prepare("SELECT idFrite, libelle, prix, image, isDisponible FROM Frite;");
-        $stmt->execute();
-        if ($stmt === false) {
+        if ($stmt->execute() === false) {
             $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
         }
         return $stmt;
@@ -21,8 +20,7 @@ class ProduitMySQL
 
     function afficherLesDesserts(){
         $stmt = $this->laConnexion->getDbh()->prepare("SELECT idDessert, libelle, prix, image, isDisponible FROM Dessert;");
-        $stmt->execute();
-        if ($stmt === false) {
+        if ($stmt->execute() === false) {
             $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
         }
         return $stmt;
@@ -31,30 +29,35 @@ class ProduitMySQL
 
     function afficherLesBoissons(){
         $stmt = $this->laConnexion->getDbh()->prepare("SELECT idBoisson, libelle, prix, image, isDisponible FROM Boisson;");
-        $stmt->execute();
-        if ($stmt === false) {
+        if ($stmt->execute() === false) {
             $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
         }
         return $stmt;
     }
 
     function afficherLesBurgers(){
-      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idBurger, libelle, prix, image, isDisponible, isByCreator FROM Burger;");
-      $stmt->execute();
-      if ($stmt === false) {
-          $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
-      }
-      return $stmt;
+        $stmt = $this->laConnexion->getDbh()->prepare("SELECT idBurger, libelle, prix, image, isDisponible, isByCreator FROM Burger;");
+        if ($stmt->execute() === false) {
+            $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
+        }
+        return $stmt;
     }
 
     function afficherLesSupplements(){
-      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idAutre, libelle, prix, image, isDisponible FROM Autre;");
-      $stmt->execute();
-      if ($stmt === false) {
-          $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
+        $stmt = $this->laConnexion->getDbh()->prepare("SELECT idAutre, libelle, prix, image, isDisponible FROM Autre;");
+        if($stmt->execute() === false) {
+            $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
+        }
+        return $stmt;
+    }
+
+  function afficherLesMenus(){
+      $stmt = $this->laConnexion->getDbh()->prepare("SELECT idMenu, libelle, prix, image, isDisponible FROM Menu;");
+      if ($stmt->execute() === false) {
+        $this->laConnexion->afficherErreurSQL("Produit non trouvé ", $stmt);
       }
       return $stmt;
-    }
+  }
 
 
 
