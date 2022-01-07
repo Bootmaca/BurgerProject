@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {CarteService} from "../../services/carte.services";
 import {PanierService} from "../../services/panier.services";
 import {Produit} from "../../_models/Produit";
@@ -14,7 +14,10 @@ export class CarteComponent implements OnInit {
   tousLesProduits :Produit[] = [];
   tousLesProduitsAfterType :Produit[] = [];
   tousLesProduitsChoisis :Produit[] = [];
-  idClient : number = 0;
+  idClient: number = 0;
+  afficherModal: boolean = false;
+  urlImageProduitPourModal: string = "";
+  nomProduitPourModal: string = "";
 
 
   constructor(private carteService : CarteService, private router: Router, private panierService: PanierService) {
@@ -78,22 +81,31 @@ export class CarteComponent implements OnInit {
     );
   }
 
-  commanderOuPersonnaliser(idProduit: number){
-    if(idProduit == 0){
-      this.router.navigate(['partieDeGuigui']);
-    }else{
-      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
-      new Promise(
-        () => {
-          setTimeout(
-            ()=>{
-              console.log(this.panierService.isAjoute);
-            },100
-          )
-        }
-      );
-    }
+  commanderOuPersonnaliser(idProduit: number, nomProduit: string = "", urlImage: string = ""){
+    console.log("test");
+    this.urlImageProduitPourModal = urlImage;
+    this.afficherModal= true;
+    this.nomProduitPourModal = nomProduit;
+
+    // if(idProduit == 0){
+    //   this.router.navigate(['partieDeGuigui']);
+    // }else{
+    //   this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+    //   new Promise(
+    //     () => {
+    //       setTimeout(
+    //         ()=>{
+    //           console.log(this.panierService.isAjoute);
+    //         },100
+    //       )
+    //     }
+    //   );
+    // }
+
+
   }
+
+
 
 
 
