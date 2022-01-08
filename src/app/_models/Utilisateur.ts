@@ -1,4 +1,5 @@
 export class Utilisateur{
+  private idUtil: number;
   private nom: string;
   private prenom: string;
   private mail: string;
@@ -19,19 +20,13 @@ export class Utilisateur{
   //   }
   // }
 
-  public constructor(nom: string, prenom: string, mail: string, typeUtil: string ) {
+  public constructor(idUtil: number, nom: string, prenom: string, mail: string, typeUtil: string ) {
+    this.idUtil = idUtil;
     this.nom = nom;
     this.prenom = prenom;
     this.mail = mail;
     this.typeUtil = typeUtil;
   }
 
-  public constructeurSansParam():Utilisateur{
-    return new Utilisateur("","","","");
-  }
-
-  getNom(){
-    return this.nom;
-  }
 
 }

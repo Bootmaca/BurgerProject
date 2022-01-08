@@ -8,11 +8,15 @@
 
 </head>
 <body>
+
+<!--<div class="position-absolute" style="z-index: 1">-->
+<!--  <img src="../../assets/images/burger_logo.svg" alt="" width="2000" height="2000">-->
+<!--</div>-->
 <div class="succeedInscription" *ngIf="affichSucceedInscription">
   <span class="closebtn" (click)="stopAffichSucceedInscription()">&times;</span>
   <p class="textInscriptionReussi"><strong>Inscription réussi !</strong></p>
 </div>
-<div class="wrapper">
+<div class="wrapper" style="z-index: 2">
 
   <div class="title-text" [style]="{'margin-left': marginLeftTitre}">
     <div class="title login">
@@ -31,7 +35,6 @@
     </div>
     <div class="form-inner">
        <form (ngSubmit)="seConnecter(monFormulaireConnexion)" #monFormulaireConnexion="ngForm" class="login" [style]="{'margin-left': marginLeft}">
-<!--       <form action="#" class="login" [style]="{'margin-left': marginLeft}">-->
          <div class="field">
           <input type="email" placeholder="Adresse mail" name="mail" required ngModel>
          </div>

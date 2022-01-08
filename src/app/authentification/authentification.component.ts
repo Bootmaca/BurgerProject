@@ -45,9 +45,17 @@ export class AuthentificationComponent implements OnInit {
               this.identificationFalse = true;
               form.reset(); // Reset le formulaire
               if(this.authService.user[0]['typeUtil'] == 1){
-                this.router.navigate(['/admin']); // Navigation vers la page admin
+                //Type de produit affiché en premier
+                let typeProduit = "Burger";
+
+                sessionStorage.setItem("typeProduit",typeProduit);
+                this.router.navigate(['/admin/carte']); // Navigation vers la page admin
               }else{
-                this.router.navigate(['/client/menu']); // Navigation vers la page client
+                //Type de produit affiché en premier
+                let typeProduit = "Burger";
+
+                sessionStorage.setItem("typeProduit",typeProduit);
+                this.router.navigate(['/client/carte']); // Navigation vers la page client
               }
             }else{
               this.identificationFalse = true;
@@ -74,21 +82,19 @@ export class AuthentificationComponent implements OnInit {
             //récupération de la variable reponseInscription dans le service auth
             this.reponseInscription = this.authService.reponseInscription
             if(this.reponseInscription == "Inséré") { //Si la ligne à été inséré
-                this.inscriptionFalse = false;
-                form.reset(); //reset le formulaire
-                this.onSignIn();
-                this.affichSucceedInscription=true;
-                new Promise(
-                  () => {
-                    setTimeout(
-                      ()=>{
-                        this.affichSucceedInscription=false;
-                      },3000
-                    )
-                  }
-                );
-                //this.router.navigate(['/auth']);
-
+              this.inscriptionFalse = false;
+              form.reset(); //reset le formulaire
+              this.onSignIn();
+              this.affichSucceedInscription=true;
+              new Promise(
+                () => {
+                  setTimeout(
+                    ()=>{
+                      this.affichSucceedInscription=false;
+                    },3000
+                  )
+                }
+              );
             }else{
               this.inscriptionFalse = true;
             }

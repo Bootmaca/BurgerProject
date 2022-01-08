@@ -24,7 +24,8 @@ if ($nbUser < 1) {
 } else {//Si il y a des lignes
     $data = [];
     while($row = $result->fetch()){ //Pour chaque ligne récupéré de la requête
-       $ligne = array('prenom' => $row['prenom'],
+       $ligne = array('idUtil' => $row['idUtil'],
+                      'prenom' => $row['prenom'],
                       'nom' => $row['nom'],
                       'typeUtil' => $row['typeUtil']);
        array_push($data, $ligne); //Pousse les données ci dessous dans le tableau

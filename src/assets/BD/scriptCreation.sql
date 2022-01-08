@@ -148,7 +148,7 @@ ALTER TABLE Burger
 CREATE TABLE Supplement(
 	idSupplement INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	libelle VARCHAR(50),
-	prix INTEGER(10),
+	prix DECIMAL(20,2),
 	image VARCHAR(500),
   isDisponible TINYINT(1)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -178,8 +178,10 @@ ALTER TABLE AjouterBurger
 
 CREATE TABLE Menu(
 	idMenu INTEGER(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-	prix INTEGER(10),
+  libelle VARCHAR(50),
+	prix DECIMAL(20,2),
 	image VARCHAR(500),
+  isDisponible TINYINT(1),
 	idBurger INTEGER(10),
 	idBoisson INTEGER(10),
 	idFrite INTEGER(10)

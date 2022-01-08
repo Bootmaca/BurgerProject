@@ -7,7 +7,7 @@ export class AuthServices{
   urlDeBase : string = "http://localhost/burgerProject/src/app/_php/";
   reponseInscription:string = "";
   user:any =[];
-  utilisateur: Utilisateur = new Utilisateur("","", "", "");
+  utilisateur: Utilisateur = new Utilisateur(0,"","", "", "");
 
   constructor(private http: HttpClient) {
     if(!sessionStorage.getItem("utilisateur")){
@@ -32,14 +32,14 @@ export class AuthServices{
         }
 
         //Création de l'utilisateur
-        this.utilisateur = new Utilisateur(this.user[0]['nom'], this.user[0]['prenom'], mail, typeUtil);
+        this.utilisateur = new Utilisateur(this.user[0]['idUtil'],this.user[0]['nom'], this.user[0]['prenom'], mail, typeUtil);
 
         //Garde en session l'utilisateur
         sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
 
-      }, (error) => { //Si l'utilisateur n'est pas trouvé
+      }, () => { //Si l'utilisateur n'est pas trouvé
         //Création d'un utilisateur "vide" afin qu'il ne puisse pas naviguer ou il veut
-        this.utilisateur = new Utilisateur("","", "", "");
+        this.utilisateur = new Utilisateur(0,"","", "", "");
 
         //Mise en session de cette utilisateur
         sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
@@ -65,9 +65,11 @@ export class AuthServices{
   //Déconnexion
   signOut(){
     //Création d'un utilisateur "vide" afin qu'il ne puisse pas naviguer ou il veut
-    this.utilisateur = new Utilisateur("","", "", "");
+    this.utilisateur = new Utilisateur(0, "","", "", "");
 
     //Mise en session de cette utilisateur
     sessionStorage.setItem("utilisateur", JSON.stringify(this.utilisateur));
   }
 }
+
+
