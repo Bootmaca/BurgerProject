@@ -3,7 +3,7 @@
 <svg width="36cm" height="17.3cm" viewBox="0 0 360 173" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
    <!-- Couleur de fond du document SVG -->
-   
+
    <style type="text/css">
       svg
       {
@@ -12,7 +12,7 @@
          /* Pour la transparence, ajouter le canal alpha dans le code hexadécimal et le fixer à nul (ex: #22222200) */
       }
    </style>
-   
+
    <!-- Description du contenu du document SVG -->
    <desc>
       Logo animé du burger
@@ -24,7 +24,7 @@
    -->
 
    <!-- Définition des éléments -->
-   <defs>
+   <defs >
       <!-- Filtre évolué aspect 3D -->
       <filter id="filtre1" filterUnits="userSpaceOnUse" x="0" y="0" height="173" width="360">
          <!-- Application des différents effets de lumière et de décalage -->

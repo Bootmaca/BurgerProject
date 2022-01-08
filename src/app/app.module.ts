@@ -35,6 +35,13 @@ import { CarteAdminComponent } from './administrateur/carte-admin/carte-admin.co
 import { BarreRechercheAdminComponent } from './administrateur/carte-admin/barre-recherche-admin/barre-recherche-admin.component';
 import { NavBarProduitAdminComponent } from './administrateur/carte-admin/nav-bar-produit-admin/nav-bar-produit-admin.component';
 import { ProduitAdminComponent } from './administrateur/carte-admin/produit-admin/produit-admin.component';
+import { AccueilComponent } from './administrateur/accueil/accueil.component';
+import { SearchfiltrePipe } from './pipe/searchfiltre.pipe';
+import { HistoriqueComponent } from './administrateur/historique/historique.component';
+import { DialogPanierComponent } from './administrateur/historique/dialog-panier/dialog-panier.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -62,7 +69,14 @@ import { ProduitAdminComponent } from './administrateur/carte-admin/produit-admi
     CarteAdminComponent,
     BarreRechercheAdminComponent,
     NavBarProduitAdminComponent,
-    ProduitAdminComponent
+    ProduitAdminComponent,
+    AccueilComponent,
+    SearchfiltrePipe,
+    HistoriqueComponent,
+    DialogPanierComponent
+  ],
+  entryComponents: [
+    DialogPanierComponent
   ],
   imports: [
     HttpClientModule,
@@ -70,7 +84,11 @@ import { ProduitAdminComponent } from './administrateur/carte-admin/produit-admi
     FormsModule,
     FontAwesomeModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
+
   ],
   providers: [
     AuthGuardAdminService,

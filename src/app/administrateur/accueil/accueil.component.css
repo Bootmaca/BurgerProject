@@ -1,0 +1,22 @@
+.conteneurBoutonVoir
+{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lesBoutons{
+  position: absolute;
+  top: 45%; /* poussé de la moitié de hauteur du référent */
+  transform: translateY(-50%);
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.boutonCommande, .boutonProduit{
+  font-size: 30px;
+}

@@ -35,6 +35,8 @@ export class NavBarEnteteComponent implements OnInit {
   Accueil(){
     if (this.router.url.startsWith("/client")) {
       this.router.navigate(['/client/carte']);
+    }else{
+      this.router.navigate(['/admin/accueil']);
     }
   }
 

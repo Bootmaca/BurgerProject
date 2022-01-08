@@ -17,14 +17,19 @@ import {CreationBurgerComponent} from "./client/creation-burger/creation-burger.
 import {CarteComponent} from "./client/carte/carte.component";
 import {CarteAdminComponent} from "./administrateur/carte-admin/carte-admin.component";
 import {PaiementComponent} from "./client/paiement/paiement.component";
+import {AccueilComponent} from "./administrateur/accueil/accueil.component";
+import {HistoriqueComponent} from "./administrateur/historique/historique.component";
 
 const routes: Routes = [
   {path:'auth', component : AuthentificationComponent},
   {path:'admin', canActivate : [AuthGuardAdminService], component: AdministrateurComponent,
     children:[
-      {path: 'carte', canActivate : [AuthGuardAdminService], component: CarteAdminComponent}
+      {path: 'carte', canActivate : [AuthGuardAdminService], component: CarteAdminComponent},
+      {path: 'accueil', canActivate : [AuthGuardAdminService], component: AccueilComponent},
+      {path: 'historique', canActivate : [AuthGuardAdminService], component : HistoriqueComponent},
     ]
   },
+
   {path:'client',
     canActivate : [AuthGuardCustomerService],
     component : ClientComponent,

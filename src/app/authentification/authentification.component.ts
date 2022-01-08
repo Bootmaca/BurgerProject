@@ -49,7 +49,7 @@ export class AuthentificationComponent implements OnInit {
                 let typeProduit = "Burger";
 
                 sessionStorage.setItem("typeProduit",typeProduit);
-                this.router.navigate(['/admin/carte']); // Navigation vers la page admin
+                this.router.navigate(['/admin/accueil']); // Navigation vers la page admin
               }else{
                 //Type de produit affiché en premier
                 let typeProduit = "Burger";
@@ -60,7 +60,7 @@ export class AuthentificationComponent implements OnInit {
             }else{
               this.identificationFalse = true;
             }
-          },200
+          },500
         )
       }
     );
@@ -98,7 +98,7 @@ export class AuthentificationComponent implements OnInit {
             }else{
               this.inscriptionFalse = true;
             }
-          },200
+          },500
         )
       }
     );
