@@ -28,6 +28,7 @@ export class NavBarEnteteComponent implements OnInit {
   }
 
   seDeconnecter(){
+    console.log("test");
     this.authService.signOut();
     this.router.navigate(['/auth']);
   }
@@ -35,6 +36,8 @@ export class NavBarEnteteComponent implements OnInit {
   Accueil(){
     if (this.router.url.startsWith("/client")) {
       this.router.navigate(['/client/carte']);
+    }else{
+      this.router.navigate(['/admin/accueil']);
     }
   }
 

@@ -1,14 +1,21 @@
 .contenneurCarte{
-  /*padding: 20px 50px 50px 20px;*/
-  /*padding : 30px;*/
   padding : 25px;
+}
+
+.nomProduit{
+  font-size: 20px;
+  font-weight: 500;
+  height: 45px;
+}
+
+.prixProduit{
+  font-size: 16px;
 }
 
 .cardStyle{
   padding-top: 5px;
   width: 12rem;
   height: 22rem;
-  /*transform;*/
 }
 
 .cardStyle:hover{
@@ -21,8 +28,4 @@
   bottom:   0;
   padding-bottom: 20px;
   padding-left: 15px;
-}
-
-.nomProduit{
-  height: 45px;
 }

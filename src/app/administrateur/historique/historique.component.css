@@ -1,0 +1,92 @@
+.contenneurTout{
+  overflow: auto;
+  height: 90%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+h1{
+  font-size:45px;
+  font-weight: 550;
+  padding-bottom: 20px;
+}
+
+.titre{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+
+td,thead,tbody{
+  text-align: center;
+}
+.boutonVisualiser{
+  padding: 7px 20px;
+  background-color: #2E2E2D;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+.boutonVisualiser:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+
+table, th, td{
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+table{
+  width: 100%;
+}
+
+th{
+  background-color: #2E2E2D;
+  color: white;
+  height: 50px;
+  font-size: 17px;
+}
+
+td{
+  /*background-color: white;*/
+  color: white;
+}
+
+tbody{
+  background-image: linear-gradient( 135deg, #D5D1D1 10%, #979594 100%);
+}
+
+
+/*table tr:nth-child(odd) {*/
+/*  background-color: orange;*/
+/*}*/
+/*table tr:nth-child(even) {*/
+/*  background-color: yellow;*/
+/*}*/
+
+.contenneurBarreRecherche{
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+.barreDeRecherche{
+  border-radius: 30px;
+  border: 2px solid black;
+  background-position-y: 10px;
+  width: 250px;
+  padding: 8px 4px 8px 30px;
+  font-size: 18px;
+  background: white url("../../../assets/images/loupe.png") no-repeat 10px 10px;
+}
+
+.barreDeRecherche:focus{
+  outline: none;
+  border: 3px solid black;
+}

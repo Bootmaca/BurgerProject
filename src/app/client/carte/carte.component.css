@@ -1,9 +1,12 @@
+h1{
+  font-size:45px;
+  font-weight: 550;
+}
 
 .contenneurTousLesProduits{
   overflow: auto;
   height: 90%;
 }
-
 
 .contenneurToutesLesCartes{
   display: flex;
@@ -92,7 +95,7 @@
 
 .imageProduitAjoute{
   width: 100px;
-  margin-top: -25px;
+  /*margin-top: -25px;*/
   height: 120px;
 }
 
@@ -106,4 +109,26 @@
   width: 380px;
   display: flex;
   justify-content: space-between;
+}
+
+
+/* Design scroll bar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #2E2E2D;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+  cursor: pointer;
 }
