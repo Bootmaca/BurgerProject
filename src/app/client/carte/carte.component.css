@@ -1,9 +1,12 @@
+h1{
+  font-size:45px;
+  font-weight: 550;
+}
 
 .contenneurTousLesProduits{
   overflow: auto;
   height: 90%;
 }
-
 
 .contenneurToutesLesCartes{
   display: flex;
@@ -92,7 +95,7 @@
 
 .imageProduitAjoute{
   width: 100px;
-  margin-top: -25px;
+  /*margin-top: -25px;*/
   height: 120px;
 }
 

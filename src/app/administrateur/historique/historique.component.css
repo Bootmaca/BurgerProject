@@ -4,13 +4,7 @@
   width: 300px;
 
 }
-.search {
-  width: 40%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
-}
+
 .titre{
   text-align: center;
   font-weight: bold;
@@ -45,5 +39,25 @@ table tr:nth-child(odd) {
 }
 table tr:nth-child(even) {
   background-color: yellow;
+}
 
+.contenneurBarreRecherche{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.barreDeRecherche{
+  border-radius: 30px;
+  border: 2px solid black;
+  background-position-y: 10px;
+  width: 250px;
+  padding: 8px 4px 8px 30px;
+  font-size: 18px;
+  /*background: transparent url("../../../../assets/images/loupe.png") no-repeat 10px 10px;*/
+  background: white url("../../../assets/images/loupe.png") no-repeat 10px 10px;
+}
+
+.barreDeRecherche:focus{
+  outline: none;
+  border: 3px solid black;
 }

@@ -83,7 +83,7 @@ INSERT INTO Boisson(idBoisson, libelle, prix, image, isDisponible)
     (12,"Fanta 50cl", 2.50, "grand_fanta.png", 1),
     (13,"Ice Tea Pêche 50cl", 2.50, "grand_ice_tea.png", 1),
     (14,"Ice Tea Agrumes 50cl", 2.50, "grand_ice_tea_agrumes.png", 1),
-    (15,"Sprite Cola 50cl", 2.50, "grand_sprite.png", 1);
+    (15,"Sprite 50cl", 2.50, "grand_sprite.png", 1);
 
 
 INSERT INTO Autre(idAutre, libelle, prix, image, isDisponible)
