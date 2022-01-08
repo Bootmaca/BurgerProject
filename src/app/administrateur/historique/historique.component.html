@@ -1,16 +1,16 @@
 <!--<app-nav-bar-entete></app-nav-bar-entete>-->
-<h1 class="text-center"></h1>
-<div style="padding-left: 20px; padding-right: 20px;">
+<h1 class="text-center">Commande</h1>
+<div class="contenneurTout">
   <div class="contenneurBarreRecherche">
-    <input class="barreDeRecherche" type="search" id="myInput"  placeholder="Search for names.." [(ngModel)]="recherche">
+    <input class="barreDeRecherche" type="search"   placeholder="Search for names.." [(ngModel)]="recherche">
   </div>
 
   <div >
 
-    <table >
+    <table>
       <thead>
       <tr>
-        <th>Nom prenom</th>
+        <th>NOM Prenom</th>
         <th>Prix</th>
         <th>Date</th>
         <th>Voir la commande</th>
@@ -20,10 +20,10 @@
       <tr *ngFor="let commande of DonneeBase$ | searchfiltre : recherche" >
 
         <td >{{ commande.nom }}</td>
-        <td >{{ commande.prix | currency : '€' }}</td>
+        <td >{{ commande.prix + ' €' }}</td>
         <td >{{ commande.date |  date: 'd/M/y' }}</td>
         <td>
-          <button type="button" mat-flat-button  style="background: yellow; color:black" (click)="onSelect(commande.idPanier)">Visualiser </button>
+          <a type="button" class="boutonVisualiser" (click)="onSelect(commande.idPanier)">Visualiser </a>
         </td>
       </tr>
       </tbody>
