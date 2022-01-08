@@ -82,25 +82,24 @@ export class CarteComponent implements OnInit {
   }
 
   commanderOuPersonnaliser(idProduit: number, nomProduit: string = "", urlImage: string = ""){
-    console.log("test");
-    this.urlImageProduitPourModal = urlImage;
-    this.afficherModal= true;
-    this.nomProduitPourModal = nomProduit;
-
-    // if(idProduit == 0){
-    //   this.router.navigate(['partieDeGuigui']);
-    // }else{
-    //   this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
-    //   new Promise(
-    //     () => {
-    //       setTimeout(
-    //         ()=>{
-    //           console.log(this.panierService.isAjoute);
-    //         },100
-    //       )
-    //     }
-    //   );
-    // }
+    if(idProduit == 0){
+      this.router.navigate(['partieDeGuigui']);
+    }else{
+      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+      new Promise(
+        () => {
+          setTimeout(
+            ()=>{
+              if(this.panierService.isAjoute){
+                this.urlImageProduitPourModal = urlImage;
+                this.afficherModal= true;
+                this.nomProduitPourModal = nomProduit;
+              }
+            },200
+          )
+        }
+      );
+    }
 
 
   }
