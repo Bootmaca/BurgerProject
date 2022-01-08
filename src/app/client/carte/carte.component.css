@@ -110,3 +110,25 @@ h1{
   display: flex;
   justify-content: space-between;
 }
+
+
+/* Design scroll bar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #2E2E2D;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+  cursor: pointer;
+}

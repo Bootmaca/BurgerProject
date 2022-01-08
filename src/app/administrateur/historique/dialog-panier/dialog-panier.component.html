@@ -1,26 +1,13 @@
 <div>
 
-  <div class="container" style="background-image: linear-gradient( 135deg, #FCCF31 10%, #F55555 100%); padding-top: 2%; padding-bottom: 2%; border-radius: 10px;width:70%; max-height: 720px; ">
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-
-      *{
-        margin: 0;
-
-        box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-
-      }
-
-    </style>
+  <div class="container contenneurAllDialog">
 
     <h1 class="text-center">Ma commande</h1>
 
     <ol class="list-group border-0" style="">
       <li *ngIf="data['menu']" class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto">
-          <div class="fw-bold"><img src="../../../assets/images/menu.svg" alt="" width="20" height="20"> Menu</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/menu.svg" alt="" width="20" height="20"> Menu</div>
           <ul>
             <li *ngFor="let obj of data['menu'] ">{{obj.burger}}</li>
             <li *ngFor="let obj of data['menu'] ">{{obj.boisson}}</li>
@@ -30,7 +17,7 @@
       </li>
       <li *ngIf="data['burger']" class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto">
-          <div class="fw-bold"><img src="../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
           <ul>
             <li *ngFor="let obj of data['burger'] ">{{obj.nom}} x {{obj.quantite}}</li>
           </ul>
@@ -38,7 +25,7 @@
       </li>
       <li *ngIf="data['frite'] " class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto" >
-          <div class="fw-bold"><img src="../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
           <ul>
             <li *ngFor="let obj of data['frite'] ">{{obj.nom}} x {{obj.quantite}}</li>
           </ul>
@@ -46,7 +33,7 @@
       </li>
       <li *ngIf="data['boisson']" class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto" >
-          <div class="fw-bold"><img src="../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
           <ul>
             <li *ngFor="let obj of data['boisson'] ">{{obj.nom}} x {{obj.quantite}}</li>
           </ul>
@@ -54,7 +41,7 @@
       </li>
       <li *ngIf="data['autre']" class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto" >
-          <div class="fw-bold"><img src="../../../assets/images/legume.svg" alt="" width="20" height="20"> Autre</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/legume.svg" alt="" width="20" height="20"> Supplements</div>
           <ul>
             <li *ngFor="let obj of data['autre'] ">{{obj.nom}} x {{obj.quantite}}</li>
           </ul>
@@ -62,14 +49,15 @@
       </li>
       <li *ngIf="data['dessert']" class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
         <div class="ms-2 me-auto">
-          <div class="fw-bold"><img src="../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
+          <div class="fw-bold produit"><img src="../../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
           <ul>
             <li *ngFor="let obj of data['dessert'] ">{{obj.nom}} x {{obj.quantite}}</li>
-
           </ul>
         </div>
       </li>
     </ol>
   </div>
-  <button mat-raised-button (click)="fermer()">fermer</button>
+  <div class="contenneurBtFermer">
+    <a class="btFermer" (click)="fermer()">fermer</a>
+  </div>
 </div>

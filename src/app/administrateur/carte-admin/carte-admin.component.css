@@ -36,3 +36,24 @@ h1{
   font-size: 20px;
 }
 
+/* Design scroll bar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #2E2E2D;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+  cursor: pointer;
+}
+

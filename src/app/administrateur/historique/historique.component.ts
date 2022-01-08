@@ -21,6 +21,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy{
   autre$:obj_commande[]=[];
   menu$:menu_commande[]=[];
 
+  constructor( private HistoriqueService: HistoriqueService,private matDialog : MatDialog) { }
 
   getAllCommande(): void {
     //on met toutes les commandes du service en courant du composant
@@ -40,6 +41,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy{
       () => {
         setTimeout(
           ()=>{
+
             let dialogref = this.matDialog.open(DialogPanierComponent,
               {
                 data :{
@@ -50,13 +52,11 @@ export class HistoriqueComponent implements OnInit, OnDestroy{
                   dessert : this.dessert$,
                   autre : this.autre$
                 },
-
                 height: '500px',
                 width: '500px',
-
               },
-
             );
+
           },1000
         )
       }
@@ -64,7 +64,6 @@ export class HistoriqueComponent implements OnInit, OnDestroy{
 
   }
 
-  constructor( private HistoriqueService: HistoriqueService,private matDialog : MatDialog) { }
 
 
   ngOnInit(): void {
@@ -78,7 +77,7 @@ export class HistoriqueComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(){
-    this.Donnee$.unsubscribe();
+    // this.Donnee$.unsubscribe();
   }
 
 }

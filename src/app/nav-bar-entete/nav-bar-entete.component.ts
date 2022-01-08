@@ -28,6 +28,7 @@ export class NavBarEnteteComponent implements OnInit {
   }
 
   seDeconnecter(){
+    console.log("test");
     this.authService.signOut();
     this.router.navigate(['/auth']);
   }

@@ -106,13 +106,9 @@ VALUES
 
 INSERT INTO Panier(idPanier, isSurPlace, prix, etat, date)
   VALUES
-    (1, 1, 0, 0, NULL),
     (2, 1, 0, 0, NULL),
-    (3, 1, 0, 0, NULL),
     (4, 1, 0, 0, NULL),
-    (5, 1, 0, 0, NULL),
-    (6, 1, 0, 0, NULL),
-    (7, 1, 0, 0, NULL);
+    (6, 1, 0, 0, NULL);
 
 INSERT INTO Commande(idUtil, idPanier)
   VALUES

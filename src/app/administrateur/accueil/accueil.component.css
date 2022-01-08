@@ -24,4 +24,12 @@ h1{
 
 .boutonCommande, .boutonProduit{
   font-size: 30px;
+  border-radius: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
+
+/*.boutonCommande:hover, .boutonProduit:hover{*/
+/*  color: blue;*/
+/*  background-color: white;*/
+/*}*/
