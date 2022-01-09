@@ -7,10 +7,10 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once("chargementClasses.php");
 
 //Récupération des données
-//$idUtil = $_REQUEST['idUtil'];
+$idUtil = $_REQUEST['idUtil'];
 
 //Données de test
-$idUtil = 8;
+//$idUtil = 8;
 
 //Création de la connexion avec la base de donnée en créant l'objet
 $panierMySQL = new PanierMySQL();

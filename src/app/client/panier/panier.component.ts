@@ -41,6 +41,7 @@ export class PanierComponent implements OnInit {
             this.lesAutres = this.panierService.lesAutres;
             this.lesBurgers = this.panierService.lesBurgers;
             this.lesMenus = this.panierService.lesMenus;
+            this.calculDuPrixTotal();
           },1000
         )
       }
@@ -57,9 +58,43 @@ export class PanierComponent implements OnInit {
   }
 
   calculDuPrixTotal(){
-    let prix = 0
+    let prix : number = 0;
 
-    this.lesFrites.forEach(frite => {prix += frite.prix} )
+    this.lesFrites.forEach(
+      frite => {
+        prix =+ (frite.prix * frite.quantite) + prix;
+      }
+    );
+
+    this.lesMenus.forEach(
+      menu => {
+        prix =+ (menu.prix * menu.quantite) + prix;
+      }
+    );
+
+    this.lesAutres.forEach(
+      autre => {
+        prix =+ (autre.prix * autre.quantite) + prix;
+      }
+    );
+
+    this.lesDessert.forEach(
+      dessert => {
+        prix =+ (dessert.prix * dessert.quantite) + prix;
+      }
+    );
+
+    this.lesBurgers.forEach(
+      burger => {
+        prix =+ (burger.prix * burger.quantite) + prix;
+      }
+    );
+
+    this.lesBoisson.forEach(
+      boisson => {
+        prix =+ (boisson.prix * boisson.quantite) + prix;
+      }
+    );
 
     this.prixTotal = prix;
   }
