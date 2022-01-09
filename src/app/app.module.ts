@@ -34,6 +34,7 @@ import { DialogPanierComponent } from './administrateur/historique/dialog-panier
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
+import { ProduitPersonnalisationComponent } from './client/creation-burger/produit-personnalisation/produit-personnalisation.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import {MatButtonModule} from "@angular/material/button";
     AccueilComponent,
     SearchfiltrePipe,
     HistoriqueComponent,
-    DialogPanierComponent
+    DialogPanierComponent,
+    ProduitPersonnalisationComponent
   ],
   entryComponents: [
     DialogPanierComponent

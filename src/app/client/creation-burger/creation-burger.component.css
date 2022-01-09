@@ -1,3 +1,8 @@
+h1{
+  font-size:45px;
+  font-weight: 550;
+}
+
 .mat-stepper-horizontal {
   margin-top: 8px;
 }
@@ -10,7 +15,6 @@
   transition: transform .2s;
 }
 
-
 .card:hover{
   transform: scale(1.1);
 }
@@ -18,4 +22,27 @@
 .conteneurTout{
   overflow: auto;
   height: 90%;
+}
+
+.indicateurNombreChoisi{
+  margin-left: 10%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.contenneurProduitPersonnalisation{
+  padding-top: 30px;
+}
+
+.carteProduitPersonalisation{
+  width: 12rem; padding: 20px
+}
+
+.card:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.conteneurBouton{
+  margin-top:5%;
 }

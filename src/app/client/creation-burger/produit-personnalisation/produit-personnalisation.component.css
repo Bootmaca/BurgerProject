@@ -1,0 +1,11 @@
+.carteProduitPersonalisation{
+  width: 12rem; padding: 20px
+}
+
+.produit{
+  font-weight: 550;
+  font-size: 20px;
+  transition: transform .2s;
+}
+
+

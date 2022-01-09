@@ -1,28 +1,24 @@
 <h1 class="text-center">Personnalisation de burger</h1>
 
-
+<!--Choix du pain-->
 <div class="contenneurTout">
   <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vuePain">
-    <p style="margin-left: 10%;font-weight: bold;">Pain({{countPain}}/1)</p>
-    <div class="d-flex justify-content-around" >
-      <div class="card" id="painBaguette" style="width: 10rem;" (click)="choixPainBaguette()">
-        <img src="../../../assets/images/pain_burger.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Pain Baguette</h5>
-        </div>
+    <p class="indicateurNombreChoisi">Pain({{countPain}}/1)</p>
+    <div class="d-flex justify-content-around contenneurProduitPersonnalisation" >
+
+      <div class="card carteProduitPersonalisation" id="painBaguette" (click)="choixPainBaguette()">
+        <app-produit-personnalisation [nom]="'Pain Baguette'" [prix]="0" [urlImage]="'pain_baguette.jpg'"></app-produit-personnalisation>
       </div>
 
-      <div class="card" id="painBurger" style="width: 10rem;" (click)="choixPainBurger()">
-        <img src="../../../assets/images/pain_baguette.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center"><br>Pain Burger</h5>
-        </div>
+      <div class="card carteProduitPersonalisation" id="painBurger" (click)="choixPainBurger()">
+        <app-produit-personnalisation [nom]="'Pain Burger'" [prix]="0" [urlImage]="'pain_burger.jpg'"></app-produit-personnalisation>
       </div>
+
     </div>
-    <div class="container text-center" style="margin-top:10%;">
+    <div class="container text-center conteneurBouton">
       <div class="row justify-content-around">
         <div class="col">
-          <a class="btn btn-primary" href="#" role="button" routerLink="/client/burgers" routerLinkActive="active">Annuler</a>
+          <a class="btn btn-primary" href="#" role="button" routerLink="/client/carte" routerLinkActive="active">Annuler</a>
         </div>
         <div class="col" *ngIf="painBurgerSelected || painBaguetteSelected">
           <a class="btn btn-primary" role="button" (click)="selectPain()" >Suivant</a>
@@ -32,38 +28,33 @@
     </div>
   </div>
 
+
+  <!--  Choix de la viande-->
   <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueViande">
-    <p style="margin-left: 10%;font-weight: bold;">Viande({{countViande}}/1)</p>
-    <div class="d-flex justify-content-around " >
-      <div class="card" id="viandePoulet" style="width: 10rem;" (click)="choixViandePoulet()">
-        <img src="../../../assets/images/steack_poulet.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Poulet</h5>
-        </div>
+    <p class="indicateurNombreChoisi">Viande({{countViande}}/1)</p>
+    <div class="d-flex justify-content-around contenneurProduitPersonnalisation" >
+
+      <div class="card carteProduitPersonalisation" id="viandePoulet" (click)="choixViandePoulet()">
+        <app-produit-personnalisation [nom]="'Poulet'" [prix]="0" [urlImage]="'steack_poulet.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="viandeSteack" style="width: 10rem; " (click)="choixViandeSteack()">
-        <img src="../../../assets/images/steack.png" class="card-img-top" alt="...">
-        <div class="card-body" >
-          <h5 class="card-title text-center">Steack</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="viandeSteack" (click)="choixViandeSteack()">
+        <app-produit-personnalisation [nom]="'Steack'" [prix]="0" [urlImage]="'steack.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="viandePoisson" style="width: 10rem; " (click)="choixViandePoisson()">
-        <img src="../../../assets/images/steack_poisson.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Poisson</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="viandePoisson" (click)="choixViandePoisson()">
+        <app-produit-personnalisation [nom]="'Poisson'" [prix]="0" [urlImage]="'steack_poisson.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="viandeVeggie" style="width: 10rem;" (click)="choixViandeVeggie()">
-        <img src="../../../assets/images/steack_vege.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Veggie</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="viandeVeggie" (click)="choixViandeVeggie()">
+        <app-produit-personnalisation [nom]="'Veggie'" [prix]="0" [urlImage]="'steack_vege.png'"></app-produit-personnalisation>
       </div>
     </div>
-    <div class="container text-center" style="margin-top:10%;" >
+
+    <div class="container text-center conteneurBouton">
       <div class="row justify-content-around">
         <div class="col">
-          <a class="btn btn-primary" role="button" (click)="annulerViande()">Annuler</a>
+          <a class="btn btn-primary" role="button" (click)="annulerViande()">Précédant</a>
         </div>
         <div class="col">
           <a class="btn btn-primary" role="button" (click)="selectViande()">Suivant</a>
@@ -72,38 +63,33 @@
     </div>
   </div>
 
+
+  <!--  Choix de la sauce-->
   <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueSauce">
-    <p style="margin-left: 10%;font-weight: bold;">Sauce({{countSauce}}/1)</p>
-    <div class="d-flex justify-content-around ">
-      <div class="card" id="sauceKetchup" style="width: 10rem; " (click)="choixSauceKetchup()">
-        <img src="../../../assets/images/ketchup.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Ketchup</h5>
-        </div>
+    <p class="indicateurNombreChoisi">Sauce({{countSauce}}/1)</p>
+    <div class="d-flex justify-content-around contenneurProduitPersonnalisation">
+
+      <div class="card carteProduitPersonalisation" id="sauceKetchup" (click)="choixSauceKetchup()">
+        <app-produit-personnalisation [nom]="'Ketchup'" [prix]="0" [urlImage]="'ketchup.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="sauceBurger" style="width: 10rem; " (click)="choixSauceBurger()">
-        <img src="../../../assets/images/sauce_burger.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Burger</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="sauceBurger" (click)="choixSauceBurger()">
+        <app-produit-personnalisation [nom]="'Burger'" [prix]="0" [urlImage]="'sauce_burger.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="sauceMayo" style="width: 10rem; " (click)="choixSauceMayo()">
-        <img src="../../../assets/images/mayo.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Mayo</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="sauceMayo" (click)="choixSauceMayo()">
+        <app-produit-personnalisation [nom]="'Mayo'" [prix]="0" [urlImage]="'mayo.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="sauceBiggie" style="width: 10rem;" (click)="choixSauceBiggie()">
-        <img src="../../../assets/images/biggie.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Biggie</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="sauceBiggie" (click)="choixSauceBiggie()">
+        <app-produit-personnalisation [nom]="'Biggie'" [prix]="0" [urlImage]="'biggie.png'"></app-produit-personnalisation>
       </div>
     </div>
-    <div class="container text-center" style="margin-top:10%;" >
+
+    <div class="container text-center conteneurBouton">
       <div class="row justify-content-around">
         <div class="col">
-          <a class="btn btn-primary"  role="button" (click)="annulerSauce()">Annuler</a>
+          <a class="btn btn-primary"  role="button" (click)="annulerSauce()">Précédant</a>
         </div>
         <div class="col">
           <a class="btn btn-primary"  role="button" (click)="selectSauce()">Suivant</a>
@@ -113,41 +99,35 @@
     </div>
   </div>
 
+  <!--  Choix du supplément-->
   <div class="row mx-auto " style="margin-top: 4%;" *ngIf="vueSupplements">
-    <p style="margin-left: 10%;font-weight: bold;">Supplément({{countSupp}}/1)</p>
-    <div class="d-flex justify-content-around ">
-      <div class="card" id="suppBaccon" style="width: 10rem; " (click)="choixSuppBaccon()">
-        <img src="../../../assets/images/bacon.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Baccon</h5>
-        </div>
+    <p class="indicateurNombreChoisi">Supplément({{countSupp}}/1)</p>
+    <div class="d-flex justify-content-around contenneurProduitPersonnalisation">
+
+      <div class="card carteProduitPersonalisation" id="suppBaccon" (click)="choixSuppBaccon()">
+        <app-produit-personnalisation [nom]="'Baccon'" [prix]="0" [urlImage]="'bacon.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="suppCheddar" style="width: 10rem; " (click)="choixSuppCheddar()">
-        <img src="../../../assets/images/cheddar.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Cheddar</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="suppCheddar" (click)="choixSuppCheddar()">
+        <app-produit-personnalisation [nom]="'Cheddar'" [prix]="0" [urlImage]="'cheddar.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="suppEmmental" style="width: 10rem; " (click)="choixSuppEmmental()">
-        <img src="../../../assets/images/emmental.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Emmental</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="suppEmmental" (click)="choixSuppEmmental()">
+        <app-produit-personnalisation [nom]="'Emmental'" [prix]="0" [urlImage]="'emmental.png'"></app-produit-personnalisation>
       </div>
-      <div class="card" id="suppChevre" style="width: 10rem;" (click)="choixSuppChevre()">
-        <img src="../../../assets/images/chevre.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Chèvre</h5>
-        </div>
+
+      <div class="card carteProduitPersonalisation" id="suppChevre" (click)="choixSuppChevre()">
+        <app-produit-personnalisation [nom]="'Chèvre'" [prix]="0" [urlImage]="'chevre.png'"></app-produit-personnalisation>
       </div>
     </div>
-    <div class="container text-center" style="margin-top:10%;" >
+
+    <div class="container text-center conteneurBouton">
       <div class="row justify-content-around">
         <div class="col">
-          <a class="btn btn-primary" role="button" (click)="annulerSupp()">Annuler</a>
+          <a class="btn btn-primary" role="button" (click)="annulerSupp()">Précédant</a>
         </div>
         <div class="col" >
-          <a class="btn btn-primary" role="button">Suivant</a>
+          <a class="btn btn-primary" role="button" (click)="ajouterLeBurger()">Ajouter</a>
         </div>
       </div>
       <p></p>

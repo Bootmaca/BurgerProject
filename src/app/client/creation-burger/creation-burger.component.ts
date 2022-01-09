@@ -73,7 +73,6 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countPain = 1;
     this.burger['pain'] = "Baguette";
-    console.log(this.burger);
   }
 
   choixPainBurger() : void{
@@ -97,7 +96,6 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countPain = 1;
     this.burger["pain"] = "Burger";
-    console.log(this.burger);
 
   }
 
@@ -140,7 +138,6 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countViande = 1;
     this.burger["viande"] = "Poulet";
-    console.log(this.burger);
   }
 
   choixViandeSteack() :void{
@@ -173,7 +170,6 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countViande = 1;
     this.burger["viande"] = "Steack";
-    console.log(this.burger);
   }
 
   choixViandePoisson() :void{
@@ -206,7 +202,6 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countViande = 1;
     this.burger["viande"] = "Poisson";
-    console.log(this.burger);
 
   }
 
@@ -241,7 +236,6 @@ export class CreationBurgerComponent implements OnInit {
     this.countViande = 1;
 
     this.burger["viande"] = "Veggie";
-    console.log(this.burger);
 
   }
 
@@ -295,7 +289,6 @@ export class CreationBurgerComponent implements OnInit {
     this.countSauce = 1;
 
     this.burger["sauce"] = "Ketchup";
-    console.log(this.burger);
   }
 
   choixSauceBurger() :void{
@@ -329,7 +322,6 @@ export class CreationBurgerComponent implements OnInit {
     this.countSauce = 1;
 
     this.burger["sauce"] = "Burger";
-    console.log(this.burger);
   }
 
   choixSauceMayo() :void{
@@ -363,7 +355,6 @@ export class CreationBurgerComponent implements OnInit {
     this.countSauce = 1;
 
     this.burger["sauce"] = "Mayonnaise";
-    console.log(this.burger);
   }
 
   choixSauceBiggie() :void{
@@ -398,7 +389,6 @@ export class CreationBurgerComponent implements OnInit {
 
 
     this.burger["sauce"] = "Biggie";
-    console.log(this.burger);
   }
 
 
@@ -448,7 +438,6 @@ export class CreationBurgerComponent implements OnInit {
     this.countSupp = 1;
 
     this.burger["supplement"]="Baccon";
-    console.log(this.burger);
 
   }
 
@@ -484,7 +473,6 @@ export class CreationBurgerComponent implements OnInit {
 
 
     this.burger["supplement"]="Cheddar";
-    console.log(this.burger);
   }
 
   choixSuppEmmental() :void{
@@ -517,10 +505,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSupp = 1;
 
-
-
     this.burger["supplement"]="Emmental";
-    console.log(this.burger);
   }
 
   choixSuppChevre() :void{
@@ -555,7 +540,6 @@ export class CreationBurgerComponent implements OnInit {
 
 
     this.burger["supplement"]="Chevre";
-    console.log(this.burger);
   }
 
 
@@ -567,6 +551,10 @@ export class CreationBurgerComponent implements OnInit {
     this.vueSauce = true;
     this.vueSupplements = false;
 
+  }
+
+  ajouterLeBurger(){
+    console.log(this.burger);
   }
 
 

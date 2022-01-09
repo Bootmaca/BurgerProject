@@ -39,12 +39,7 @@ INSERT INTO Supplement(idSupplement, libelle, prix, image, isDisponible)
     (1,"Bacon", 1.00, "url/image", 1),
     (2,"Cheddar", 0.50, "url/image", 1),
     (3,"Emmental", 0.50, "url/image", 1),
-    (4,"Chèvre", 0.50, "url/image", 1),
-    (5,"Poulet", 1.50, "url/image", 1),
-    (6,"Steak haché", 1.50, "url/image", 1),
-    (7,"Poisson", 1.50, "url/image", 1),
-    (8,"Veggie", 1.50, "url/image", 1),
-    (9,"Ananas", 1.00, "url/image", 1);
+    (4,"Chèvre", 0.50, "url/image", 1);
 
 INSERT INTO SupplementBurger(idBurger, idSupplement)
   VALUES
