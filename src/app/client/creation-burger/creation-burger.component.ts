@@ -555,6 +555,7 @@ export class CreationBurgerComponent implements OnInit {
 
   ajouterLeBurger(){
     console.log(this.burger);
+    let nomBurger = "CREATED BY Pierre DE ALMEIDA";
   }
 
 

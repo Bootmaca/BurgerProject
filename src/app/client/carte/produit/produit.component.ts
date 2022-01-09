@@ -13,7 +13,7 @@ export class ProduitComponent implements OnInit {
   @Input() numero : number = 1;
   @Input() id : number = 1;
   @Input() nom: string = "Menu n°1";
-  @Input() prix: number = 10;
+  @Input() prix : number= 5.00;
   @Input() urlImage: string = "../../../assets/images/petite_frite.png" ;
   @Input() nameBtn: string = "Commander" ;
   @Input() url: string = "1" ;
