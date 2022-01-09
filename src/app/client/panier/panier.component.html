@@ -1,57 +1,174 @@
 <h1 class="text-center">Ma commande</h1>
 
 <div class="contenneurPanier">
-  <ol class="list-group border-0" style="">
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th>Article</th>
+      <th>Quantité</th>
+      <th>Prix</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- Menu -->
+    <tr *ngFor="let menu of lesMenus">
+      <td>
+        <img src="../../../assets/images/menu.svg" alt="" width="40" height="40" >
+        <span class="nom"> {{menu.libelle}} </span>
+        <ul style="font-size: 17px;">
+          <li>{{menu.libelleBurger}}</li>
+          <ul>
+            <li>Pain : {{menu.typePain}}</li>
+            <li>Viande : {{menu.libelleViande}}</li>
+            <li>Sauce : {{menu.libelleViande}}</li>
+            <li *ngFor="let supplement of menu.supplement let i = index">Suppléments {{i+1}} : {{supplement[i+1]}}</li>
+          </ul>
+          <li>{{menu.libelleFrite}}</li>
+          <li>{{menu.libelleBoisson}}</li>
         </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto" >
-        <div class="fw-bold"><img src="../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{menu.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{menu.quantite * menu.prix}} € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr *ngFor="let burger of lesBurgers ">
+      <td>
+        <img src="../../../assets/images/burger.svg" alt="" width="40" height="40" >
+        <span class="nom"> {{burger.libelle}} </span>
         <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
+          <li>Pain : {{burger.typePain}}</li>
+          <li>Viande : {{burger.libelleViande}}</li>
+          <li>Sauce : {{burger.libelleSauce}}</li>
+          <li *ngFor="let supplement of burger.supplement let i = index">Supplément {{i+1}} : {{supplement[i+1]}}</li>
         </ul>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{burger.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{burger.quantite * burger.prix}} €</div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+    <tr *ngFor="let frite of lesFrites">
+      <td>
+        <img src="../../../assets/images/frite.svg" alt="" width="40" height="40">
+        <span class="nom"> {{frite.libelle}} </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{frite.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{frite.quantite * frite.prix}} €</div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr *ngFor="let boisson of lesBoisson">
+      <td>
+        <img src="../../../assets/images/boisson.svg" alt="" width="40" height="40">
+        <span class="nom"> {{boisson.libelle}} </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{boisson.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{boisson.quantite * boisson.prix}} € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr *ngFor="let autre of lesAutres">
+      <td>
+        <img src="../../../assets/images/supplement.svg" alt="" width="40" height="40">
+        <span class="nom"> {{autre.libelle}} </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{autre.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{autre.quantite * autre.prix}} € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+    <tr *ngFor="let dessert of lesDessert">
+      <td>
+        <img src="../../../assets/images/dessert.svg" alt="" width="40" height="40">
+        <span class="nom"> {{dessert.libelle}} </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> {{dessert.quantite}} </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> {{dessert.quantite * dessert.prix}} € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    </tbody>
+    <tfoot>
+    <tr>
+      <td>TOTAL : </td>
+      <td></td>
+      <td>{{prixTotal}} €</td>
+      <td></td>
+    </tr>
+    </tfoot>
+  </table>
+  <!-- Modal produit ajouté au panier -->
+  <div *ngIf="this.afficherModal">
+    <div id="myModal" class="mmodal">
+      <div class="mmodal-content">
+        <span class="cclose" (click)="this.afficherModal = false;">&times;</span>
+        <div class="contenneurImageValide">
+          <img src="../../../assets/images/valide.png" class="imageValide" alt="ajout valide">
+        </div>
+        <p class="titreProduitAjoute">Commande validé ! Bon appétit ;)</p>
+        <div class="contenneurBoutons">
+            <a class="btn btn-secondary btnCarte" (click)="redirectionApresPaiement()">Super !</a>
+        </div>
       </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto" >
-        <div class="fw-bold"><img src="../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/legume.svg" alt="" width="20" height="20"> Suppléments</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-  </ol>
+    </div>
+  </div>
+  <div>
+    <input type="button" class="fa-pull-right btn btn-warning payer" value="Payer" (click)="payer()">
+  </div>
+  <app-nav-bar-produit (eventEmitterChangerProduit)="redirigerVersProduit($event)"></app-nav-bar-produit>
 </div>
-<app-nav-bar-produit (eventEmitterChangerProduit)="redirigerVersProduit($event)"></app-nav-bar-produit>

@@ -12,6 +12,7 @@ import {CarteAdminComponent} from "./administrateur/carte-admin/carte-admin.comp
 import {PaiementComponent} from "./client/paiement/paiement.component";
 import {AccueilComponent} from "./administrateur/accueil/accueil.component";
 import {HistoriqueComponent} from "./administrateur/historique/historique.component";
+import {CreationBurgerComponent} from "./client/creation-burger/creation-burger.component";
 
 const routes: Routes = [
   {path:'auth', component : AuthentificationComponent},
@@ -29,7 +30,7 @@ const routes: Routes = [
       {path: 'carte', canActivate : [AuthGuardCustomerService], component: CarteComponent},
       {path: 'panier', canActivate : [AuthGuardCustomerService], component: PanierComponent},
       {path: 'paiement', canActivate : [AuthGuardCustomerService], component: PaiementComponent},
-      {path: 'creer-burger', canActivate : [AuthGuardCustomerService], component: PaiementComponent}
+      {path: 'creer-burger', canActivate : [AuthGuardCustomerService], component: CreationBurgerComponent}
     ]
   },
   {path:'not-found', component : NotFoundComponent},

@@ -9,7 +9,7 @@
       *ngIf="typeProduit == 'Burger'"
       [id]="0"
       [nom]="'Créer mon burger'"
-      [prix]="7"
+      [prix]="5.00"
       [nameBtn]="'Personaliser'"
       [urlImage]="'burger_a_creer.png'"
       (eventEmitterClickSurCarte)="commanderOuPersonnaliser(0)">
@@ -44,7 +44,7 @@
       <p class="card-title text-center nomProduit">{{nomProduitPourModal}}</p>
       <div class="contenneurBoutons">
         <div class="btnContinuerEtVoir">
-          <a class="btn btn-secondary btnCarte"(click)="this.afficherModal = false;">Continuer mes achats</a>
+          <a class="btn btn-secondary btnCarte" (click)="this.afficherModal = false;">Continuer mes achats</a>
           <a class="btn btn-success btnCarte" (click)="changerTypeProduit('Panier')">Voir mon panier</a>
         </div>
       </div>

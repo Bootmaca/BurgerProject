@@ -85,7 +85,7 @@ export class CarteComponent implements OnInit {
     if(idProduit == 0){
       this.router.navigate(['client/creer-burger']);
     }else{
-      this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
+      this.panierService.ajouterProduit(this.idClient, idProduit, this.typeProduit);
       new Promise(
         () => {
           setTimeout(

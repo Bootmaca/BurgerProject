@@ -1,4 +1,148 @@
 .contenneurPanier{
   overflow: auto;
   height: 90%;
+  padding-right: 20px;
+  padding-left: 20px;
 }
+
+h1{
+  font-size:45px;
+  font-weight: 550;
+}
+
+th{
+  font-size: 20px;
+}
+
+.boutonMoin, .boutonPlus, .boutonSupprimer, .payer{
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #2E2E2D;
+  border: 1px #2E2E2D;
+  color: white;
+}
+
+.boutonMoin:hover, .boutonPlus:hover, .boutonSupprimer:hover, .payer:hover{
+  background-color: white;
+  color: #2E2E2D;
+}
+
+.nom{
+  font-size: 20px;
+}
+
+ul{
+  font-size: 17px;
+}
+
+.quantite{
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.prix{
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+tfoot{
+  font-size: 30px;
+  font-weight: 500;
+  border: none;
+}
+
+
+/* le background du Modal */
+.mmodal {
+  display: block;
+  position: fixed; /* reste à la même place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Toute la largeur */
+  height: 100%; /* Toute la longueur */
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.7); /* modifier le dernier flottant pour influencer l'oppacité */
+}
+
+/* Modal Content/Box */
+.mmodal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 25px;
+  border: 3px solid black;
+  border-radius: 20px;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.cclose {
+  margin-top: -20px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cclose:hover,
+.cclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contenneurImageValide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 30px;
+}
+
+.imageValide{
+  width: 100px;
+  margin-top: -20px;
+  height: 90px;
+}
+
+.titreProduitAjoute{
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 0;
+}
+
+.contenneurBoutons{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Design scroll bar*/
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background-color: #2E2E2D;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: black;
+  cursor: pointer;
+}
+

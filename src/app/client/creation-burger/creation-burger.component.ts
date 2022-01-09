@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PanierService} from "../../services/panier.services";
 
 
 @Component({
@@ -40,8 +41,10 @@ export class CreationBurgerComponent implements OnInit {
 
   burger: any | undefined;
 
+  afficherModal: boolean = false;
 
-  constructor() {}
+
+  constructor(private panierService : PanierService) {}
 
 
 
@@ -72,8 +75,7 @@ export class CreationBurgerComponent implements OnInit {
 
 
     this.countPain = 1;
-    this.burger['pain'] = "Baguette";
-    console.log(this.burger);
+    this.burger['pain'] = 0;
   }
 
   choixPainBurger() : void{
@@ -96,8 +98,7 @@ export class CreationBurgerComponent implements OnInit {
     }
 
     this.countPain = 1;
-    this.burger["pain"] = "Burger";
-    console.log(this.burger);
+    this.burger["pain"] = 1;
 
   }
 
@@ -139,8 +140,7 @@ export class CreationBurgerComponent implements OnInit {
     }
 
     this.countViande = 1;
-    this.burger["viande"] = "Poulet";
-    console.log(this.burger);
+    this.burger["viande"] = 1;
   }
 
   choixViandeSteack() :void{
@@ -172,8 +172,7 @@ export class CreationBurgerComponent implements OnInit {
     }
 
     this.countViande = 1;
-    this.burger["viande"] = "Steack";
-    console.log(this.burger);
+    this.burger["viande"] = 2;
   }
 
   choixViandePoisson() :void{
@@ -205,8 +204,7 @@ export class CreationBurgerComponent implements OnInit {
     }
 
     this.countViande = 1;
-    this.burger["viande"] = "Poisson";
-    console.log(this.burger);
+    this.burger["viande"] = 3;
 
   }
 
@@ -240,8 +238,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countViande = 1;
 
-    this.burger["viande"] = "Veggie";
-    console.log(this.burger);
+    this.burger["viande"] = 4;
 
   }
 
@@ -294,8 +291,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSauce = 1;
 
-    this.burger["sauce"] = "Ketchup";
-    console.log(this.burger);
+    this.burger["sauce"] = 1;
   }
 
   choixSauceBurger() :void{
@@ -328,8 +324,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSauce = 1;
 
-    this.burger["sauce"] = "Burger";
-    console.log(this.burger);
+    this.burger["sauce"] = 2;
   }
 
   choixSauceMayo() :void{
@@ -362,8 +357,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSauce = 1;
 
-    this.burger["sauce"] = "Mayonnaise";
-    console.log(this.burger);
+    this.burger["sauce"] = 3;
   }
 
   choixSauceBiggie() :void{
@@ -397,8 +391,7 @@ export class CreationBurgerComponent implements OnInit {
     this.countSauce = 1;
 
 
-    this.burger["sauce"] = "Biggie";
-    console.log(this.burger);
+    this.burger["sauce"] = 4;
   }
 
 
@@ -447,8 +440,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSupp = 1;
 
-    this.burger["supplement"]="Baccon";
-    console.log(this.burger);
+    this.burger["supplement"]=1;
 
   }
 
@@ -483,8 +475,7 @@ export class CreationBurgerComponent implements OnInit {
     this.countSupp = 1;
 
 
-    this.burger["supplement"]="Cheddar";
-    console.log(this.burger);
+    this.burger["supplement"]=2;
   }
 
   choixSuppEmmental() :void{
@@ -517,10 +508,7 @@ export class CreationBurgerComponent implements OnInit {
 
     this.countSupp = 1;
 
-
-
-    this.burger["supplement"]="Emmental";
-    console.log(this.burger);
+    this.burger["supplement"]=3;
   }
 
   choixSuppChevre() :void{
@@ -554,8 +542,7 @@ export class CreationBurgerComponent implements OnInit {
     this.countSupp = 1;
 
 
-    this.burger["supplement"]="Chevre";
-    console.log(this.burger);
+    this.burger["supplement"]=4;
   }
 
 
@@ -567,6 +554,35 @@ export class CreationBurgerComponent implements OnInit {
     this.vueSauce = true;
     this.vueSupplements = false;
 
+  }
+
+  ajouterLeBurger(){
+    let user:any = sessionStorage.getItem("utilisateur");
+    user = JSON.parse(user);
+    let idClient = user['idUtil'];
+    let nom = user['nom'];
+    let prenom = user['prenom'];
+    let nomBurger = "Burger crée par " + nom + " " + prenom;
+    let idPain = this.burger["pain"];
+    let idViande = this.burger["viande"];
+    let idSupplement = 0;
+    if(this.burger["supplement"] != undefined){
+      idSupplement = this.burger["supplement"];
+    }
+    let idSauce = this.burger["sauce"];
+    console.log("idClient : " + idClient + " nom Burger : " + nomBurger + " idPain : " + idPain + " idViande : " + idViande + " idSupplément : " + idSupplement + " id sauce : " + idSauce);
+    this.panierService.ajouterBurger(idClient, nomBurger, idPain, idViande, idSupplement, idSauce);
+    new Promise(
+      () => {
+        setTimeout(
+          ()=>{
+            if(this.panierService.isAjoute2){
+              this.afficherModal= true;
+            }
+          },800
+        )
+      }
+    );
   }
 
 

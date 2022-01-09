@@ -447,90 +447,86 @@ class PanierMySQL
     return $isInserted;
   }
 
-  function rechercherLesDessertsDuPanier($idPanier){
-    $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Dessert.idDessert, libelle, prix, image, quantite
-                                                        FROM ajouterDessert INNER JOIN Dessert
-                                                        ON ajouterDessert.idDessert = Dessert.idDessert
-                                                        WHERE idPanier = :idPanier");
-    $stmt->bindParam(':idPanier', $idPanier);
-    $stmt->execute();
-    if ($stmt === false) {
-      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
-    }
-    if($stmt->rowCount() > 0){
-      $isDeja = "true";
-    }
-    return $isDeja;
-  }
-
   function rechercherLesFritesDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Frite.idFrite, libelle, prix, image, quantite
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Frite.idFrite as id, libelle, prix, quantite
                                                         FROM ajouterFrite INNER JOIN Frite
                                                         ON ajouterFrite.idFrite = Frite.idFrite
                                                         WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
-    if ($stmt === false) {
-      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
-    }
-    if($stmt->rowCount() > 0){
-      $isDeja = "true";
-    }
-    return $isDeja;
+    return $stmt;
   }
 
-  function rechercherLesMenusDuPanier($idPanier){
+  function rechercherLesDessertsDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Menu.idMenu, libelle, prix, image, quantite
-                                                        FROM ajouterMenu INNER JOIN Menu
-                                                        ON ajouterMenu.idMenu = Menu.idMenu
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Dessert.idDessert as id, libelle, prix, quantite
+                                                        FROM ajouterDessert INNER JOIN Dessert
+                                                        ON ajouterDessert.idDessert = Dessert.idDessert
                                                         WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
-    if ($stmt === false) {
-      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
-    }
-    if($stmt->rowCount() > 0){
-      $isDeja = "true";
-    }
-    return $isDeja;
+    return $stmt;
+  }
+
+  function rechercherLesBoissonsDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Boisson.idBoisson as id, libelle, prix, quantite
+                                                        FROM ajouterBoisson INNER JOIN Boisson
+                                                        ON ajouterBoisson.idBoisson = Boisson.idBoisson
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    return $stmt;
   }
 
   function rechercherLesAutresDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Autre.idAutre, libelle, prix, image, quantite
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Autre.idAutre as id, libelle, prix, quantite
                                                         FROM ajouterAutre INNER JOIN Autre
                                                         ON ajouterAutre.idAutre = Autre.idAutre
                                                         WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
-    if ($stmt === false) {
-      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
-    }
-    if($stmt->rowCount() > 0){
-      $isDeja = "true";
-    }
-    return $isDeja;
+    return $stmt;
   }
 
   function rechercherLesBurgersDuPanier($idPanier){
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Burger.idBurger as id, Burger.libelle as libelleBurger, prix, quantite, isPain, Viande.libelle as libelleViande, Sauce.libelle as libelleSauce
+                                                            FROM ajouterBurger INNER JOIN Burger ON ajouterBurger.idBurger = Burger.idBurger
+                                                            INNER JOIN Viande ON Burger.idViande = Viande.idViande
+                                                            INNER JOIN Sauce ON Burger.idSauce = Sauce.idSauce
+                                                            WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    return $stmt;
+  }
+
+  function rechercherLesSupplementsDuBurger($idBurger){
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Supplement.libelle as libelle
+                                                          FROM SupplementBurger INNER JOIN Supplement ON SupplementBurger.idSupplement = Supplement.idSupplement
+                                                          WHERE idBurger = :idBurger");
+    $stmt->bindParam(':idBurger', $idBurger);
+    $stmt->execute();
+    return $stmt;
+  }
+
+  function rechercherLesMenusDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Burger.idBurger, libelle, prix, image, quantite
-                                                          FROM ajouterBurger INNER JOIN Burger
-                                                          ON ajouterBurger.idBurger = Burger.idBurger
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Menu.idMenu as id, Menu.libelle as libelleMenu, Menu.prix as prix, ajouterMenu.quantite as quantite, Burger.idBurger as idBurger, Burger.libelle as libelleBurger, Burger.isPain as isPain, Viande.libelle as libelleViande, Sauce.libelle as libelleSauce, Frite.libelle as libelleFrite, Boisson.libelle as libelleBoisson
+                                                          FROM ajouterMenu INNER JOIN Menu ON ajouterMenu.idMenu = Menu.idMenu
+                                                          INNER JOIN Burger ON Burger.idBurger = Menu.idBurger
+                                                          INNER JOIN Viande ON Burger.idViande = Viande.idViande
+                                                          INNER JOIN Sauce ON Burger.idSauce = Sauce.idSauce
+                                                          INNER JOIN Frite ON Menu.idFrite = Frite.idFrite
+                                                          INNER JOIN Boisson ON Menu.idBoisson = Boisson.idBoisson
                                                           WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
-    if ($stmt === false) {
-      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
-    }
-    if($stmt->rowCount() > 0){
-      $isDeja = "true";
-    }
-    return $isDeja;
+    return $stmt;
   }
+
+
 
 
 }

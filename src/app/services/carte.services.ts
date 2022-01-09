@@ -14,7 +14,7 @@ export class CarteService{
   }
 
 
-  //Connexion
+
   rechercherTousLesProduits(){
     this.tousLesProduits = [];
     this.http

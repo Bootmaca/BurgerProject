@@ -20,7 +20,7 @@
 
         <td >{{ commande.nom }}</td>
         <td >{{ commande.prix + ' €' }}</td>
-        <td >{{ commande.date |  date: 'dd/MM/YYYY hh:mm:ss' }}</td>
+        <td >{{ commande.date |  date: 'dd/MM/YYYY HH:mm:ss' }}</td>
         <td>
           <a type="button" class="boutonVisualiser" (click)="onSelect(commande.idPanier)">Visualiser </a>
         </td>
