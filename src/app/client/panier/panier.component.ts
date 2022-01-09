@@ -21,6 +21,7 @@ export class PanierComponent implements OnInit {
   lesBurgers : Burger[] = [];
   lesMenus : Menu[] = [];
   prixTotal : number = 0;
+  afficherModal: boolean = false;
 
   constructor( private router: Router, private panierService: PanierService) {
     let user: any = sessionStorage.getItem("utilisateur");
@@ -99,8 +100,27 @@ export class PanierComponent implements OnInit {
     this.prixTotal = prix;
   }
 
+  redirectionApresPaiement(){
+    sessionStorage.setItem("typeProduit","Burger");
+    this.router.navigate(['/client/carte']); // Navigation vers la page client
+  }
+
   payer(){
-    this.router.navigate(['/client/paiement']); // Navigation vers la page client
+    let user: any = sessionStorage.getItem("utilisateur");
+    user = JSON.parse(user);
+    let idClient = user['idUtil'];
+    this.panierService.ajouterAuPanier(idClient);
+    new Promise(
+      () => {
+        setTimeout(
+          ()=>{
+            if(this.panierService.isAjoute){
+              this.afficherModal = true;
+            }
+          },200
+        )
+      }
+    );
   }
 
 }

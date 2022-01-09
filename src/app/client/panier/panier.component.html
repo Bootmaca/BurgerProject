@@ -152,6 +152,21 @@
     </tr>
     </tfoot>
   </table>
+  <!-- Modal produit ajouté au panier -->
+  <div *ngIf="this.afficherModal">
+    <div id="myModal" class="mmodal">
+      <div class="mmodal-content">
+        <span class="cclose" (click)="this.afficherModal = false;">&times;</span>
+        <div class="contenneurImageValide">
+          <img src="../../../assets/images/valide.png" class="imageValide" alt="ajout valide">
+        </div>
+        <p class="titreProduitAjoute">Commande validé ! Bon appétit ;)</p>
+        <div class="contenneurBoutons">
+            <a class="btn btn-secondary btnCarte" (click)="redirectionApresPaiement()">Super !</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <div>
     <input type="button" class="fa-pull-right btn btn-warning payer" value="Payer" (click)="payer()">
   </div>

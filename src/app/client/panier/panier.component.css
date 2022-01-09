@@ -56,11 +56,80 @@ tfoot{
   border: none;
 }
 
+
+/* le background du Modal */
+.mmodal {
+  display: block;
+  position: fixed; /* reste à la même place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Toute la largeur */
+  height: 100%; /* Toute la longueur */
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.7); /* modifier le dernier flottant pour influencer l'oppacité */
+}
+
+/* Modal Content/Box */
+.mmodal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 25px;
+  border: 3px solid black;
+  border-radius: 20px;
+  width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.cclose {
+  margin-top: -20px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.cclose:hover,
+.cclose:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contenneurImageValide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 30px;
+}
+
+.imageValide{
+  width: 100px;
+  margin-top: -20px;
+  height: 90px;
+}
+
+.titreProduitAjoute{
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  padding-bottom: 0;
+}
+
+.contenneurBoutons{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 /* Design scroll bar*/
 ::-webkit-scrollbar {
   width: 15px;
 }
-
 
 ::-webkit-scrollbar-track {
   background: transparent;

@@ -18,6 +18,7 @@ export class PanierService{
   lesAutres : Autre[] = [];
   lesBurgers : Burger[] = [];
   lesMenus : Menu[] = [];
+  reponseAjout: boolean = false;
 
 
   constructor(private http: HttpClient) {
@@ -225,4 +226,18 @@ export class PanierService{
         console.log("Erreur : "+ error);
       });
   }
+
+
+  ajouterAuPanier(idUtil: number){
+    this.http
+      //Liens vers le script php permettant la selection des produits
+      .get<any>(this.urlDeBase+'validerPanier.php?idUtil='+idUtil)
+      .subscribe((laData) => {
+        this.reponseAjout = laData == "true";
+      }, (error) => { //Si il y a une erreur lors de l'insertion
+        console.log(error);
+        this.reponseAjout = false;
+      });
+  }
+
 }
