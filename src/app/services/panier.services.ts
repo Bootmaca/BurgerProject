@@ -5,6 +5,7 @@ import {Dessert} from "../_models/Dessert";
 import {Boisson} from "../_models/Boisson";
 import {Autre} from "../_models/Autre";
 import {Burger} from "../_models/Burger";
+import {Menu} from "../_models/Menu";
 
 @Injectable()
 export class PanierService{
@@ -16,6 +17,7 @@ export class PanierService{
   lesBoisson : Boisson[] = [];
   lesAutres : Autre[] = [];
   lesBurgers : Burger[] = [];
+  lesMenus : Menu[] = [];
 
 
   constructor(private http: HttpClient) {
@@ -146,7 +148,6 @@ export class PanierService{
           libelleViande = lesProduits[i]["libelleViande"];
           libelleSauce = lesProduits[i]["libelleSauce"];
           if(lesProduits[i]['libelleSupplement'] != undefined){
-            console.log(lesProduits[i]['libelleSupplement'].length);
             nombreDeSupplements = lesProduits[i]['libelleSupplement'].length;
             for(let j=0; j<nombreDeSupplements; j++){
               libelleSuplement.push(lesProduits[i]["libelleSupplement"][j]);
@@ -155,7 +156,69 @@ export class PanierService{
           unBurger = new Burger(idProduit, libelle, prix, quantite, typePain,libelleViande,libelleSauce,libelleSuplement); // Création de l'objet de type Frite
           this.lesBurgers.push(unBurger);
         }
-        console.log(this.lesBurgers);
+
+      }, (error) => { //Si il y a un problème lors de la récupération des produits
+        console.log("Erreur lors de la récupération des produits.");
+        console.log("Erreur : "+ error);
+      });
+  }
+
+  rechercherTousLesMenuDuPanier(idUtil: number){
+    this.lesMenus = [];
+    let lesProduits:any =[];
+    this.http
+      //Liens vers le script php permettant la selection des produits
+      .get<any[]>(this.urlDeBase+'recupererLesMenusDuPanier.php?idUtil='+idUtil)
+      .subscribe((laData) => {
+        lesProduits = laData; //récupération des produits
+
+        //Nombre de produits
+        let nombreDeProduit = lesProduits.length;
+        let nombreDeSupplements = 0;
+
+        //Déclaration des variables
+        let unMenu: Menu;
+        let idProduit;
+        let libelle;
+        let prix;
+        let quantite;
+        let idBurger;
+        let libelleBurger;
+        let typePain;
+        let libelleViande;
+        let libelleSauce;
+        let libelleSuplement = [];
+        let libelleFrite;
+        let libelleBoisson;
+
+        //Parcours de tous les produits
+        //Pour chaque produit création d'un objet de type Produit et insertion dans le tableau touslesProduits
+        for(let i=0; i<nombreDeProduit; i++){
+          libelleSuplement = [];
+          idProduit = lesProduits[i]["id"];
+          libelle = lesProduits[i]["libelle"];
+          prix = lesProduits[i]["prix"];
+          quantite = lesProduits[i]["quantite"];
+          idBurger = lesProduits[i]["idBurger"];
+          libelleBurger = lesProduits[i]["libelleBurger"];
+          if(lesProduits[i]["quantite"] == 0){
+            typePain = "Baguette";
+          }else{
+            typePain = "Pain burger";
+          }
+          libelleViande = lesProduits[i]["libelleViande"];
+          libelleSauce = lesProduits[i]["libelleSauce"];
+          if(lesProduits[i]['libelleSupplement'] != undefined){
+            nombreDeSupplements = lesProduits[i]['libelleSupplement'].length;
+            for(let j=0; j<nombreDeSupplements; j++){
+              libelleSuplement.push(lesProduits[i]["libelleSupplement"][j]);
+            }
+          }
+          libelleFrite = lesProduits[i]["libelleFrite"];
+          libelleBoisson = lesProduits[i]["libelleBoisson"];
+          unMenu = new Menu(idProduit, libelle, prix, quantite, idBurger, libelleBurger, typePain, libelleViande, libelleSauce, libelleSuplement, libelleFrite, libelleBoisson); // Création de l'objet de type Frite
+          this.lesMenus.push(unMenu);
+        }
 
       }, (error) => { //Si il y a un problème lors de la récupération des produits
         console.log("Erreur lors de la récupération des produits.");

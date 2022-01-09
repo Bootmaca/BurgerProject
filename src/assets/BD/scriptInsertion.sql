@@ -43,7 +43,8 @@ INSERT INTO Supplement(idSupplement, libelle, prix, image, isDisponible)
 
 INSERT INTO SupplementBurger(idBurger, idSupplement)
   VALUES
-    (3,2);
+    (3,2),
+    (7,1);
 
 INSERT INTO Dessert(idDessert, libelle, prix, image, isDisponible)
   VALUES

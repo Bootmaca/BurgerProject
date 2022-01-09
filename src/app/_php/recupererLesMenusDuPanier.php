@@ -7,10 +7,10 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once("chargementClasses.php");
 
 //Récupération des données
-$idUtil = $_REQUEST['idUtil'];
+//$idUtil = $_REQUEST['idUtil'];
 
 //Données de test
-//$idUtil = 8;
+$idUtil = 8;
 
 //Création de la connexion avec la base de donnée en créant l'objet
 $panierMySQL = new PanierMySQL();
@@ -19,7 +19,7 @@ $panierMySQL = new PanierMySQL();
 $idPanier = $panierMySQL->recupererLePanierCourant($idUtil);
 
 // Recherche de tous les burgers
-$resultBurger = $panierMySQL->rechercherLesBurgersDuPanier($idPanier);
+$resultBurger = $panierMySQL->rechercherLesMenusDuPanier($idPanier);
 
 $data = [];
 $i = 0;
@@ -28,19 +28,23 @@ $supplement = [];
 //Pour chaque ligne récupéré de la requête frite
 while($row = $resultBurger->fetch()){
   $supplement = [];
-  $resultSupplement = $panierMySQL->rechercherLesSupplementsDuBurger($row['id']);
+  $resultSupplement = $panierMySQL->rechercherLesSupplementsDuBurger($row['idBurger']);
   $i = 0;
   while($rowSupplement = $resultSupplement->fetch()){
     $i += 1;
     array_push($supplement, array($i => $rowSupplement['libelle']));
   }
   $ligne = array('id' => $row['id'],
-    'libelle' => $row['libelleBurger'],
+    'libelle' => $row['libelleMenu'],
     'prix' => $row['prix'],
     'quantite' => $row['quantite'],
+    'idBurger' => $row['idBurger'],
+    'libelleBurger' => $row['libelleBurger'],
     'isPain' => $row['isPain'],
     'libelleViande' => $row['libelleViande'],
     'libelleSauce' => $row['libelleSauce'],
+    'libelleFrite' => $row['libelleFrite'],
+    'libelleBoisson' => $row['libelleBoisson'],
     'libelleSupplement' => $supplement);
   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }

@@ -13,33 +13,29 @@
     <tbody>
 
     <!-- Menu -->
-    <tr>
+    <tr *ngFor="let menu of lesMenus">
       <td>
         <img src="../../../assets/images/menu.svg" alt="" width="40" height="40" >
-        <span class="nom"> Menu </span>
+        <span class="nom"> {{menu.libelle}} </span>
         <ul style="font-size: 17px;">
-          <li>Burger</li>
+          <li>{{menu.libelleBurger}}</li>
           <ul>
-            <li>Pain : lePain</li>
-            <li>Viande : laViande</li>
-            <li>Sauce : laSauce</li>
-            <li>Suppléments :</li>
-            <ul>
-              <li>Supplément1 :</li>
-              <li>Supplément2 :</li>
-            </ul>
+            <li>Pain : {{menu.typePain}}</li>
+            <li>Viande : {{menu.libelleViande}}</li>
+            <li>Sauce : {{menu.libelleViande}}</li>
+            <li *ngFor="let supplement of menu.supplement let i = index">Suppléments {{i+1}} : {{supplement[i+1]}}</li>
           </ul>
-          <li>Frites</li>
-          <li>Boisson</li>
+          <li>{{menu.libelleFrite}}</li>
+          <li>{{menu.libelleBoisson}}</li>
         </ul>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{menu.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{menu.quantite * menu.prix}} € </div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
@@ -151,7 +147,7 @@
     <tr>
       <td>TOTAL : </td>
       <td></td>
-      <td>47 €</td>
+      <td>{{prixTotal}} €</td>
       <td></td>
     </tr>
     </tfoot>

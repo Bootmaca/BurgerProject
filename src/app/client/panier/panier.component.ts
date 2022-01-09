@@ -6,6 +6,7 @@ import {Dessert} from "../../_models/Dessert";
 import {Boisson} from "../../_models/Boisson";
 import {Autre} from "../../_models/Autre";
 import {Burger} from "../../_models/Burger";
+import {Menu} from "../../_models/Menu";
 
 @Component({
   selector: 'app-panier',
@@ -18,6 +19,8 @@ export class PanierComponent implements OnInit {
   lesBoisson : Boisson[] = [];
   lesAutres : Autre[] = [];
   lesBurgers : Burger[] = [];
+  lesMenus : Menu[] = [];
+  prixTotal : number = 0;
 
   constructor( private router: Router, private panierService: PanierService) {
     let user: any = sessionStorage.getItem("utilisateur");
@@ -26,6 +29,7 @@ export class PanierComponent implements OnInit {
 
     this.panierService.rechercherTousLesProduitsDuPanier(idClient);
     this.panierService.rechercherTousLesBurgerDuPanier(idClient);
+    this.panierService.rechercherTousLesMenuDuPanier(idClient);
 
     new Promise(
       () => {
@@ -36,6 +40,7 @@ export class PanierComponent implements OnInit {
             this.lesBoisson = this.panierService.lesBoisson;
             this.lesAutres = this.panierService.lesAutres;
             this.lesBurgers = this.panierService.lesBurgers;
+            this.lesMenus = this.panierService.lesMenus;
           },1000
         )
       }
@@ -49,6 +54,14 @@ export class PanierComponent implements OnInit {
   redirigerVersProduit(typeOfProductChoose: string){
     sessionStorage.setItem("typeProduit",typeOfProductChoose);
     this.router.navigate(['/client/carte']); // Navigation vers la page client
+  }
+
+  calculDuPrixTotal(){
+    let prix = 0
+
+    this.lesFrites.forEach(frite => {prix += frite.prix} )
+
+    this.prixTotal = prix;
   }
 
   payer(){
