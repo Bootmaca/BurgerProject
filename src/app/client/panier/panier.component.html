@@ -1,57 +1,170 @@
 <h1 class="text-center">Ma commande</h1>
 
 <div class="contenneurPanier">
-  <ol class="list-group border-0" style="">
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/burger_icon.svg" alt="" width="20" height="20"> Burgers</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
+  <table class="table table-responsive">
+    <thead>
+    <tr>
+      <th>Article</th>
+      <th>Quantité</th>
+      <th>Prix</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- Menu -->
+    <tr>
+      <td>
+        <img src="../../../assets/images/menu.svg" alt="" width="40" height="40" >
+        <span class="nom"> Menu </span>
+        <ul style="font-size: 17px;">
+          <li>Burger</li>
+          <ul>
+            <li>Pain : lePain</li>
+            <li>Viande : laViande</li>
+            <li>Sauce : laSauce</li>
+            <li>Suppléments :</li>
+            <ul>
+              <li>Supplément1 :</li>
+              <li>Supplément2 :</li>
+            </ul>
+          </ul>
+          <li>Frites</li>
+          <li>Boisson</li>
         </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto" >
-        <div class="fw-bold"><img src="../../../assets/images/frites.svg" alt="" width="20" height="20"> Frites</div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="../../../assets/images/burger.svg" alt="" width="40" height="40" >
+        <span class="nom"> Burger </span>
         <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
+          <li>Pain :</li>
+          <li>Viande :</li>
+          <li>Sauce :</li>
+          <ul>
+            <li>Sauce1 :</li>
+            <li>Sauce2 :</li>
+          </ul>
+          <li>Supplément :</li>
+          <ul>
+            <li>Supplément1 :</li>
+            <li>Supplément2 :</li>
+          </ul>
         </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto" >
-        <div class="fw-bold"><img src="../../../assets/images/boisson.svg" alt="" width="20" height="20"> Boissons</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/legume.svg" alt="" width="20" height="20"> Suppléments</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-start border-0" style="background-color:transparent;">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold"><img src="../../../assets/images/dessert.svg" alt="" width="20" height="20"> Désserts</div>
-        <ul>
-          <li>Item 1</li>
-          <li>Item 1</li>
-          <li>Item 1</li>
-        </ul>
-      </div>
-    </li>
-  </ol>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="../../../assets/images/frite.svg" alt="" width="40" height="40">
+        <span class="nom"> Moyenne Frites </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="../../../assets/images/boisson.svg" alt="" width="40" height="40">
+        <span class="nom"> Boisson </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="../../../assets/images/supplement.svg" alt="" width="40" height="40">
+        <span class="nom"> Supplément </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="../../../assets/images/dessert.svg" alt="" width="40" height="40">
+        <span class="nom"> Dessert </span>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonMoin" value="-">
+        <span class="quantite"> 10 </span>
+        <input type="button" class="btn btn-primary boutonPlus" value="+" >
+      </td>
+      <td>
+        <div class="prix"> 18 € </div>
+      </td>
+      <td>
+        <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
+      </td>
+    </tr>
+
+
+    </tbody>
+    <tfoot>
+    <tr *ngFor="let produit" >
+      <td></td>
+      <td></td>
+      <td>Total : 47 €{{ produit.total }}</td>
+    </tr>
+    </tfoot>
+  </table>
+  <div>
+    <input type="button" class="fa-pull-right btn btn-warning payer" value="Payer" (click)="payer()">
+  </div>
+  <app-nav-bar-produit (eventEmitterChangerProduit)="redirigerVersProduit($event)"></app-nav-bar-produit>
 </div>
-<app-nav-bar-produit (eventEmitterChangerProduit)="redirigerVersProduit($event)"></app-nav-bar-produit>

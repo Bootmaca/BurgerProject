@@ -18,4 +18,8 @@ export class PanierComponent implements OnInit {
     this.router.navigate(['/client/carte']); // Navigation vers la page client
   }
 
+  payer(){
+    this.router.navigate(['/client/paiement']); // Navigation vers la page client
+  }
+
 }

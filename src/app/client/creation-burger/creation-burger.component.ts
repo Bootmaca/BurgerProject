@@ -579,7 +579,7 @@ export class CreationBurgerComponent implements OnInit {
             if(this.panierService.isAjoute){
               this.afficherModal= true;
             }
-          },200
+          },800
         )
       }
     );
