@@ -570,7 +570,7 @@ export class CreationBurgerComponent implements OnInit {
       idSupplement = this.burger["supplement"];
     }
     let idSauce = this.burger["sauce"];
-    console.log("idClient : " + idClient + " nom Burger : " + nomBurger + " idPain : " + idPain + " idViande : " + idViande + " idSupplément : " + idSupplement + " id sauce : " + idSauce);
+    //console.log("idClient : " + idClient + " nom Burger : " + nomBurger + " idPain : " + idPain + " idViande : " + idViande + " idSupplément : " + idSupplement + " id sauce : " + idSauce);
     this.panierService.ajouterBurger(idClient, nomBurger, idPain, idViande, idSupplement, idSauce);
     new Promise(
       () => {
