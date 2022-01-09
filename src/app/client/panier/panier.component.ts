@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {PanierService} from "../../services/panier.services";
+import {Frite} from "../../_models/Frite";
+import {Dessert} from "../../_models/Dessert";
+import {Boisson} from "../../_models/Boisson";
+import {Autre} from "../../_models/Autre";
 
 @Component({
   selector: 'app-panier',
@@ -7,8 +12,33 @@ import {Router} from "@angular/router";
   styleUrls: ['./panier.component.css']
 })
 export class PanierComponent implements OnInit {
+  lesFrites : Frite[] = [];
+  lesDessert : Dessert[] = [];
+  lesBoisson : Boisson[] = [];
+  lesAutres : Autre[] = [];
 
-  constructor(private router: Router) { }
+  constructor( private router: Router, private panierService: PanierService) {
+    let user: any = sessionStorage.getItem("utilisateur");
+    user = JSON.parse(user);
+    let idClient = user['idUtil'];
+
+    this.panierService.rechercherTousLesProduitsDuPanier(idClient);
+
+    new Promise(
+      () => {
+        setTimeout(
+          ()=>{
+            this.lesFrites = this.panierService.lesFrites;
+            this.lesDessert = this.panierService.lesDessert;
+            this.lesBoisson = this.panierService.lesBoisson;
+            this.lesAutres = this.panierService.lesAutres;
+            console.log(this.lesFrites);
+          },1000
+        )
+      }
+    );
+
+  }
 
   ngOnInit(): void {
   }

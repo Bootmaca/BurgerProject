@@ -576,7 +576,7 @@ export class CreationBurgerComponent implements OnInit {
       () => {
         setTimeout(
           ()=>{
-            if(this.panierService.isAjoute){
+            if(this.panierService.isAjoute2){
               this.afficherModal= true;
             }
           },800

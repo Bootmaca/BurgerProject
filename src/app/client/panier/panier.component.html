@@ -79,18 +79,18 @@
       </td>
     </tr>
 
-    <tr>
+    <tr *ngFor="let frite of lesFrites">
       <td>
         <img src="../../../assets/images/frite.svg" alt="" width="40" height="40">
-        <span class="nom"> Moyenne Frites </span>
+        <span class="nom"> {{frite.libelle}} </span>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{frite.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{frite.quantite * frite.prix}} €</div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
@@ -98,18 +98,18 @@
     </tr>
 
 
-    <tr>
+    <tr *ngFor="let boisson of lesBoisson">
       <td>
         <img src="../../../assets/images/boisson.svg" alt="" width="40" height="40">
-        <span class="nom"> Boisson </span>
+        <span class="nom"> {{boisson.libelle}} </span>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{boisson.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{boisson.quantite * boisson.prix}} € </div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
@@ -117,36 +117,36 @@
     </tr>
 
 
-    <tr>
+    <tr *ngFor="let autre of lesAutres">
       <td>
         <img src="../../../assets/images/supplement.svg" alt="" width="40" height="40">
-        <span class="nom"> Supplément </span>
+        <span class="nom"> {{autre.libelle}} </span>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{autre.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{autre.quantite * autre.prix}} € </div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
       </td>
     </tr>
 
-    <tr>
+    <tr *ngFor="let dessert of lesDessert">
       <td>
         <img src="../../../assets/images/dessert.svg" alt="" width="40" height="40">
-        <span class="nom"> Dessert </span>
+        <span class="nom"> {{dessert.libelle}} </span>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{dessert.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{dessert.quantite * dessert.prix}} € </div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >

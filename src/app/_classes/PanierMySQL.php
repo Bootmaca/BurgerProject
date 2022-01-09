@@ -447,20 +447,9 @@ class PanierMySQL
     return $isInserted;
   }
 
-  function rechercherLesDessertsDuPanier($idPanier){
-    $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Dessert.idDessert, libelle, prix, image, quantite
-                                                        FROM ajouterDessert INNER JOIN Dessert
-                                                        ON ajouterDessert.idDessert = Dessert.idDessert
-                                                        WHERE idPanier = :idPanier");
-    $stmt->bindParam(':idPanier', $idPanier);
-    $stmt->execute();
-    return $stmt;
-  }
-
   function rechercherLesFritesDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Frite.idFrite, libelle, prix, image, quantite
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Frite.idFrite as id, libelle, prix, quantite
                                                         FROM ajouterFrite INNER JOIN Frite
                                                         ON ajouterFrite.idFrite = Frite.idFrite
                                                         WHERE idPanier = :idPanier");
@@ -469,11 +458,22 @@ class PanierMySQL
     return $stmt;
   }
 
-  function rechercherLesMenusDuPanier($idPanier){
+  function rechercherLesDessertsDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Menu.idMenu, libelle, prix, image, quantite
-                                                        FROM ajouterMenu INNER JOIN Menu
-                                                        ON ajouterMenu.idMenu = Menu.idMenu
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Dessert.idDessert as id, libelle, prix, quantite
+                                                        FROM ajouterDessert INNER JOIN Dessert
+                                                        ON ajouterDessert.idDessert = Dessert.idDessert
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    return $stmt;
+  }
+
+  function rechercherLesBoissonsDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Boisson.idBoisson as id, libelle, prix, quantite
+                                                        FROM ajouterBoisson INNER JOIN Boisson
+                                                        ON ajouterBoisson.idBoisson = Boisson.idBoisson
                                                         WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
@@ -482,7 +482,7 @@ class PanierMySQL
 
   function rechercherLesAutresDuPanier($idPanier){
     $isDeja = "false";
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Autre.idAutre, libelle, prix, image, quantite
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Autre.idAutre as id, libelle, prix, quantite
                                                         FROM ajouterAutre INNER JOIN Autre
                                                         ON ajouterAutre.idAutre = Autre.idAutre
                                                         WHERE idPanier = :idPanier");
@@ -492,10 +492,21 @@ class PanierMySQL
   }
 
   function rechercherLesBurgersDuPanier($idPanier){
-    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Burger.idBurger, libelle, prix, image, quantite
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Burger.idBurger, libelle, prix, quantite
                                                           FROM ajouterBurger INNER JOIN Burger
                                                           ON ajouterBurger.idBurger = Burger.idBurger
                                                           WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    return $stmt;
+  }
+
+  function rechercherLesMenusDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Menu.idMenu, libelle, prix, quantite
+                                                        FROM ajouterMenu INNER JOIN Menu
+                                                        ON ajouterMenu.idMenu = Menu.idMenu
+                                                        WHERE idPanier = :idPanier");
     $stmt->bindParam(':idPanier', $idPanier);
     $stmt->execute();
     return $stmt;

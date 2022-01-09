@@ -6,98 +6,69 @@ header("Content-Type: application/json; charset=UTF-8");
 //Inclus toutes les classe dans _classes pour pouvoir les utiliser dans ce fichier
 include_once("chargementClasses.php");
 
+//Récupération des données
+//$idUtil = $_REQUEST['idUtil'];
+
+//Données de test
+$idUtil = 8;
+
 //Création de la connexion avec la base de donnée en créant l'objet
-$produitMySQL = new ProduitMySQL();
+$panierMySQL = new PanierMySQL();
+
+//Récupération du panier en cours de l'utilisateur
+$idPanier = $panierMySQL->recupererLePanierCourant($idUtil);
 
 // Recherche de toutes les frites
-$resultFrite = $produitMySQL->afficherlesFrites();
+$resultFrite = $panierMySQL->rechercherLesFritesDuPanier($idPanier);
 
 // Recherche de toutes les desserts
-$resultDessert = $produitMySQL->afficherLesDesserts();
+$resultDessert = $panierMySQL->rechercherLesDessertsDuPanier($idPanier);
 
 // Recherche de tous les boissons
-$resultBoisson = $produitMySQL->afficherLesBoissons();
-
-// Recherche de tous les burgers
-$resultBurger = $produitMySQL->afficherLesBurgers();
+$resultBoisson = $panierMySQL->rechercherLesBoissonsDuPanier($idPanier);
 
 // Recherche de tous les supplements
-$resultSupplement = $produitMySQL->afficherLesSupplements();
-
-// Recherche de tous les menus
-$resultMenu = $produitMySQL->afficherLesMenus();
+$resultAutre = $panierMySQL->rechercherLesAutresDuPanier($idPanier);
 
 $data = [];
 
 //Pour chaque ligne récupéré de la requête frite
 while($row = $resultFrite->fetch()){
-  $ligne = array('id' => $row['idFrite'],
+  $ligne = array('id' => $row['id'],
     'libelle' => $row['libelle'],
     'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Frite',
-    'isByCreator' => 1);
+    'quantite' => $row['quantite'],
+    'typeProduit' => 'frite');
   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
 //Pour chaque ligne récupéré de la requête dessert
 while($row = $resultDessert->fetch()){
-  $ligne = array('id' => $row['idDessert'],
+  $ligne = array('id' => $row['id'],
     'libelle' => $row['libelle'],
     'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Dessert',
-    'isByCreator' => 1);
+    'quantite' => $row['quantite'],
+    'typeProduit' => 'dessert');
   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
-//Pour chaque ligne récupéré de la requête dessert
+//Pour chaque ligne récupéré de la requête boisson
 while($row = $resultBoisson->fetch()){
-  $ligne = array('id' => $row['idBoisson'],
+  $ligne = array('id' => $row['id'],
     'libelle' => $row['libelle'],
     'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Boisson',
-    'isByCreator' => 1);
+    'quantite' => $row['quantite'],
+    'typeProduit' => 'boisson');
   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
-//Pour chaque ligne récupéré de la requête dessert
-while($row = $resultBurger->fetch()){
-  $ligne = array('id' => $row['idBurger'],
+//Pour chaque ligne récupéré de la requête supplement
+while($row = $resultAutre->fetch()){
+  $ligne = array('id' => $row['id'],
     'libelle' => $row['libelle'],
     'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Burger',
-    'isByCreator' => $row['isByCreator']);
-  array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
-}
-
-//Pour chaque ligne récupéré de la requête dessert
-while($row = $resultSupplement->fetch()){
-  $ligne = array('id' => $row['idAutre'],
-    'libelle' => $row['libelle'],
-    'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Supplement',
-    'isByCreator' => 1);
-  array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
-}
-
-//Pour chaque ligne récupéré de la requête dessert
-while($row = $resultMenu->fetch()){
-  $ligne = array('id' => $row['idMenu'],
-    'libelle' => $row['libelle'],
-    'prix' => $row['prix'],
-    'image' => $row['image'],
-    'isDisponible' => $row['isDisponible'],
-    'typeProduit' => 'Menu',
-    'isByCreator' => 1);
+    'quantite' => $row['quantite'],
+    'typeProduit' => 'autre');
   array_push($data, $ligne); //Pousse les données ci dessous dans le tableau
 }
 
