@@ -50,6 +50,12 @@ ul{
   font-weight: 500;
 }
 
+tfoot{
+  font-size: 30px;
+  font-weight: 500;
+  border: none;
+}
+
 /* Design scroll bar*/
 ::-webkit-scrollbar {
   width: 15px;
@@ -70,5 +76,4 @@ ul{
   background-color: black;
   cursor: pointer;
 }
-
 

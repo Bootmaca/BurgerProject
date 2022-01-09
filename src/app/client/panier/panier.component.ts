@@ -5,6 +5,7 @@ import {Frite} from "../../_models/Frite";
 import {Dessert} from "../../_models/Dessert";
 import {Boisson} from "../../_models/Boisson";
 import {Autre} from "../../_models/Autre";
+import {Burger} from "../../_models/Burger";
 
 @Component({
   selector: 'app-panier',
@@ -16,6 +17,7 @@ export class PanierComponent implements OnInit {
   lesDessert : Dessert[] = [];
   lesBoisson : Boisson[] = [];
   lesAutres : Autre[] = [];
+  lesBurgers : Burger[] = [];
 
   constructor( private router: Router, private panierService: PanierService) {
     let user: any = sessionStorage.getItem("utilisateur");
@@ -23,6 +25,7 @@ export class PanierComponent implements OnInit {
     let idClient = user['idUtil'];
 
     this.panierService.rechercherTousLesProduitsDuPanier(idClient);
+    this.panierService.rechercherTousLesBurgerDuPanier(idClient);
 
     new Promise(
       () => {
@@ -32,7 +35,7 @@ export class PanierComponent implements OnInit {
             this.lesDessert = this.panierService.lesDessert;
             this.lesBoisson = this.panierService.lesBoisson;
             this.lesAutres = this.panierService.lesAutres;
-            console.log(this.lesFrites);
+            this.lesBurgers = this.panierService.lesBurgers;
           },1000
         )
       }

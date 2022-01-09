@@ -47,32 +47,24 @@
     </tr>
 
 
-    <tr>
+    <tr *ngFor="let burger of lesBurgers ">
       <td>
         <img src="../../../assets/images/burger.svg" alt="" width="40" height="40" >
-        <span class="nom"> Burger </span>
+        <span class="nom"> {{burger.libelle}} </span>
         <ul>
-          <li>Pain :</li>
-          <li>Viande :</li>
-          <li>Sauce :</li>
-          <ul>
-            <li>Sauce1 :</li>
-            <li>Sauce2 :</li>
-          </ul>
-          <li>Supplément :</li>
-          <ul>
-            <li>Supplément1 :</li>
-            <li>Supplément2 :</li>
-          </ul>
+          <li>Pain : {{burger.typePain}}</li>
+          <li>Viande : {{burger.libelleViande}}</li>
+          <li>Sauce : {{burger.libelleSauce}}</li>
+          <li *ngFor="let supplement of burger.supplement let i = index">Supplément {{i+1}} : {{supplement[i+1]}}</li>
         </ul>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonMoin" value="-">
-        <span class="quantite"> 10 </span>
+        <span class="quantite"> {{burger.quantite}} </span>
         <input type="button" class="btn btn-primary boutonPlus" value="+" >
       </td>
       <td>
-        <div class="prix"> 18 € </div>
+        <div class="prix"> {{burger.quantite * burger.prix}} €</div>
       </td>
       <td>
         <input type="button" class="btn btn-primary boutonSupprimer" value="x" >
@@ -156,10 +148,11 @@
 
     </tbody>
     <tfoot>
-    <tr *ngFor="let produit" >
+    <tr>
+      <td>TOTAL : </td>
       <td></td>
+      <td>47 €</td>
       <td></td>
-      <td>Total : 47 €{{ produit.total }}</td>
     </tr>
     </tfoot>
   </table>
