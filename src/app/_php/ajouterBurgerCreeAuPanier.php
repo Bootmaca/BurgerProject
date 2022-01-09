@@ -10,13 +10,20 @@ include_once("chargementClasses.php");
 $produitMySQL = new ProduitMySQL();
 $panierMySQL = new PanierMySQL();
 
+$idUtil = $_REQUEST['idUtil'];
+$nomBurger = $_REQUEST['nomBurger'];
+$idPain = $_REQUEST['idPain'];
+$idViande = $_REQUEST['idViande'];
+$idSupplement = $_REQUEST['idSupplement'];
+$idSauce = $_REQUEST['idSauce'];
+
 //Données de test
-$idUtil = 2;
-$nomBurger = "CREATED BY Pierre DE ALMEIDA";
-$idPain = 0;
-$idViande = 1;
-$idSupplement = 1;
-$idSauce = 1;
+//$idUtil = 2;
+//$nomBurger = "CREATED BY Pierre DE ALMEIDA";
+//$idPain = 0;
+//$idViande = 1;
+//$idSupplement = 1;
+//$idSauce = 1;
 
 $idProduit = 1;
 $typeProduit = "Burger";
@@ -31,15 +38,13 @@ if($idSupplement < 1){
   $idBurger = $produitMySQL->ajouterUnBurgerAvecSupplement($nomBurger, $idPain, $idViande, $idSupplement, $idSauce);
 }
 
-
 //Récupération du panier en cours de l'utilisateur
 $idPanier = $panierMySQL->recupererLePanierCourant($idUtil);
 
-
-$isInserted = $panierMySQL->ajouterBurger($idPanier, $idProduit);
+$isInserted = $panierMySQL->ajouterBurger($idPanier, $idBurger);
 
 if($isInserted == true){//Si l'insertion à fonctionné on met à jour le prix
-  $isInserted2 = $panierMySQL->majPrixDuPanierApresAjoutBurger($idPanier, $idProduit);
+  $isInserted2 = $panierMySQL->majPrixDuPanierApresAjoutBurger($idPanier, $idBurger);
 }
 
 

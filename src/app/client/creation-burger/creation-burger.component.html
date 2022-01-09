@@ -133,6 +133,28 @@
       <p></p>
     </div>
   </div>
+
+  <div *ngIf="this.afficherModal">
+    <div id="myModal" class="mmodal">
+      <div class="mmodal-content">
+        <a class="cclose" routerLink="/client/carte" routerLinkActive="active" (click)="this.afficherModal = false;">&times;</a>
+        <div class="contenneurImageValide">
+          <img src="../../../assets/images/valide.png" class="imageValide" alt="ajout valide">
+        </div>
+        <p class="titreProduitAjoute">Produit ajouté au panier</p>
+        <div class="contenneurImageProduit">
+          <img src="../../../assets/images/burger_a_creer.png" alt="" class="imageProduitAjoute" >
+        </div>
+        <p class="card-title text-center nomProduit">Burger crée par vous même</p>
+        <div class="contenneurBoutons">
+          <div class="btnContinuerEtVoir">
+            <a class="btn btn-secondary btnCarte" routerLink="/client/carte" routerLinkActive="active">Continuer mes achats</a>
+            <a class="btn btn-success btnCarte" routerLink="/client/panier" routerLinkActive="active">Voir mon panier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
