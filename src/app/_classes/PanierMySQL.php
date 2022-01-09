@@ -9,6 +9,20 @@ class PanierMySQL
     $this->laConnexion = new Connexion();
   }
 
+  function creerCommande($idPanier, $idUtil): string
+  {
+    $isInserted = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("UPDATE Panier
+                                                          SET etat=1, date = NOW()
+                                                          WHERE idPanier = :idPanier;");
+    $stmt->bindParam(':idPanier', $idPanier);
+    if ($stmt ->execute() == 1) {
+      $isInserted = "true";
+    }
+    $this->creerUnPanier($idUtil);
+    return $isInserted;
+  }
+
   function creerUnPanier($idUtil): string
   {
     $isInserted = "false";
@@ -432,6 +446,92 @@ class PanierMySQL
     }
     return $isInserted;
   }
+
+  function rechercherLesDessertsDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Dessert.idDessert, libelle, prix, image, quantite
+                                                        FROM ajouterDessert INNER JOIN Dessert
+                                                        ON ajouterDessert.idDessert = Dessert.idDessert
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
+  function rechercherLesFritesDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Frite.idFrite, libelle, prix, image, quantite
+                                                        FROM ajouterFrite INNER JOIN Frite
+                                                        ON ajouterFrite.idFrite = Frite.idFrite
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
+  function rechercherLesMenusDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Menu.idMenu, libelle, prix, image, quantite
+                                                        FROM ajouterMenu INNER JOIN Menu
+                                                        ON ajouterMenu.idMenu = Menu.idMenu
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
+  function rechercherLesAutresDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Autre.idAutre, libelle, prix, image, quantite
+                                                        FROM ajouterAutre INNER JOIN Autre
+                                                        ON ajouterAutre.idAutre = Autre.idAutre
+                                                        WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
+  function rechercherLesBurgersDuPanier($idPanier){
+    $isDeja = "false";
+    $stmt = $this->laConnexion->getDbh()->prepare("SELECT Burger.idBurger, libelle, prix, image, quantite
+                                                          FROM ajouterBurger INNER JOIN Burger
+                                                          ON ajouterBurger.idBurger = Burger.idBurger
+                                                          WHERE idPanier = :idPanier");
+    $stmt->bindParam(':idPanier', $idPanier);
+    $stmt->execute();
+    if ($stmt === false) {
+      $this->laConnexion->afficherErreurSQL("Panier non trouvé ", $stmt);
+    }
+    if($stmt->rowCount() > 0){
+      $isDeja = "true";
+    }
+    return $isDeja;
+  }
+
 
 }
 
