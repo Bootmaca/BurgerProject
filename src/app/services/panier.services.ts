@@ -141,7 +141,7 @@ export class PanierService{
           libelle = lesProduits[i]["libelle"];
           prix = lesProduits[i]["prix"];
           quantite = lesProduits[i]["quantite"];
-          if(lesProduits[i]["quantite"] == 0){
+          if(lesProduits[i]["isPain"] == 0){
             typePain = "Baguette";
           }else{
             typePain = "Pain burger";
@@ -202,7 +202,7 @@ export class PanierService{
           quantite = lesProduits[i]["quantite"];
           idBurger = lesProduits[i]["idBurger"];
           libelleBurger = lesProduits[i]["libelleBurger"];
-          if(lesProduits[i]["quantite"] == 0){
+          if(lesProduits[i]["isPain"] == 0){
             typePain = "Baguette";
           }else{
             typePain = "Pain burger";
