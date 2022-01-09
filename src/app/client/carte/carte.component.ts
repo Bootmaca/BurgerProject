@@ -83,7 +83,7 @@ export class CarteComponent implements OnInit {
 
   commanderOuPersonnaliser(idProduit: number, nomProduit: string = "", urlImage: string = ""){
     if(idProduit == 0){
-      this.router.navigate(['partieDeGuigui']);
+      this.router.navigate(['client/creer-burger']);
     }else{
       this.panierService.rechercherTousLesProduits(this.idClient, idProduit, this.typeProduit);
       new Promise(

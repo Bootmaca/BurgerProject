@@ -8,9 +8,8 @@ $dbname = 'BurgerProject';
 $dsn ='mysql:host=localhost;dbname='.$dbname;
 
 // Connexion
-$dbh = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT=>true,
-  PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));  // Connexion persistante
-$sql =  'SELECT * FROM Commande ';
+$dbh = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT=>true, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''));  // Connexion persistante
+$sql =  'SELECT * FROM commande C INNER JOIN panier P ON C.idPanier = P.idPanier WHERE P.etat = 1 ORDER BY P.date DESC;';
 $records = [];
 foreach  ($dbh->query($sql) as $row) {
   $dbhUtil = new PDO($dsn, $user, $pass, array(PDO::ATTR_PERSISTENT=>true,
